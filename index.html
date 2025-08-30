@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <main id="main-content">
+        <!-- nav inside of body because we want it all in one piece -->
         <nav class="desktop">
             <ul>
                 <li><a href="#">Home</a></li>
@@ -20,45 +21,66 @@
         <div class="home">
             <div class="home-container">
                 <div class="home-grid">
+                    <!-- name container -->
+                    <div class="name-container">
+                        <div class="name-container-flex">
+                            <span class="circle-logo">
+                                <span aria-label="MD" class="md">MD</span>
+                            </span>
+                            <h1 class="marco">Marco Dominguez</h1>
+                        </div>
+                    </div>
+                    <!-- description container -->
                     <div class="aboutme-container">
-                        <div class="about-me">
-                            <h2>Who am I?</h2>
-                            <article> pequena seccion hablando sobre mi</article>
+                        <div class="aboutme-text">
+                            <div>
+                                 <h2 class="who">Who Am I?</h2>
+                            </div>
+                            <div class="aboutme-p">
+                                <p>Hi! I'm a passionate web developer dedicated to crafting engaging and user-friendly digital experiences. 
+                                    With a strong foundation in HTML, CSS, and JavaScript, I specialize in building responsive websites that 
+                                    not only look great but also function seamlessly across all devices. I love turning ideas into reality through code and am always eager to learn new technologies and improve my skills. Let's create something amazing together!</p>
+                            </div>
                         </div>
                     </div>
                     <div class="webdev">
-                        <h2>Web developer</h2>
-                    <div class="marcod">
-                        <div class="circle-logo">MD</div>
-                        <h2>Marco Dominguez</h2>
+                        <div class="webdev-text">
+                            <h2 class="webdev-h2">Web Developer</h2>
+                        </div>
                     </div>
-
+                    <div class="passion">
+                        <div class="passion-text">
+                            <h2 class="passion-h2">"It's all about vision"</h2>
+                        </div>
+                    </div>
                     <div class="skills">
-                        <h2>Technologies I have worked with</h2>
-                        <ul>
-                            <li>
-                                <i class="devicon-css3-plain"></i>
-                            </li>
-                            <li>       
-                                <i class="devicon-git-plain"></i>
-                            </li>
-                            <li>
-                                <i class="devicon-github-original"></i>
-                            </li>
-                            <li>
-                                <i class="devicon-html5-plain"></i>
-                            </li>
-                            <li>
-                                <i class="devicon-javascript-plain"></i>
-                            </li>
-                            <li>
-                                <i class="devicon-react-original"></i>
-                            </li>
-                            <li>
-                                <i class="devicon-figma-plain"></i>
-                            </li>
-                        </ul>
+                        <div class="skills-container">
+                            <h2 class="skills-text">Technologies I have worked with</h2>
+                            <div class="skills-icons">
+                                <p class="icon-skill">
+                                    <i class="devicon-css3-plain"></i>
+                                </p>
+                                <p class="icon-skill">
+                                    <i class="devicon-git-plain"></i>
+                                </p>
+                                <p class="icon-skill">
+                                    <i class="devicon-html5-plain"></i>
+                                </p>
+                                <p class="icon-skill">
+                                    <i class="devicon-javascript-plain"></i>
+                                </p>
+                                <p class="icon-skill">
+                                    <i class="devicon-react-original"></i>
+                                </p>
+                                <p class="icon-skill">
+                                    <i class="devicon-figma-plain"></i>
+                                </p>
+                            </div>
+                        </div>
                     </div> 
+                    <div class="abstract-image-container">
+                        <img class="abstract-pic" src="images/abstract.jpg" alt="Abstract Image">
+                    </div>
                 </div>
             </div>
         </div>
