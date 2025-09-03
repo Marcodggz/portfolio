@@ -6,18 +6,23 @@
     <title>Home</title>
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
 </head>
 <body>
     <main id="main-content">
         <!-- nav inside of body because we want it all in one piece -->
         <nav class="desktop">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-
-            </ul>
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
         </nav>
+        <!-- home section -->
         <div class="home">
             <div class="home-container">
                 <div class="home-grid">
@@ -37,9 +42,11 @@
                                  <h2 class="who">Who Am I?</h2>
                             </div>
                             <div class="aboutme-p">
-                                <p>Hi! I'm a passionate web developer dedicated to crafting engaging and user-friendly digital experiences. 
-                                    With a strong foundation in HTML, CSS, and JavaScript, I specialize in building responsive websites that 
-                                    not only look great but also function seamlessly across all devices. I love turning ideas into reality through code and am always eager to learn new technologies and improve my skills. Let's create something amazing together!</p>
+                                <p>Hi! I’m a developer passionate about creating digital experiences
+                                    that connect and inspire. I’m driven by curiosity and a constant desire to learn, 
+                                    always seeking new challenges that push me to grow. For me, code is more than a tool 
+                                    — it’s a way to bring ideas to life and make an impact. I’m excited to keep building, 
+                                    keep learning, and keep shaping what’s next.!</p>
                             </div>
                         </div>
                     </div>
@@ -55,6 +62,7 @@
                             <h2 class="vision-h2">"It's all about vision"</h2>
                         </div>
                     </div>
+                    
                     <!-- skills container -->
                     <div class="skills">
                         <div class="skills-container">
@@ -78,6 +86,9 @@
                                 <p class="icon-skill">
                                     <i class="devicon-figma-plain"></i>
                                 </p>
+                                <p class="icon-skill">
+                                    <i class="devicon-python-plain"></i>
+                                </p>
                             </div>
                         </div>
                     </div> 
@@ -85,9 +96,26 @@
                     <div class="abstract-image-container">
                         <img class="abstract-pic" src="images/abstract.jpg" alt="Abstract Image">
                     </div>
+                    <!-- certifications -->
+                     <div class="certifications">
+                        <div class="certifications-text">
+                            <h2 class="certifications-title">Certifications</h2>
+                        </div>
+                        <div class="certifications-p-container">
+                            <p class="certifications-p">JavaScript <span> - CodeCademy</span></p>
+                            <p class="certifications-p">Build a Website with HTML, CSS, and GitHub Pages Skill Path <span> - CodeCademy</span></p>
+                            <p class="certifications-p">Python (Basic)<span> - CodeCademy</span></p>
+                            <p class="certifications-p">Front-End Engineer <span> - CodeCademy</span></p>
+                        </div>
+                     </div>
                 </div>
             </div>
         </div>
     </main>
 </body>
 </html>
+
+
+
+
+    

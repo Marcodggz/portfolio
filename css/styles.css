@@ -1,1 +1,222 @@
 /* Universal styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Flex', sans-serif;
+}
+
+html{
+    background-color: black;
+}
+
+/* nav style fort all 3 pages */
+#main-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+
+.desktop{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 285px;
+    margin: 30px 30px;
+    border-radius: 10px;
+}
+
+.nav-container{      
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-links{     
+    display: flex;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    color: white;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    list-style: none;
+    font-size: 15px;
+    background-color: rgba(69, 70, 69, 0.799);
+}
+
+.nav-links a.active {  /* Estilo para el enlace activo */
+    background: #545454;   /* gris de ejemplo */
+    color: #eeecec;        /* texto blanco */
+    border-radius: 8px; /* opcional: redondear */
+    padding: 7px 10px; /* opcional: espacio interno */
+    text-decoration: none;
+}
+
+.nav-links a {   /* Estilo general para todos los enlaces */
+    text-decoration: none;
+    color: rgb(148, 146, 146);
+    padding: 6px 10px;
+}
+ 
+.nav-links a:not(.active):hover {   /* Solo aplica hover a los que no son activos */
+  color: #535252;
+  transition-property: color;
+  transition-duration: 0.4s;
+}
+
+
+
+
+
+
+/* Contenedor principal del home */
+
+.home{
+  padding: 20px 0 40px 0;
+  min-height: 50%; /* altura mínima para ocupar toda la pantalla */
+  background: #000000;              /* cambia a tu paleta */
+}
+
+.home-container{
+  width: min(60%, 1080px);
+  margin-inline: auto;
+  box-sizing: border-box;
+  background-color: #000000;
+}
+
+/* ===== GRID como el del ejemplo ===== */
+.home-grid{
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(12, 1fr);
+  /* Alturas por fila: ajusta a tu gusto */
+  grid-template-rows: 220px 100px 100px 120px 80px;
+  grid-template-areas:
+    "about   about   about   about   about   about   about   about   abstract abstract abstract abstract"
+    "webdev  webdev  webdev  webdev  name    name    name    name    vision   vision   vision   vision"
+    "skills  skills  skills  skills  education education education education education education education education"
+    "skills  skills  skills  skills  education education education education education education education education";
+}
+
+/* Mapear áreas */
+.aboutme-container        { grid-area: about; }
+.webdev                   { grid-area: webdev; }
+.name-container           { grid-area: name; }
+.vision                   { grid-area: vision; }
+.skills                   { grid-area: skills; }
+.abstract-image-container { grid-area: abstract; }
+.certifications           { grid-area: education; }
+
+/* Tarjetas (look compacto) */
+.aboutme-container,
+.webdev,
+.name-container,
+.vision,
+.skills,
+.certifications{
+  background: #171717;          /* cambia a tu paleta */
+  border: 1px solid #171717c1;
+  border-radius: 16px;
+  padding: 16px 20px;
+  color: #e7e9ee;
+}
+
+/* Imagen derecha, alta (ocupa filas 1–2) */
+.abstract-image-container{
+  border-radius: 16px;
+  overflow: hidden;
+  grid-row: 1 / span 2;         
+}
+.abstract-pic{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Contenidos compactos ---- */
+.name-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  grid-row: 2 / span 2;         
+}
+.name-container-flex{
+  display: flex;
+  flex-direction: column;        
+  align-items: center;
+  gap: 21px;
+  
+}
+.circle-logo{
+  width: 94px; height: 94px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: #3a3c3b; color: #f5f6f8; font-weight: 500; font-size: 1.3rem;
+}
+.marco{ margin:0; font-size: 2.31rem; line-height: 1.2; }
+
+.aboutme-text{ 
+  display: flex; flex-direction: column; gap: 10px; align-items: flex-start;
+}
+.aboutme-text .who{ margin: 0; font-size: 1.9rem;}
+.aboutme-text p{ margin: 0; line-height: 1.45; font-size: 1.2rem; color: #a9acb0; }
+
+.vision {
+    grid-row: 3 / span 1 ;     
+}
+
+.webdev, .vision{
+  display:flex; flex-direction:column; gap:6px; align-items:center; justify-content:center; background-color: rgba(113, 189, 236, 0.329); 
+}
+
+.vision h2{ margin:0; font-size:1.7rem; line-height:1.2; }
+
+.webdev h2{ margin:0; font-size:1.7rem; line-height:1.2; }
+
+
+.skills{
+  display:flex; flex-direction:column; gap:10px; grid-row: 3 / span 3;
+}
+.skills .skills-container{ display:grid; gap:20px;}
+.skills .skills-text{ margin:0; padding-top: 5px; font-size:1.9rem; }
+.skills .skills-icons{ display:flex; flex-wrap:wrap; gap:25px 35px; align-items:center; justify-content: center; color: #a9acb0;}
+.icon-skill{ margin: 3px; }
+.icon-skill i{ font-size:39px;  }
+
+.certifications{
+  display:flex; flex-direction:column; gap:10px; grid-row: 4 / span 2;
+}
+.certifications-title{ margin:0; font-size:1.9rem; }
+.certifications-p-container{ display:flex; flex-direction:column; gap:6px; }
+.certifications-p{ margin:0; font-size:1.2rem; color:#d9dde4; line-height:1.4; }
+.certifications-p span{ color:#a9acb0; font-size:1.1rem; }
+
+/* ===== Responsive ===== */
+@media (max-width: 900px){
+  .home-container{ width: min(100% - 2rem, 1080px); }
+  .home-grid{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "about"
+      "abstract"
+      "webdev"
+      "name"
+      "vision"
+      "skills"
+      "certifications";
+  }
+  .abstract-image-container{ grid-row: auto; min-height: 240px; }
+}
