@@ -52,7 +52,7 @@ html{
     gap: 30px;
     list-style: none;
     font-size: 15px;
-    background-color: rgba(69, 70, 69, 0.799);
+    background-color: #222222; ;
 }
 
 .nav-links a.active {  /* Estilo para el enlace activo */
@@ -75,11 +75,29 @@ html{
   transition-duration: 0.4s;
 }
 
+/* RESPONSIVE */
+@media (max-width: 600px){
+    .desktop{
+        width: 90%;
+        margin: 20px 0;
+    }
+    .nav-links{
+        gap: 15px;
+        font-size: 13px;
+    }
+}
+@media (max-width: 400px){
+    .desktop{
+        width: 100%;
+        margin: 15px 0;
+    }
+    .nav-links{
+        gap: 10px;
+        font-size: 11px;
+    }
+}
 
-
-
-
-
+/* Home section */
 /* Contenedor principal del home */
 
 .home{
@@ -189,7 +207,10 @@ html{
 .skills{
   display:flex; flex-direction:column; gap:10px; grid-row: 3 / span 3;
 }
-.skills .skills-container{ display:grid; gap:20px;}
+.skills .skills-container{ 
+    display:grid;
+     gap:20px;
+    }
 .skills .skills-text{ margin:0; padding-top: 5px; font-size:1.9rem; }
 .skills .skills-icons{ display:flex; flex-wrap:wrap; gap:25px 35px; align-items:center; justify-content: center; color: #a9acb0;}
 .icon-skill{ margin: 3px; }
@@ -203,7 +224,15 @@ html{
 .certifications-p{ margin:0; font-size:1.2rem; color:#d9dde4; line-height:1.4; }
 .certifications-p span{ color:#a9acb0; font-size:1.1rem; }
 
-/* ===== Responsive ===== */
+
+
+
+
+
+
+
+
+/* ===== Responsive ===== */   HAY QUE MIRAR TODO EL RESPONSIVE
 @media (max-width: 900px){
   .home-container{ width: min(100% - 2rem, 1080px); }
   .home-grid{
@@ -220,6 +249,18 @@ html{
   }
   .abstract-image-container{ grid-row: auto; min-height: 240px; }
 }
+
+@media (max-width: 600px){
+  .home-container{ width: min(100% - 1rem, 1080px); padding: 0 10px; }
+  .name-container{ flex-direction: column; gap: 10px; }
+  .circle-logo{ width: 74px; height: 74px; font-size: 1.1rem; }
+  .marco{ font-size: 1.8rem; }
+}
+
+
+
+
+
 
 
 
@@ -391,3 +432,302 @@ html{
 
 
 
+
+
+
+
+
+
+/* ===== Responsive ===== */   HAY QUE MIRAR TODO EL RESPONSIVE
+@media (max-width: 900px){
+    .projects-container{ width: min(100% - 2rem, 1080px); }
+    .grid-project{          
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "image"
+            "text"
+            "link"
+            "github";
+    }
+    .project-images{ grid-row: auto; min-height: 240px; }
+}
+@media (max-width: 600px){
+    .projects-container{ width: min(100% - 1rem, 1080px); padding: 0 10px; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CONTACT SECTION */
+
+#contact{
+    padding: 20px 0 40px 0;
+    min-height: 50%; /* altura mínima para ocupar toda la pantalla */
+}
+
+
+.flex-contact-container{  /* contenedor principal  contact*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 675px;
+}
+
+.grid-contact{
+  display: grid;
+  width: 100%;
+  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: 90px 90px 380px;
+  grid-template-areas:
+    "email       github"
+    "linkedin    github"
+    "contact-me  contact-me";
+}
+
+/* mapear areas */
+.email-section           { grid-area: email; }
+.linkedin                { grid-area: linkedin; }
+.contact-me              { grid-area: contact-me; }
+.github                  { grid-area: github; }
+
+
+/* tarjetas */
+.email-section,
+.linkedin,
+.github{
+  background: #222222;          /* cambia a tu paleta */
+  border: 1px solid #222222;
+  border-radius: 16px;
+  color: #e7e9ee;
+}
+
+
+
+
+/* contenidos compactos */
+  /* email */
+.email-section{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.email-section .email{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(84, 84, 84, 0.561); 
+    padding: 0px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+
+.email-section .email a{    /* AQUI HAY QUE JUGAR CON EL TAMANO DE TODO PARA QUE QUEDE BIEN */
+    text-decoration: none;
+    display: flex;
+    color: #f5efef;
+    font-size: 1.1rem;    /* cambiar segun el tamano */
+    border-radius: 10px;    /* redondear al gusto */
+    font-weight: 400;
+    padding: 10px 25px; 
+}
+.email-section .email a:hover{
+    color: #928f8f;
+    transition-property: color;
+    transition-duration: 0.4s;
+}
+
+.email i{
+    font-size: 1.4rem;
+    color: #f5efef;
+    padding-right: 15px;
+}
+
+/* linkedin */
+
+.linkedin a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.4rem;
+    padding-top: 5px;
+    color: #ffffffe6;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+    /* github */
+.github{
+    display: flex;
+    text-align: center;
+}
+
+.github a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 10px;
+    color: #f7f4f4;
+    width: 100%;
+    height: 100%;
+}
+
+.github .github-text{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-items: center;
+    justify-content: center;
+}
+
+.github .github-text h2{
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.github .github-text p{
+    margin: 0;
+    font-size: 1.3rem;
+    line-height: 1.4;
+    font-weight: 300;
+    color: #a9acb0;
+}
+
+
+
+.github i{
+    color: #f5efef;
+    font-size: 3.4rem;
+}
+.github p i:hover{
+    color: #928f8f;
+    transition-property: color;
+    transition-duration: 0.4s;
+}       
+
+
+    /* contact-me form */
+.contact-me{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 85px;
+    padding-top: 35px;
+}
+
+.contact-me form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+.contact-me form h2{
+    font-size: 2.3rem;
+    font-weight: 600;
+    color: white;
+}
+
+.contact-me form p{
+    font-size: 1.1rem;
+    line-height: 1.2;
+    color: #a9acb0;
+}
+
+.inner-wrapper{    /* contenedor de los inputs */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #222222; 
+    width: 100%;
+    padding: 5px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.inner-wrapper textarea{
+    resize: none;
+    height: 120px;
+}
+.inner-wrapper label{
+    font-size: .9rem;
+    color: #e7e9ee;
+}
+
+.contact-me form input, .contact-me form textarea{   /* estilos de los inputs */
+    border: none;
+    width: 100%;
+    padding: 5px 0px;
+    color: white;
+    background-color:  #222222; ;
+    outline: none; 
+    font-size: .9rem;
+}
+.contact-me form input:focus, .contact-me form textarea:focus{
+    color: white;
+}
+.contact-me form button{
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(77, 176, 238, 0.329); 
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*RESPONSIVE*/     HAY QUE MIRAR TODO EL RESPONSIVE
+@media (max-width: 900px){
+    .flex-contact-container{  /* contenedor principal  contact*/
+        width: min(100% - 2rem, 700px);
+        padding: 0 10px;
+    }
+    .grid-contact{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "email"
+            "linkedin"
+            "github"
+            "contact-me";   
+    }
+    .email-section, .linkedin, .github{ grid-row: auto; min-height: 120px; }
+    .contact-me{ margin-top: 40px; padding-top: 20px; }
+}
+@media (max-width: 600px){
+    .flex-contact-container{  /* contenedor principal  contact*/
+        width: min(100% - 1rem, 700px);
+        padding: 0 10px;
+    }
+}       

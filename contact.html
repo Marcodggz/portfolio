@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,53 +22,46 @@
                 </ul>
             </div>
         </nav>
-        <div class="grid-contact">
-            <section class="contact-container">
-                <div class="email-section">
-                    <p class="email">
-                        <a href="mailto:marcodmgzgil@gmail.com?subject=Mail%20from%20your%20portfolio">
-                        <i class="fas fa-envelope"></i> marcodmgzgil@gmail.com
-                        </a>
-                    </p>
-                    <p>
-                        <i class="devicon-linkedin-plain"></i>
-                    </p>
-                </div>
-                <div class="github">
-                    <p class="github-link">
-                        <i class="devicon-github-original colored"></i>
-                    </p>
-                    <div class="github-text">
-                        <h2>Github Profile</h2>
-                        <p>Find more of my repositories</p>
-                    </div>
-                </div>
-            </section>
-            <section class="contact-me">
-                <form action="https://formspree.io/f/mayvlrgy" method="POST">
-                    <h2>Contact with me</h2>
-                    <p>You can also get in touch with me through this form below.</p>
-                    <div data-slot="input-wrapper">
-                        <label for="name">Name:</label>
-                        <div class="inner-wrapper">
-                             <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        <!-- contact section -->
+        <div id="contact">
+                <div class="flex-contact-container">
+                    <div class="grid-contact">
+                        <div class="email-section">
+                            <p class="email">
+                                <a href="mailto:marcodmgzgil@gmail.com?subject=Mail%20from%20your%20portfolio">
+                                    <i class="fa-solid fa-envelope"></i></i> marcodmgzgil@gmail.com
+                                </a>
+                            </p>
+                        </div>
+                        <div class="linkedin">
+                                <a class="url" target="_blank" href="https://www.linkedin.com"><i class="devicon-linkedin-plain"></i></a>
+                        </div>
+                        <div class="github">
+                            <a class="url" target="_blank" href="https://github.com/Marcodggz"><i class="devicon-github-original"></i>
+                                <div class="github-text">
+                                    <h2>Github Profile</h2>
+                                    <p>Find more of my repositories</p>
+                                </div></a>
+                        </div>
+                    
+                        <div class="contact-me">
+                            <form action="https://formspree.io/f/mayvlrgy" method="POST">
+                                <h2>Contact with me</h2>
+                                <p>You can also get in touch with me through this form below.</p>
+                                    <div class="inner-wrapper">
+                                        <label for="name">Name<input type="text" id="name" name="name" placeholder="Enter your name" required></label>
+                                    </div>
+                                    <div class="inner-wrapper">
+                                         <label for="email">Email<input type="email" id="email" name="_replyto" placeholder="email@example.com" required></label>
+                                    </div>                    
+                                    <div class="inner-wrapper">
+                                        <label for="message">Message<textarea id="message" name="message" placeholder="Enter your message here" minlength="10" required></textarea></label>
+                                    </div>
+                                <button class="button-message" type="submit">Send Message</button>
+                            </form>
                         </div>
                     </div>
-                    <div data-slot="input-wrapper">
-                        <label for="email">Email:</label>
-                        <div class="inner-wrapper">
-                            <input type="email" id="email" name="_replyto" placeholder="example@email.com" required>
-                        </div>                    
-                    </div>
-                    <div data-slot="input-wrapper">
-                        <label for="message">Message:</label>
-                        <div class="inner-wrapper">
-                            <textarea id="message" name="message" placeholder="Enter your message here" required></textarea>
-                        </div>
-                    </div>
-                    <button class="button-message" type="submit">Send Message</button>
-                </form>
-            </section>
+                </div>
         </div>
     </main>
 </body>
