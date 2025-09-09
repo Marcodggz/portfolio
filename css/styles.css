@@ -212,10 +212,40 @@ html{
      gap:20px;
     }
 .skills .skills-text{ margin:0; padding-top: 5px; font-size:1.9rem; }
-.skills .skills-icons{ display:flex; flex-wrap:wrap; gap:25px 35px; align-items:center; justify-content: center; color: #a9acb0;}
-.icon-skill{ margin: 3px; }
-.icon-skill i{ font-size:39px;  }
+.skills .skills-icons{ 
+    display:flex; 
+    flex-wrap:wrap; 
+    gap:25px 35px; 
+    align-items:center; 
+    justify-content: center; 
+    color: #a9acb0;
+}
 
+.icon-skill{
+     margin: 3px; 
+}
+
+.icon-skill i{
+     font-size:39px; 
+}
+
+.skills-icons .icon-skill{
+  transform: translateZ(0) scale(1);
+  transform-origin: center;
+  transition: transform 180ms cubic-bezier(.2,.7,.2,1);
+  will-change: transform;
+
+
+}
+
+
+.skills-icons .icon-skill:hover,
+.skills-icons .icon-skill:focus-visible{
+  transform: scale(1.15);   /* ajusta a 1.05 si quieres aún más sutil */
+  z-index: 2;               /* evita que quede “tapado” por los vecinos */
+}
+
+     
 .certifications{
   display:flex; flex-direction:column; gap:10px; grid-row: 4 / span 2;
 }
