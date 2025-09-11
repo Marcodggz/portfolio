@@ -52,26 +52,31 @@ html{
     gap: 30px;
     list-style: none;
     font-size: 15px;
-    background: linear-gradient(45deg, var(--skill-bg-1), var(--skill-bg-2));
+    background: linear-gradient(15deg, #5b5858, #67686a81);
     border:1px solid var(--skill-border);
 }
 
 .nav-links a.active {  /* Estilo para el enlace activo */
-    background: #545454;   /* gris de ejemplo */
+    background: #383737;   /* gris de ejemplo */
     color: #eeecec;        /* texto blanco */
     border-radius: 8px; /* opcional: redondear */
     padding: 7px 10px; /* opcional: espacio interno */
     text-decoration: none;
+    box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(12px) saturate(1.35);
+    -webkit-backdrop-filter: blur(12px) saturate(1.35);
 }
 
 .nav-links a {   /* Estilo general para todos los enlaces */
     text-decoration: none;
-    color: rgb(148, 146, 146);
+    color: rgb(161, 159, 159);
     padding: 6px 10px;
 }
  
 .nav-links a:not(.active):hover {   /* Solo aplica hover a los que no son activos */
-  color: #535252;
+  color: #b9c3cd;
   transition-property: color;
   transition-duration: 0.4s;
 }
