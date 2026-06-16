@@ -1,0 +1,28 @@
+.abstractImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0d1b2a, #1e3a5f, #c47a35, #1e3a5f, #0d1b2a);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+  box-sizing: border-box;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .abstractImage {
+    animation: none;
+  }
+}

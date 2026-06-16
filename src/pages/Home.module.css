@@ -1,0 +1,31 @@
+.home {
+  padding: 20px 0 40px 0;
+  background: #000000;
+}
+
+.homeContainer {
+  width: min(60%, 1080px);
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+
+.homeGrid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 220px 90px 90px 110px 80px;
+  grid-template-areas:
+    "about   about   about   about   about   about   about   about   abstract abstract abstract abstract"
+    "webdev  webdev  webdev  webdev  name    name    name    name    abstract abstract abstract abstract"
+    "skills  skills  skills  skills  name    name    name    name    vision   vision   vision   vision"
+    "skills  skills  skills  skills  cert    cert    cert    cert    cert     cert     cert     cert"
+    "skills  skills  skills  skills  cert    cert    cert    cert    cert     cert     cert     cert";
+}
+
+.aboutMe        { grid-area: about; }
+.webDev         { grid-area: webdev; }
+.nameCard       { grid-area: name; }
+.vision         { grid-area: vision; }
+.skills         { grid-area: skills; }
+.abstractImage  { grid-area: abstract; }
+.certifications { grid-area: cert; }

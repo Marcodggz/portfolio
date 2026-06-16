@@ -1,0 +1,35 @@
+.certifications {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.06), rgba(77, 176, 238, 0.329));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  padding: 10px 20px;
+  color: #e7e9ee;
+  box-sizing: border-box;
+}
+
+.certifications h2 {
+  margin: 0;
+  font-size: 1.9rem;
+}
+
+.certList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.certItem {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #d9dde4;
+  line-height: 1.4;
+}
+
+.certItem span {
+  color: #a9acb0;
+  font-size: 1.1rem;
+}
