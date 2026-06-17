@@ -1,0 +1,35 @@
+.projects {
+  padding: 20px 0 40px 0;
+  min-height: 50%;
+  background: #000000;
+  width: 100%;
+}
+
+.projectsContainer {
+  width: 60%;
+  margin-inline: auto;
+  box-sizing: border-box;
+  background-color: #050505;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 80px;
+  justify-content: center;
+  background-color: rgb(2, 2, 2);
+}
+
+@media (max-width: 900px) {
+  .projectsContainer {
+    width: min(100% - 2rem, 1080px);
+  }
+}
+
+@media (max-width: 600px) {
+  .projectsContainer {
+    width: min(100% - 1rem, 1080px);
+    padding: 0 10px;
+  }
+}

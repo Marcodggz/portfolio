@@ -1,0 +1,84 @@
+.contactMe {
+  grid-area: contact-me;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 65px;
+  padding-top: 35px;
+}
+
+.contactMe form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.contactMe form h2 {
+  font-size: 2.3rem;
+  font-weight: 600;
+  color: white;
+}
+
+.contactMe form p {
+  font-size: 1.1rem;
+  line-height: 1.2;
+  color: #a9acb0;
+}
+
+.innerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: linear-gradient(15deg, rgba(255, 255, 255, 0.06), rgba(77, 176, 238, 0.329));
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  width: 100%;
+  padding: 5px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.innerWrapper textarea {
+  resize: none;
+  height: 120px;
+}
+
+.innerWrapper label {
+  font-size: 0.9rem;
+  color: #e7e9ee;
+}
+
+.contactMe form input,
+.contactMe form textarea {
+  border: none;
+  width: 100%;
+  padding: 5px 0;
+  color: white;
+  background: transparent;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.contactMe form input:focus,
+.contactMe form textarea:focus {
+  color: white;
+}
+
+.buttonMessage {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(15deg, #5789bb7d, rgba(77, 176, 238, 0.329));
+  border: 3px solid rgba(255, 255, 255, 0.18);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .contactMe {
+    margin-top: 40px;
+    padding-top: 20px;
+  }
+}

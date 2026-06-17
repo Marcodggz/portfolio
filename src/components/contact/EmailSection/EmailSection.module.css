@@ -1,0 +1,53 @@
+.emailSection {
+  grid-area: email;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  background: linear-gradient(5deg, rgba(255, 255, 255, 0.06), rgba(77, 176, 238, 0.329));
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  color: #e7e9ee;
+}
+
+.email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(84, 84, 84, 0.561);
+  padding: 0;
+  border-radius: 10px;
+  width: 100%;
+  margin: 0;
+}
+
+.email a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #f5efef;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  font-weight: 400;
+  padding: 10px 25px;
+}
+
+.email a:hover {
+  color: #928f8f;
+  transition-property: color;
+  transition-duration: 0.4s;
+}
+
+.email i {
+  font-size: 1.4rem;
+  color: #f5efef;
+  padding-right: 15px;
+}
+
+@media (max-width: 900px) {
+  .emailSection {
+    grid-row: auto;
+    min-height: 120px;
+  }
+}
