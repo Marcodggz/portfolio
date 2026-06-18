@@ -1,6 +1,6 @@
 import React from 'react'
-import { projects } from '../data/projects'
-import ProjectCard from '../components/projects/ProjectCard/ProjectCard'
+import { projects } from '../../data/projects'
+import ProjectCard from '../../components/projects/ProjectCard/ProjectCard'
 import styles from './Projects.module.css'
 
 const Projects: React.FC = () => {

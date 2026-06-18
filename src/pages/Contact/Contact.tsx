@@ -1,8 +1,8 @@
 import React from 'react'
-import EmailSection from '../components/contact/EmailSection/EmailSection'
-import LinkedInSection from '../components/contact/LinkedInSection/LinkedInSection'
-import GithubSection from '../components/contact/GithubSection/GithubSection'
-import ContactForm from '../components/contact/ContactForm/ContactForm'
+import EmailSection from '../../components/contact/EmailSection/EmailSection'
+import LinkedInSection from '../../components/contact/LinkedInSection/LinkedInSection'
+import GithubSection from '../../components/contact/GithubSection/GithubSection'
+import ContactForm from '../../components/contact/ContactForm/ContactForm'
 import styles from './Contact.module.css'
 
 const Contact: React.FC = () => {

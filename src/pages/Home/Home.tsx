@@ -1,11 +1,11 @@
 import React from 'react'
-import AboutMe from '../components/home/AboutMe/AboutMe'
-import WebDev from '../components/home/WebDev/WebDev'
-import Vision from '../components/home/Vision/Vision'
-import NameCard from '../components/home/NameCard/NameCard'
-import Skills from '../components/home/Skills/Skills'
-import Certifications from '../components/home/Certifications/Certifications'
-import AbstractImage from '../components/home/AbstractImage/AbstractImage'
+import AboutMe from '../../components/home/AboutMe/AboutMe'
+import WebDev from '../../components/home/WebDev/WebDev'
+import Vision from '../../components/home/Vision/Vision'
+import NameCard from '../../components/home/NameCard/NameCard'
+import Skills from '../../components/home/Skills/Skills'
+import Certifications from '../../components/home/Certifications/Certifications'
+import AbstractImage from '../../components/home/AbstractImage/AbstractImage'
 import styles from './Home.module.css'
 
 const Home: React.FC = () => {
