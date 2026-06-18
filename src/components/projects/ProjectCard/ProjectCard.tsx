@@ -1,15 +1,6 @@
 import React from 'react'
+import type { ProjectData } from '../../../types'
 import styles from './ProjectCard.module.css'
-
-export interface ProjectData {
-  title: string
-  description: string
-  image: string
-  imageAlt: string
-  technologies: string[]
-  liveUrl: string
-  githubUrl: string
-}
 
 interface ProjectCardProps {
   project: ProjectData

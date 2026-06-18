@@ -1,11 +1,6 @@
 import React from 'react'
+import type { Certification } from '../../../types'
 import styles from './Certifications.module.css'
-
-interface Certification {
-  name: string
-  issuer: string
-  inProgress?: boolean
-}
 
 const certifications: Certification[] = [
   { name: 'JavaScript', issuer: 'Codecademy' },

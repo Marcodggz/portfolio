@@ -1,11 +1,6 @@
 import React from 'react'
+import type { SkillItem } from '../../../types'
 import styles from './Skills.module.css'
-
-interface SkillItem {
-  name: string
-  iconClass: string
-  label: string
-}
 
 const skills: SkillItem[] = [
   { name: 'CSS', iconClass: 'devicon-css3-plain', label: 'CSS3' },

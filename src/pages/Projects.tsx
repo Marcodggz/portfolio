@@ -1,5 +1,6 @@
 import React from 'react'
-import ProjectCard, { type ProjectData } from '../components/projects/ProjectCard/ProjectCard'
+import type { ProjectData } from '../types'
+import ProjectCard from '../components/projects/ProjectCard/ProjectCard'
 import soonImage from '../assets/soon.jpg'
 import styles from './Projects.module.css'
 
