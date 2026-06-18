@@ -1,13 +1,6 @@
 import React from 'react'
-import type { Certification } from '../../../types'
+import { certifications } from '../../../data/certifications'
 import styles from './Certifications.module.css'
-
-const certifications: Certification[] = [
-  { name: 'JavaScript', issuer: 'Codecademy' },
-  { name: 'Python (Basic)', issuer: 'Codecademy' },
-  { name: 'TypeScript', issuer: 'Codecademy' },
-  { name: 'Front-End Engineer', issuer: 'Codecademy', inProgress: true },
-]
 
 const Certifications: React.FC = () => {
   return (
