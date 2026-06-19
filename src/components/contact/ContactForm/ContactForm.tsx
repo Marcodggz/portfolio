@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styles from './ContactForm.module.css'
 
+type FormStatus = 'idle' | 'sending' | 'sent' | 'error'
+
 const ContactForm: React.FC = () => {
   const [fields, setFields] = useState({
     name: '',
@@ -8,9 +10,36 @@ const ContactForm: React.FC = () => {
     message: ''
   })
 
+  const [status, setStatus] = useState<FormStatus>('idle')
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setStatus('sending')
+
+    try {
+      const response = await fetch(import.meta.env.VITE_FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(fields)
+      })
+
+      if (response.ok) {
+        setStatus('sent')
+        setFields({ name: '', email: '', message: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
+  }
+
   return (
     <div className={styles.contactMe}>
-      <form action={import.meta.env.VITE_FORMSPREE_ENDPOINT} method="POST">
+      <form onSubmit={handleSubmit}>
         <h2>Contact with me</h2>
         <p>You can also get in touch with me through this form below.</p>
 
@@ -65,9 +94,19 @@ const ContactForm: React.FC = () => {
           </label>
         </div>
 
-        <button className={styles.buttonMessage} type="submit">
-          Send Message
+        <button
+          className={styles.buttonMessage}
+          type="submit"
+          disabled={status === 'sending'}
+        >
+          {status === 'idle' && 'Send Message'}
+          {status === 'sending' && 'Sending...'}
+          {status === 'sent' && 'Message sent'}
+          {status === 'error' && 'Try again'}
         </button>
+
+        {status === 'sent' && <p>Message sent successfully.</p>}
+        {status === 'error' && <p>Something went wrong. Please try again.</p>}
       </form>
     </div>
   )
