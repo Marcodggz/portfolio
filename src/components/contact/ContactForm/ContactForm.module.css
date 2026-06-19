@@ -2,9 +2,9 @@
   grid-area: contact-me;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  margin-top: 65px;
+  margin-top: 0;
   padding-top: 35px;
 }
 
