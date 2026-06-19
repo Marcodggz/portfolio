@@ -37,6 +37,13 @@ const ContactForm: React.FC = () => {
     }
   }
 
+  const handleFieldChange = (field: keyof typeof fields, value: string) => {
+    setFields(prev => ({ ...prev, [field]: value }))
+    if (status === 'sent' || status === 'error') {
+      setStatus('idle')
+    }
+  }
+
   return (
     <div className={styles.contactMe}>
       <form onSubmit={handleSubmit}>
@@ -53,7 +60,7 @@ const ContactForm: React.FC = () => {
               placeholder="Enter your name"
               value={fields.name}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setFields(prev => ({ ...prev, name: e.target.value }))
+                handleFieldChange('name', e.target.value)
               }
               required
             />
@@ -70,7 +77,7 @@ const ContactForm: React.FC = () => {
               placeholder="email@example.com"
               value={fields.email}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setFields(prev => ({ ...prev, email: e.target.value }))
+                handleFieldChange('email', e.target.value)
               }
               required
             />
@@ -87,7 +94,7 @@ const ContactForm: React.FC = () => {
               minLength={10}
               value={fields.message}
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                setFields(prev => ({ ...prev, message: e.target.value }))
+                handleFieldChange('message', e.target.value)
               }
               required
             />
