@@ -4,7 +4,7 @@ import styles from './ContactForm.module.css'
 const ContactForm: React.FC = () => {
   return (
     <div className={styles.contactMe}>
-      <form action="https://formspree.io/f/mayvlrgy" method="POST">
+      <form action={import.meta.env.VITE_FORMSPREE_ENDPOINT} method="POST">
         <h2>Contact with me</h2>
         <p>You can also get in touch with me through this form below.</p>
 
