@@ -85,6 +85,38 @@
     margin-top: 40px;
     padding-top: 20px;
   }
+
+  .innerWrapper {
+    padding: 10px;
+  }
+
+  .innerWrapper label {
+    font-size: 1rem;
+  }
+
+  .innerWrapper textarea {
+    height: 140px;
+  }
+
+  .contactMe form input,
+  .contactMe form textarea {
+    padding: 8px 0;
+  }
+
+  .buttonMessage {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contactMe {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .contactMe form h2 {
+    font-size: 1.8rem;
+  }
 }
 
 .errorText {

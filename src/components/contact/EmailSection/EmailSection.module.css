@@ -5,7 +5,11 @@
   justify-content: center;
   align-items: center;
   padding: 25px;
-  background: linear-gradient(5deg, rgba(255, 255, 255, 0.06), rgba(77, 176, 238, 0.329));
+  background: linear-gradient(
+    5deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(77, 176, 238, 0.329)
+  );
   border: 2px solid rgba(255, 255, 255, 0.18);
   border-radius: 16px;
   color: #e7e9ee;
@@ -49,5 +53,50 @@
   .emailSection {
     grid-row: auto;
     min-height: 120px;
+  }
+
+  .email a {
+    font-size: 1.1rem;
+  }
+
+  .email i {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .emailSection {
+    padding: 15px;
+    min-height: 90px;
+  }
+
+  .email a {
+    font-size: 1rem;
+    padding: 10px 12px;
+  }
+
+  .email i {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .emailSection {
+    min-height: 68px;
+    padding: 8px 16px;
+  }
+
+  .email {
+    background-color: transparent;
+  }
+
+  .email a {
+    font-size: 0;
+    padding: 0;
+  }
+
+  .email i {
+    font-size: 1.9rem;
+    padding-right: 0;
   }
 }

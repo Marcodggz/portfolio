@@ -2,7 +2,11 @@
   grid-area: github;
   display: flex;
   text-align: center;
-  background: linear-gradient(5deg, rgba(255, 255, 255, 0.06), rgba(77, 176, 238, 0.329));
+  background: linear-gradient(
+    5deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(77, 176, 238, 0.329)
+  );
   border: 2px solid rgba(255, 255, 255, 0.18);
   border-radius: 16px;
   color: #e7e9ee;
@@ -51,5 +55,33 @@
   .github {
     grid-row: auto;
     min-height: 120px;
+  }
+
+  .url i {
+    font-size: 3.2rem;
+  }
+
+  .githubText {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .github {
+    min-height: 80px;
+  }
+
+  .url i {
+    font-size: 2.8rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .github {
+    min-height: 68px;
+  }
+
+  .url i {
+    font-size: 1.9rem;
   }
 }
