@@ -6,7 +6,7 @@ const LinkedInSection: React.FC = () => {
     <div className={styles.linkedin}>
       <a
         className={styles.url}
-        href="https://www.linkedin.com"
+        href="https://www.linkedin.com/in/marcodggz/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn profile"
