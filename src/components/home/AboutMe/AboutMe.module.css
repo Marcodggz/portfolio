@@ -23,3 +23,17 @@
   color: #a9acb0;
   line-height: 1.45;
 }
+
+@media (max-width: 600px) {
+  .aboutMe {
+    padding: 18px 20px;
+  }
+
+  .aboutMe h2 {
+    font-size: 1.5rem;
+  }
+
+  .aboutMe p {
+    font-size: 1rem;
+  }
+}

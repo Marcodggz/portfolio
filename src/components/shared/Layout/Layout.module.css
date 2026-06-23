@@ -7,3 +7,10 @@
   width: 100%;
   background-color: black;
 }
+
+/* Give the bare <main> element an explicit width so that width: 100%
+   inside homeContainer resolves against the viewport, not max-content. */
+.mainContent > main {
+  width: 100%;
+  min-width: 0;
+}

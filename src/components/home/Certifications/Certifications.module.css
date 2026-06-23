@@ -33,3 +33,21 @@
   color: #a9acb0;
   font-size: 1.1rem;
 }
+
+@media (max-width: 600px) {
+  .certifications {
+    padding: 18px 20px;
+  }
+
+  .certifications h2 {
+    font-size: 1.5rem;
+  }
+
+  .certItem {
+    font-size: 1rem;
+  }
+
+  .certItem span {
+    font-size: 0.9rem;
+  }
+}

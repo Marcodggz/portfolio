@@ -4,7 +4,13 @@
 }
 
 .homeContainer {
-  width: min(60%, 1080px);
+  /* FIX: width: 100% + max-width avoids the percentage-inside-fit-content-flex-item
+     issue. The old min(90%, 1080px) resolved against <main>'s uncertain width
+     and could expand the container past the viewport on small screens.
+     padding: 0 16px replaces the 5% side gap that min(90%,...) provided. */
+  width: 100%;
+  max-width: 1080px;
+  padding: 0 16px;
   margin-inline: auto;
   box-sizing: border-box;
 }
@@ -13,7 +19,13 @@
   display: grid;
   gap: 18px;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 220px 90px 90px 110px 80px;
+  /* FIX: minmax allows rows to grow when content exceeds the minimum — no more clipping */
+  grid-template-rows:
+    minmax(220px, auto)
+    minmax(90px, auto)
+    minmax(90px, auto)
+    minmax(110px, auto)
+    minmax(80px, auto);
   grid-template-areas:
     "about   about   about   about   about   about   about   about   abstract abstract abstract abstract"
     "webdev  webdev  webdev  webdev  name    name    name    name    abstract abstract abstract abstract"
@@ -22,10 +34,138 @@
     "skills  skills  skills  skills  cert    cert    cert    cert    cert     cert     cert     cert";
 }
 
-.aboutMe        { grid-area: about; }
-.webDev         { grid-area: webdev; }
-.nameCard       { grid-area: name; }
-.vision         { grid-area: vision; }
-.skills         { grid-area: skills; }
-.abstractImage  { grid-area: abstract; }
-.certifications { grid-area: cert; }
+.aboutMe {
+  grid-area: about;
+}
+.webDev {
+  grid-area: webdev;
+}
+.nameCard {
+  grid-area: name;
+}
+.vision {
+  grid-area: vision;
+}
+.skills {
+  grid-area: skills;
+}
+.abstractImage {
+  grid-area: abstract;
+}
+.certifications {
+  grid-area: cert;
+}
+
+/* min-width: 0 prevents grid items from expanding their column beyond the
+   fr-based size. Without this, items with wide content resist shrinking
+   (min-width: auto default) and blow the column out past the container. */
+.aboutMe,
+.webDev,
+.nameCard,
+.vision,
+.skills,
+.abstractImage,
+.certifications {
+  min-width: 0;
+}
+
+/* ── Tablet portrait ≤ 900px — covers 820 × 1180 ────────────────────────── */
+/*    Container at 820px: 820px wide, inner grid = 788px (minus 16px each   */
+/*    side of container padding). 6 columns at ~115px each.                 */
+@media (max-width: 900px) {
+  .homeGrid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "about    about    about    about    about    about"
+      "abstract abstract name     name     name     name"
+      "webdev   webdev   webdev   vision   vision   vision"
+      "skills   skills   skills   skills   skills   skills"
+      "cert     cert     cert     cert     cert     cert";
+  }
+}
+
+/* ── Mobile ≤ 600px — covers 390 × 844 and 320 × 568 ────────────────────── */
+@media (max-width: 600px) {
+  .home {
+    padding: 16px 0 48px 0;
+  }
+
+  /* Bump side gutters from 16px to 20px for comfortable breathing room. */
+  .homeContainer {
+    padding: 0 20px;
+  }
+
+  .homeGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "about"
+      "name"
+      "webdev"
+      "vision"
+      "skills"
+      "cert"
+      "abstract";
+    gap: 18px;
+  }
+
+  /* Explicit column reset — ensures every item spans the single column
+     regardless of any desktop grid-area column placement that could persist. */
+  .aboutMe,
+  .webDev,
+  .nameCard,
+  .vision,
+  .skills,
+  .abstractImage,
+  .certifications {
+    grid-column: 1 / -1;
+  }
+
+  /* AbstractImage has height: 100% but no text content.
+     Without this the row collapses to 0px. */
+  .abstractImage {
+    min-height: 160px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .home {
+    width: 100%;
+    padding: 16px 0 48px;
+  }
+
+  .homeContainer {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .homeGrid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-rows: auto;
+    gap: 18px;
+  }
+
+  .aboutMe,
+  .nameCard,
+  .webDev,
+  .vision,
+  .skills,
+  .certifications,
+  .abstractImage {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .abstractImage {
+    min-height: 160px;
+  }
+}

@@ -52,3 +52,13 @@
     transition: none;
   }
 }
+
+@media (max-width: 600px) {
+  .skills {
+    padding: 16px 20px;
+  }
+
+  .skills h2 {
+    font-size: 1.45rem;
+  }
+}
