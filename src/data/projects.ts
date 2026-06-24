@@ -1,6 +1,7 @@
 import type { ProjectData } from '../types'
 import soonImage from '../assets/soon.jpg'
 import jammmingImage from '../assets/jammming-screenshot.png'
+import portfolioImage from '../assets/portfolio-screenshot.png'
 
 export const projects: ProjectData[] = [
   {
@@ -14,13 +15,14 @@ export const projects: ProjectData[] = [
     githubUrl: 'https://github.com/Marcodggz/jammming',
   },
   {
-    title: 'Coming soon',
-    description: 'Project details will be added soon.',
-    image: soonImage,
-    imageAlt: 'Soon',
-    technologies: ['JavaScript', 'HTML', 'CSS', 'React'],
-    liveUrl: 'https://blank.page',
-    githubUrl: 'https://github.com/Marcodggz',
+    title: 'Frontend Portfolio',
+    description:
+      'Personal frontend portfolio built with React, TypeScript and CSS Modules. It showcases selected projects, responsive layouts, accessible contact flows, and a clean component-based structure.',
+    image: portfolioImage,
+    imageAlt: 'Frontend Portfolio screenshot',
+    technologies: ['React', 'TypeScript', 'CSS Modules'],
+    liveUrl: 'https://YOUR_PORTFOLIO_LIVE_URL',
+    githubUrl: 'https://github.com/Marcodggz/portfolio',
   },
   {
     title: 'Coming Soon',
