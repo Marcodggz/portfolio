@@ -4,9 +4,12 @@ import styles from './Layout.module.css'
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div id="main-content" className={styles.mainContent}>
+    <div className={styles.mainContent}>
+      <a href="#main-content" className={styles.skipLink}>
+        Skip to main content
+      </a>
       <Nav />
-      <main>{children}</main>
+      <main id="main-content">{children}</main>
     </div>
   )
 }

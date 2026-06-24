@@ -7,7 +7,8 @@ import styles from './Contact.module.css'
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className={styles.contact}>
+    <section id="contact" className={styles.contact} aria-labelledby="contact-heading">
+      <h1 id="contact-heading" className="sr-only">Contact</h1>
       <div className={styles.flexContactContainer}>
         <div className={styles.gridContact}>
           <EmailSection />

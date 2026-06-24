@@ -14,3 +14,26 @@
   width: 100%;
   min-width: 0;
 }
+
+/* ─── Skip-to-main link ──────────────────────────────────────────────────────
+   Hidden off-screen by default; slides into view on keyboard focus only.    */
+.skipLink {
+  position: fixed;
+  top: -3rem;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: #111111;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 6px 6px;
+  border: 2px solid #4db0ee;
+}
+
+.skipLink:focus-visible {
+  top: 0;
+  outline: 2px solid #4db0ee;
+  outline-offset: 2px;
+}

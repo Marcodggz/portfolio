@@ -9,7 +9,7 @@ const GithubSection: React.FC = () => {
         href="https://github.com/Marcodggz"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="GitHub profile"
+        aria-label="Open GitHub profile"
       >
         <i className="devicon-github-original" aria-hidden="true" />
         <div className={styles.githubText}>

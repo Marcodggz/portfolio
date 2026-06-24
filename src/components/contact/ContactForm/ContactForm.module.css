@@ -60,8 +60,14 @@
   padding: 5px 0;
   color: white;
   background: transparent;
-  outline: none;
   font-size: 0.9rem;
+}
+
+.contactMe form input:focus-visible,
+.contactMe form textarea:focus-visible {
+  outline: 2px solid #4db0ee;
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .contactMe form input:focus,
@@ -78,6 +84,17 @@
   color: white;
   font-size: 1rem;
   cursor: pointer;
+}
+
+.buttonMessage:focus-visible {
+  outline: 2px solid #4db0ee;
+  outline-offset: 3px;
+}
+
+.statusMessage {
+  font-size: 0.9rem;
+  color: #a9acb0;
+  min-height: 1.2em;
 }
 
 @media (max-width: 900px) {

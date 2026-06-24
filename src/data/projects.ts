@@ -9,7 +9,7 @@ export const projects: ProjectData[] = [
     description:
       'React playlist builder that lets users search tracks, create playlists, and save them to Spotify using the Spotify Web API and OAuth PKCE. Includes a demo mode so anyone can try the main flows without Spotify access.',
     image: jammmingImage,
-    imageAlt: 'Jammming app screenshot',
+    imageAlt: 'Screenshot of the Jammming app showing track search and an editable playlist',
     technologies: ['React', 'JavaScript', 'Spotify API', 'OAuth PKCE', 'CSS'],
     liveUrl: 'https://jammming-navy.vercel.app/',
     githubUrl: 'https://github.com/Marcodggz/jammming',
@@ -19,7 +19,7 @@ export const projects: ProjectData[] = [
     description:
       'Personal frontend portfolio built with React, TypeScript and CSS Modules. It showcases selected projects, responsive layouts, accessible contact flows, and a clean component-based structure.',
     image: portfolioImage,
-    imageAlt: 'Frontend Portfolio screenshot',
+    imageAlt: 'Screenshot of the Frontend Portfolio home page layout',
     technologies: ['React', 'TypeScript', 'CSS Modules'],
     liveUrl: 'https://YOUR_PORTFOLIO_LIVE_URL',
     githubUrl: 'https://github.com/Marcodggz/portfolio',
@@ -28,7 +28,7 @@ export const projects: ProjectData[] = [
     title: 'Coming Soon',
     description: 'Project details will be added soon.',
     image: soonImage,
-    imageAlt: 'Soon',
+    imageAlt: 'Placeholder image for a project coming soon',
     technologies: ['JavaScript', 'HTML', 'CSS', 'React'],
     liveUrl: 'https://blank.page',
     githubUrl: 'https://github.com/Marcodggz',

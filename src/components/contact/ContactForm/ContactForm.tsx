@@ -175,8 +175,11 @@ const ContactForm: React.FC = () => {
           {status === 'error' && 'Try again'}
         </button>
 
-        {status === 'sent' && <p>Message sent successfully.</p>}
-        {status === 'error' && <p>Something went wrong. Please try again.</p>}
+        {/* aria-live region always present so screen readers announce status changes */}
+        <p aria-live="polite" aria-atomic="true" className={styles.statusMessage}>
+          {status === 'sent' && 'Message sent successfully.'}
+          {status === 'error' && 'Something went wrong. Please try again.'}
+        </p>
       </form>
     </div>
   )

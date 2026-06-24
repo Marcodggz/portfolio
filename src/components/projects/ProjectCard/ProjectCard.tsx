@@ -47,7 +47,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           href={project.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Live demo of ${project.title}`}
+          aria-label={`View ${project.title} live project`}
         >
           <i className="fa-solid fa-link" aria-hidden="true" />
           <span className={styles.btnLabel}>Live</span>
@@ -60,7 +60,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           href={project.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`GitHub repository for ${project.title}`}
+          aria-label={`View ${project.title} GitHub repository`}
         >
           <i className="devicon-github-original" aria-hidden="true" />
           <span className={styles.btnLabel}>GitHub</span>

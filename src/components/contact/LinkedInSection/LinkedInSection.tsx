@@ -9,7 +9,7 @@ const LinkedInSection: React.FC = () => {
         href="https://www.linkedin.com/in/marcodggz/"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="LinkedIn profile"
+        aria-label="Open LinkedIn profile"
       >
         <i className="devicon-linkedin-plain" aria-hidden="true" />
       </a>

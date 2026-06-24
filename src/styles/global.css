@@ -2,9 +2,44 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto Flex', sans-serif;
+  font-family: "Roboto Flex", sans-serif;
 }
 
 html {
   background-color: black;
+}
+
+/* ─── Screen-reader-only utility ─────────────────────────────────────────────
+   Hides content visually while keeping it accessible to assistive technology. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ─── Global focus styles ────────────────────────────────────────────────────
+   Applies a consistent, visible focus ring during keyboard navigation only.
+   :focus-visible ensures mouse clicks do not show the outline. */
+:focus-visible {
+  outline: 2px solid #4db0ee;
+  outline-offset: 3px;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────────
+   Disables transitions and animations for users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
