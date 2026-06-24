@@ -9,19 +9,25 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <article className={styles.gridProject}>
+      {/* 1. Title — first DOM element so it is the first thing read on mobile */}
+      <div className={styles.projectTitleArea}>
+        <div className={styles.title}>
+          <span className={styles.layerIcon} aria-hidden="true">
+            <i className="fa-solid fa-layer-group" />
+          </span>
+          <h2>{project.title}</h2>
+        </div>
+      </div>
+
+      {/* 2. Screenshot */}
       <div className={styles.projectImages}>
         <img className={styles.pic} src={project.image} alt={project.imageAlt} />
       </div>
 
+      {/* 3. Description + 4. Tech tags */}
       <div className={styles.projectFlexContainer}>
         <div className={styles.projectHeader}>
           <div className={styles.projectText}>
-            <div className={styles.title}>
-              <span className={styles.layerIcon} aria-hidden="true">
-                <i className="fa-solid fa-layer-group" />
-              </span>
-              <h2>{project.title}</h2>
-            </div>
             <p>{project.description}</p>
           </div>
 
@@ -44,6 +50,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           aria-label={`Live demo of ${project.title}`}
         >
           <i className="fa-solid fa-link" aria-hidden="true" />
+          <span className={styles.btnLabel}>Live</span>
         </a>
       </div>
 
@@ -56,6 +63,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           aria-label={`GitHub repository for ${project.title}`}
         >
           <i className="devicon-github-original" aria-hidden="true" />
+          <span className={styles.btnLabel}>GitHub</span>
         </a>
       </div>
     </article>

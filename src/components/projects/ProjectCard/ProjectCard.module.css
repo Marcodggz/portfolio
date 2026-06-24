@@ -1,151 +1,241 @@
+/* ─── Card container ──────────────────────────────────
+   2-column grid so link/github share one row on mobile. */
 .gridProject {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-template-rows: 140px 140px 100px;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "image image text text"
-    "image image text text"
-    "image image link github";
+    "title  title"
+    "image  image"
+    "text   text"
+    "link   github";
+  gap: 12px;
+  color: #e7e9ee;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+/* ─── Title area — no card, sits on page background ── */
+.projectTitleArea {
+  grid-area: title;
+  padding: 4px 0 10px;
+}
+
+/* ─── Screenshot ─────────────────────────────────────── */
 .projectImages {
   grid-area: image;
-  background: linear-gradient(25deg, rgba(255, 255, 255, 0.06), rgba(77, 176, 238, 0.329));
+  background: linear-gradient(
+    25deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(77, 176, 238, 0.329)
+  );
   border: 2px solid rgba(255, 255, 255, 0.18);
   border-radius: 16px;
-  color: #e7e9ee;
   overflow: hidden;
-  grid-row: 1 / span 3;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* ─── Description + tech tags ────────────────────────── */
 .projectFlexContainer {
   grid-area: text;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 10px;
-  gap: 10px;
-  background: linear-gradient(25deg, rgba(255, 255, 255, 0.06), rgba(77, 176, 238, 0.329));
+  background: linear-gradient(
+    25deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(77, 176, 238, 0.329)
+  );
   border: 2px solid rgba(255, 255, 255, 0.18);
   border-radius: 16px;
   color: #e7e9ee;
 }
 
+/* ─── Live action button ─────────────────────────────── */
 .linkIcon {
   grid-area: link;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
-  background: linear-gradient(25deg, rgba(255, 255, 255, 0.06), rgba(77, 176, 238, 0.329));
+  font-size: 1.8rem;
+  background: linear-gradient(
+    25deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(77, 176, 238, 0.329)
+  );
   border: 2px solid rgba(255, 255, 255, 0.18);
   border-radius: 16px;
   color: #e7e9ee;
+  min-height: 64px;
 }
 
+/* ─── GitHub action button ───────────────────────────── */
 .githubIcon {
   grid-area: github;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
-  background: linear-gradient(25deg, rgba(255, 255, 255, 0.06), rgba(77, 176, 238, 0.329));
+  font-size: 1.8rem;
+  background: linear-gradient(
+    25deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(77, 176, 238, 0.329)
+  );
   border: 2px solid rgba(255, 255, 255, 0.18);
   border-radius: 16px;
   color: #e7e9ee;
+  min-height: 64px;
 }
 
+/* ─── Image — natural aspect ratio on mobile/tablet ── */
 .pic {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
+  max-width: 100%;
 }
 
-.projectHeader {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10px 20px;
-  gap: 40px;
-}
-
-.projectText {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
+/* ─── Title row (icon + heading) ─────────────────────── */
 .title {
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  align-items: center;
+  gap: 14px;
 }
 
 .layerIcon {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #ccced1;
   background-color: #38393ac2;
-  padding: 5px;
+  padding: 6px;
   border-radius: 5px;
+  flex-shrink: 0;
 }
 
 .title h2 {
   margin: 0;
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Description + tags container ──────────────────── */
+.projectHeader {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px;
+  gap: 20px;
+}
+
+.projectText {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .projectText p {
   margin: 0;
-  font-size: 1.1rem;
-  line-height: 1.4;
+  font-size: 1rem;
+  line-height: 1.6;
   color: #a9acb0;
 }
 
+/* ─── Tech tags ──────────────────────────────────────── */
 .languages {
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .boxLanguage {
   background-color: #4b4c4dc2;
-  padding: 5px 12px;
+  padding: 4px 12px;
   border-radius: 40px;
 }
 
 .language {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #f5efef;
 }
 
+/* ─── Anchor links ───────────────────────────────────── */
 .url {
   color: #f5efef;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .url:hover {
   color: #928f8f;
-  transition-property: color;
-  transition-duration: 0.4s;
+  transition: color 0.4s;
 }
 
-@media (max-width: 900px) {
-  .gridProject {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-      "image"
-      "text"
-      "link"
-      "github";
+/* ─── Button text hidden — icon-only buttons ─────────── */
+.btnLabel {
+  display: none;
+}
+
+/* ─── Tablet portrait  ≥ 600 px ─────────────────────
+   Still one-column card; container controls width.   */
+@media (min-width: 600px) {
+  .title h2 {
+    font-size: 2.2rem;
   }
 
   .projectImages {
-    grid-row: auto;
-    min-height: 240px;
+    min-height: 300px;
+  }
+}
+
+/* ─── Tablet landscape / Desktop  ≥ 1024 px ──────────
+   Two-column card: image left (2fr), content right.
+   The page list stays vertical — this only changes
+   the internal layout of each card.                  */
+@media (min-width: 1024px) {
+  .gridProject {
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-areas:
+      "image  title   title"
+      "image  text    text"
+      "image  link    github";
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+  }
+
+  /* Image panel stretches to match the full height of the right content stack */
+  .projectImages {
+    min-height: unset;
+    align-self: stretch;
+    align-items: stretch;
+  }
+
+  /* object-fit: cover — image fills the full container, no empty framing */
+  .pic {
+    object-fit: cover;
+  }
+
+  .title h2 {
+    font-size: 2.2rem;
+  }
+
+  .projectText p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .projectHeader {
+    padding: 24px 28px;
+    gap: 24px;
+  }
+
+  .linkIcon,
+  .githubIcon {
+    font-size: 2rem;
+    min-height: 72px;
   }
 }
