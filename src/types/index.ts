@@ -4,7 +4,7 @@ export interface ProjectData {
   image: string
   imageAlt: string
   technologies: string[]
-  liveUrl: string
+  liveUrl?: string
   githubUrl: string
 }
 

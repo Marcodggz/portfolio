@@ -41,18 +41,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </div>
       </div>
 
-      <div className={styles.linkIcon}>
-        <a
-          className={styles.url}
-          href={project.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`View ${project.title} live project`}
-        >
-          <i className="fa-solid fa-link" aria-hidden="true" />
-          <span className={styles.btnLabel}>Live</span>
-        </a>
-      </div>
+      {project.liveUrl && (
+        <div className={styles.linkIcon}>
+          <a
+            className={styles.url}
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View ${project.title} live project`}
+          >
+            <i className="fa-solid fa-link" aria-hidden="true" />
+            <span className={styles.btnLabel}>Live</span>
+          </a>
+        </div>
+      )}
 
       <div className={styles.githubIcon}>
         <a
