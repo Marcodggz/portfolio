@@ -13,8 +13,12 @@ const Skills: React.FC = () => {
             className={styles.iconSkill}
             role="img"
             aria-label={skill.label}
+            tabIndex={0}
           >
             <i className={skill.iconClass} aria-hidden="true" />
+            <span className={styles.caption} aria-hidden="true">
+              {skill.label}
+            </span>
           </div>
         ))}
       </div>
