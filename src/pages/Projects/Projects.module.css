@@ -14,7 +14,7 @@
 }
 
 /* ─── Vertical list — always a column, never a row ──── */
-.flex {
+.projectList {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -35,7 +35,7 @@
     padding: 0 40px;
   }
 
-  .flex {
+  .projectList {
     gap: 80px;
   }
 }

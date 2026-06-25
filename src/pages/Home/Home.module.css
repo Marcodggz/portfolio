@@ -4,10 +4,7 @@
 }
 
 .homeContainer {
-  /* FIX: width: 100% + max-width avoids the percentage-inside-fit-content-flex-item
-     issue. The old min(90%, 1080px) resolved against <main>'s uncertain width
-     and could expand the container past the viewport on small screens.
-     padding: 0 16px replaces the 5% side gap that min(90%,...) provided. */
+  /* Fluid width capped at a fixed max, with fixed side padding. */
   width: 100%;
   max-width: 1080px;
   padding: 0 16px;
@@ -19,7 +16,7 @@
   display: grid;
   gap: 18px;
   grid-template-columns: repeat(12, 1fr);
-  /* FIX: minmax allows rows to grow when content exceeds the minimum — no more clipping */
+  /* minmax lets rows grow when content exceeds the minimum. */
   grid-template-rows:
     minmax(220px, auto)
     minmax(90px, auto)

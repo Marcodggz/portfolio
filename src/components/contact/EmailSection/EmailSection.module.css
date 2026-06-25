@@ -39,8 +39,7 @@
 
 .email a:hover {
   color: #928f8f;
-  transition-property: color;
-  transition-duration: 0.4s;
+  transition: color 0.4s;
 }
 
 .email i {
