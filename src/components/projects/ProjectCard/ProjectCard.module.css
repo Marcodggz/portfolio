@@ -14,6 +14,15 @@
   box-sizing: border-box;
 }
 
+/* When there's no live URL, GitHub button spans full width */
+.gridProject[data-has-live-url="false"] {
+  grid-template-areas:
+    "title  title"
+    "image  image"
+    "text   text"
+    "github github";
+}
+
 /* ─── Title area — no card, sits on page background ── */
 .projectTitleArea {
   grid-area: title;
@@ -197,6 +206,14 @@
     gap: 20px;
   }
 
+  /* When there's no live URL, GitHub button spans full width on desktop too */
+  .gridProject[data-has-live-url="false"] {
+    grid-template-areas:
+      "image  title   title"
+      "image  text    text"
+      "image  github  github";
+  }
+
   /* Image panel stretches to match the full height of the right content stack */
   .projectImages {
     min-height: unset;
@@ -207,6 +224,8 @@
   /* object-fit: cover — image fills the full container, no empty framing */
   .pic {
     object-fit: cover;
+    height: 100%;
+    width: 100%;
   }
 
   .title h2 {
@@ -227,5 +246,15 @@
   .githubIcon {
     font-size: 2rem;
     min-height: 72px;
+  }
+
+  /* Specific image positioning for DayZ server — shift left to show readable content */
+  .pic[data-project-image="dayz-vanilla-+-server"] {
+    object-position: left center;
+  }
+
+  /* Ensure Bellok's image is centered properly */
+  .pic[data-project-image="belloks-killfeed"] {
+    object-position: center center;
   }
 }

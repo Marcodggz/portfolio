@@ -4,6 +4,7 @@ export const skills: SkillItem[] = [
   { name: 'React', iconClass: 'devicon-react-original', label: 'React' },
   { name: 'TypeScript', iconClass: 'devicon-typescript-plain', label: 'TypeScript' },
   { name: 'JavaScript', iconClass: 'devicon-javascript-plain', label: 'JavaScript' },
+  { name: 'Node.js', iconClass: 'devicon-nodejs-plain', label: 'Node.js' },
   { name: 'HTML5', iconClass: 'devicon-html5-plain', label: 'HTML5' },
   { name: 'CSS3', iconClass: 'devicon-css3-plain', label: 'CSS3' },
   { name: 'Git', iconClass: 'devicon-git-plain', label: 'Git' },

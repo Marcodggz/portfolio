@@ -1,14 +1,22 @@
-import React from 'react'
-import type { ProjectData } from '../../../types'
-import styles from './ProjectCard.module.css'
+import React from "react";
+import type { ProjectData } from "../../../types";
+import styles from "./ProjectCard.module.css";
 
 interface ProjectCardProps {
-  project: ProjectData
+  project: ProjectData;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  // Generate a simple kebab-case ID from the project title for styling
+  const projectId = project.title.toLowerCase().replace(/['\s]+/g, "-");
+  const hasLiveUrl = Boolean(project.liveUrl);
+
   return (
-    <article className={styles.gridProject}>
+    <article
+      className={styles.gridProject}
+      data-project={projectId}
+      data-has-live-url={hasLiveUrl}
+    >
       {/* 1. Title — first DOM element so it is the first thing read on mobile */}
       <div className={styles.projectTitleArea}>
         <div className={styles.title}>
@@ -21,7 +29,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
       {/* 2. Screenshot */}
       <div className={styles.projectImages}>
-        <img className={styles.pic} src={project.image} alt={project.imageAlt} />
+        <img
+          className={styles.pic}
+          src={project.image}
+          alt={project.imageAlt}
+          data-project-image={projectId}
+        />
       </div>
 
       {/* 3. Description + 4. Tech tags */}
@@ -69,7 +82,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </a>
       </div>
     </article>
-  )
-}
+  );
+};
 
-export default ProjectCard
+export default ProjectCard;
