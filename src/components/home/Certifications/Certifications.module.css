@@ -1,25 +1,36 @@
 .certifications {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0;
   height: 100%;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.06), rgba(77, 176, 238, 0.329));
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(77, 176, 238, 0.329)
+  );
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 16px;
-  padding: 10px 20px;
+  padding: 18px 22px;
   color: #e7e9ee;
   box-sizing: border-box;
 }
 
 .certifications h2 {
-  margin: 0;
+  margin: 0 0 0.6rem;
   font-size: 1.9rem;
+  font-weight: 400;
+  padding-left: 0.25rem;
 }
 
 .certList {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 3rem;
+  row-gap: 0.7rem;
+
+  width: min(100%, 40rem);
+  margin: auto;
+  align-content: center;
 }
 
 .certItem {
@@ -41,6 +52,10 @@
 
   .certifications h2 {
     font-size: 1.5rem;
+  }
+
+  .certList {
+    grid-template-columns: 1fr;
   }
 
   .certItem {
