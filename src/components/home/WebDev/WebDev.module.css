@@ -5,7 +5,11 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.06), rgba(77, 176, 238, 0.329));
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(77, 176, 238, 0.329)
+  );
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 16px;
   padding: 10px 20px;
@@ -16,6 +20,7 @@
 .webDev h2 {
   margin: 0;
   font-size: 1.7rem;
+  font-weight: 400;
   line-height: 1.2;
 }
 
