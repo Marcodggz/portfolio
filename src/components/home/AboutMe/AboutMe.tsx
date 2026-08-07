@@ -6,10 +6,11 @@ const AboutMe: React.FC = () => {
     <section className={styles.aboutMe} aria-labelledby="about-heading">
       <h2 id="about-heading">About</h2>
       <p>
-        I'm naturally detail-oriented and I enjoy building useful things. I like
-        challenges, problem-solving, and constantly improving how I work. I
-        enjoy understanding how things work, experimenting with different
-        solutions, and refining the details along the way.
+        Software Engineer focused on writing clean, high-performance code and
+        building reliable digital products. I care about technical quality,
+        product thinking, system efficiency, edge cases, and maintainability.
+        Driven by continuous learning, agile workflows, and shipping well-tested
+        software.
       </p>
     </section>
   );
