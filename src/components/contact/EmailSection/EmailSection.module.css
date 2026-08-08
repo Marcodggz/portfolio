@@ -10,9 +10,9 @@
     rgba(255, 255, 255, 0.06),
     rgba(77, 176, 238, 0.329)
   );
-  border: 2px solid rgba(255, 255, 255, 0.18);
+  border: 2px solid var(--border-glass);
   border-radius: 16px;
-  color: #e7e9ee;
+  color: var(--color-text-primary);
 }
 
 .email {

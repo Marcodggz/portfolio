@@ -24,7 +24,7 @@
 .contactMe form p {
   font-size: 1.1rem;
   line-height: 1.2;
-  color: #a9acb0;
+  color: var(--color-text-secondary);
 }
 
 .innerWrapper {
@@ -36,7 +36,7 @@
     rgba(255, 255, 255, 0.06),
     rgba(77, 176, 238, 0.329)
   );
-  border: 2px solid rgba(255, 255, 255, 0.18);
+  border: 2px solid var(--border-glass);
   width: 100%;
   padding: 5px;
   border-radius: 8px;
@@ -49,7 +49,7 @@
 
 .innerWrapper label {
   font-size: 0.9rem;
-  color: #e7e9ee;
+  color: var(--color-text-primary);
 }
 
 .contactMe form input,
@@ -64,7 +64,7 @@
 
 .contactMe form input:focus-visible,
 .contactMe form textarea:focus-visible {
-  outline: 2px solid #4db0ee;
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -78,20 +78,20 @@
   padding: 10px;
   border-radius: 8px;
   background: linear-gradient(15deg, #5789bb7d, rgba(77, 176, 238, 0.329));
-  border: 3px solid rgba(255, 255, 255, 0.18);
+  border: 3px solid var(--border-glass);
   color: white;
   font-size: 1rem;
   cursor: pointer;
 }
 
 .buttonMessage:focus-visible {
-  outline: 2px solid #4db0ee;
+  outline: 2px solid var(--color-focus);
   outline-offset: 3px;
 }
 
 .statusMessage {
   font-size: 0.9rem;
-  color: #a9acb0;
+  color: var(--color-text-secondary);
   min-height: 1.2em;
 }
 

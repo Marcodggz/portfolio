@@ -9,7 +9,7 @@
     "text   text"
     "link   github";
   gap: 12px;
-  color: #e7e9ee;
+  color: var(--color-text-primary);
   width: 100%;
 }
 
@@ -36,7 +36,7 @@
     rgba(255, 255, 255, 0.06),
     rgba(77, 176, 238, 0.329)
   );
-  border: 2px solid rgba(255, 255, 255, 0.18);
+  border: 2px solid var(--border-glass);
   border-radius: 16px;
   overflow: hidden;
   min-height: 200px;
@@ -55,9 +55,9 @@
     rgba(255, 255, 255, 0.06),
     rgba(77, 176, 238, 0.329)
   );
-  border: 2px solid rgba(255, 255, 255, 0.18);
+  border: 2px solid var(--border-glass);
   border-radius: 16px;
-  color: #e7e9ee;
+  color: var(--color-text-primary);
 }
 
 /* ─── Action buttons (Live + GitHub) — shared styling ── */
@@ -72,9 +72,9 @@
     rgba(255, 255, 255, 0.06),
     rgba(77, 176, 238, 0.329)
   );
-  border: 2px solid rgba(255, 255, 255, 0.18);
+  border: 2px solid var(--border-glass);
   border-radius: 16px;
-  color: #e7e9ee;
+  color: var(--color-text-primary);
   min-height: 64px;
 }
 
@@ -135,7 +135,7 @@
 .projectText p {
   font-size: 1rem;
   line-height: 1.6;
-  color: #a9acb0;
+  color: var(--color-text-secondary);
 }
 
 /* ─── Tech tags ──────────────────────────────────────── */

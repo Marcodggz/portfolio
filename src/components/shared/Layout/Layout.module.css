@@ -29,12 +29,12 @@
   font-weight: 600;
   text-decoration: none;
   border-radius: 0 0 6px 6px;
-  border: 2px solid #4db0ee;
+  border: 2px solid var(--color-focus);
   cursor: pointer;
 }
 
 .skipLink:focus-visible {
   top: 0;
-  outline: 2px solid #4db0ee;
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }

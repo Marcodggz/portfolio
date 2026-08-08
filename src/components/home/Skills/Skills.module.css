@@ -6,7 +6,7 @@
   height: 100%;
   padding: 1.25rem;
 
-  color: #e7e9ee;
+  color: var(--color-text-primary);
 
   background: linear-gradient(
     145deg,
@@ -109,7 +109,7 @@
   border-radius: 6px;
 
   background: rgba(10, 18, 24, 0.96);
-  color: #e7e9ee;
+  color: var(--color-text-primary);
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 
   font-size: 0.66rem;
