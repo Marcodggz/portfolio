@@ -8,6 +8,8 @@
 
 html {
   background-color: black;
+  /* Force scrollbar gutter to prevent layout shift when scrollbar appears */
+  overflow-y: scroll;
 }
 
 /* ─── Screen-reader-only utility ─────────────────────────────────────────────

@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
   background-color: black;
 }
@@ -13,6 +12,7 @@
 .mainContent > main {
   width: 100%;
   min-width: 0;
+  flex: 1;
 }
 
 /* ─── Skip-to-main link ──────────────────────────────────────────────────────
