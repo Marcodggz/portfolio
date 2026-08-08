@@ -60,9 +60,9 @@
   color: var(--color-text-primary);
 }
 
-/* ─── Action buttons (Live + GitHub) — shared styling ── */
-.linkIcon,
-.githubIcon {
+/* ─── Action buttons (Live + GitHub) — full clickable area ── */
+.linkButton,
+.githubButton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,14 +76,22 @@
   border-radius: 16px;
   color: var(--color-text-primary);
   min-height: 64px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.4s;
 }
 
-.linkIcon {
+.linkButton {
   grid-area: link;
 }
 
-.githubIcon {
+.githubButton {
   grid-area: github;
+}
+
+.linkButton:hover,
+.githubButton:hover {
+  color: #928f8f;
 }
 
 /* ─── Image — natural aspect ratio on mobile/tablet ── */
@@ -157,21 +165,6 @@
   color: #f5efef;
 }
 
-/* ─── Anchor links ───────────────────────────────────── */
-.url {
-  color: #f5efef;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.4s;
-  cursor: pointer;
-}
-
-.url:hover {
-  color: #928f8f;
-}
-
 /* ─── Button text hidden — icon-only buttons ─────────── */
 .btnLabel {
   display: none;
@@ -240,8 +233,8 @@
     gap: 24px;
   }
 
-  .linkIcon,
-  .githubIcon {
+  .linkButton,
+  .githubButton {
     font-size: 2rem;
     min-height: 72px;
   }

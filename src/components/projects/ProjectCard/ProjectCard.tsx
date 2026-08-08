@@ -55,32 +55,28 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       </div>
 
       {project.liveUrl && (
-        <div className={styles.linkIcon}>
-          <a
-            className={styles.url}
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View ${project.title} live project`}
-          >
-            <i className="fa-solid fa-link" aria-hidden="true" />
-            <span className={styles.btnLabel}>Live</span>
-          </a>
-        </div>
-      )}
-
-      <div className={styles.githubIcon}>
         <a
-          className={styles.url}
-          href={project.githubUrl}
+          className={styles.linkButton}
+          href={project.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`View ${project.title} GitHub repository`}
+          aria-label={`View ${project.title} live project`}
         >
-          <i className="devicon-github-original" aria-hidden="true" />
-          <span className={styles.btnLabel}>GitHub</span>
+          <i className="fa-solid fa-link" aria-hidden="true" />
+          <span className={styles.btnLabel}>Live</span>
         </a>
-      </div>
+      )}
+
+      <a
+        className={styles.githubButton}
+        href={project.githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`View ${project.title} GitHub repository`}
+      >
+        <i className="devicon-github-original" aria-hidden="true" />
+        <span className={styles.btnLabel}>GitHub</span>
+      </a>
     </article>
   );
 };
