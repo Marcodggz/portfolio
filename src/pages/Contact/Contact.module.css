@@ -25,15 +25,14 @@
     "contact-me  contact-me";
 }
 
-@media (max-width: 900px) {
+/* ── Tablet landscape ≥ 768px and ≤ 900px ─────────────── */
+@media (min-width: 768px) and (max-width: 900px) {
   .flexContactContainer {
     width: min(100% - 2rem, 740px);
     max-width: 740px;
     padding: 0 10px;
   }
-}
 
-@media (min-width: 768px) and (max-width: 900px) {
   .gridContact {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
@@ -44,6 +43,7 @@
   }
 }
 
+/* ── Tablet portrait ≥ 361px and ≤ 767px ─────────────── */
 @media (min-width: 361px) and (max-width: 767px) {
   .gridContact {
     grid-template-columns: repeat(2, 1fr);
@@ -55,6 +55,15 @@
   }
 }
 
+/* ── Mobile ≤ 600px ─────────────────────────────────────── */
+@media (max-width: 600px) {
+  .flexContactContainer {
+    width: min(100% - 1rem, 700px);
+    padding: 0 10px;
+  }
+}
+
+/* ── Small mobile ≤ 360px ───────────────────────────────── */
 @media (max-width: 360px) {
   .gridContact {
     grid-template-columns: 1fr;
@@ -63,12 +72,5 @@
       "linkedin"
       "github"
       "contact-me";
-  }
-}
-
-@media (max-width: 600px) {
-  .flexContactContainer {
-    width: min(100% - 1rem, 700px);
-    padding: 0 10px;
   }
 }

@@ -362,11 +362,3 @@
   pointer-events: none;
   z-index: 10;
 }
-
-/* The reflection SHEEN, sitting above the spheres. Screen-blended and kept
-   subtle + focused so nearby beads brighten as the flashlight passes — without
-   washing the field as a flat overlay, and with no ring, donut or hard edge.
-   It shares --px / --py / --intensity with the source beneath. */
-.sheen {
-  display: none;
-}
