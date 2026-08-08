@@ -164,11 +164,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: color 0.4s;
+  cursor: pointer;
 }
 
 .url:hover {
   color: #928f8f;
-  transition: color 0.4s;
 }
 
 /* ─── Button text hidden — icon-only buttons ─────────── */

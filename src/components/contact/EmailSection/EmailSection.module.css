@@ -34,11 +34,12 @@
   border-radius: 10px;
   font-weight: 400;
   padding: 10px 25px;
+  transition: color 0.4s;
+  cursor: pointer;
 }
 
 .email a:hover {
   color: #928f8f;
-  transition: color 0.4s;
 }
 
 .email i {
