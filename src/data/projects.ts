@@ -16,11 +16,11 @@ export const projects: ProjectData[] = [
     githubUrl: 'https://github.com/Marcodggz/jammming',
   },
   {
-    title: 'Frontend Portfolio',
+    title: 'Portfolio',
     description:
-      'Personal frontend portfolio built with React, TypeScript and CSS Modules. It showcases selected projects, responsive layouts, accessible contact flows, and a clean component-based structure.',
+      'Personal portfolio built with React, TypeScript and CSS Modules. It showcases selected projects, responsive layouts, accessible contact flows, and a clean component-based structure.',
     image: portfolioImage,
-    imageAlt: 'Screenshot of the Frontend Portfolio home page layout',
+    imageAlt: 'Screenshot of the Portfolio home page layout',
     technologies: ['React', 'TypeScript', 'CSS Modules'],
     liveUrl: 'https://tu-portfolio-url.vercel.app/', // Uncomment when deployed
     githubUrl: 'https://github.com/Marcodggz/portfolio',
