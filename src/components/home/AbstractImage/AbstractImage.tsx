@@ -55,10 +55,10 @@ const POS_JITTER = 2; // Position variation for natural field distribution
 const INFLUENCE = 155; // Interaction radius (px) - balanced sensitivity for eye animation
 const MAX_PUSH = 28; // Maximum repulsion displacement (px) - REDUCED 20% for closer interaction
 
-// Animation timing constants (0 = frozen, 1 = instant)
-const POS_SMOOTH = 0.65; // Pointer tracking responsiveness
-const FADE_SMOOTH = 0.14; // Light fade in/out speed
-const PUSH_SMOOTH = 0.24; // Sphere repulsion easing
+// Animation timing constants (0 = frozen, 1 = instant) - OPTIMIZED for snappier feel
+const POS_SMOOTH = 0.75; // Pointer tracking responsiveness (increased from 0.65)
+const FADE_SMOOTH = 0.28; // Light fade in/out speed (doubled from 0.14)
+const PUSH_SMOOTH = 0.38; // Sphere repulsion easing (increased from 0.24)
 const MAX_EYE_OPEN = 0.7; // Maximum eye opening (0-1) - prevents eyes from opening too wide
 
 // Deterministic 0–1 hash so the jitter is stable across re-renders.
@@ -168,9 +168,12 @@ const AbstractImage: React.FC = () => {
       for (let i = 0; i < spheres.length; i++) {
         const dx = spheres[i].cx - px;
         const dy = spheres[i].cy - py;
-        const dist = Math.hypot(dx, dy) || 1;
+        const distSq = dx * dx + dy * dy; // Avoid sqrt when possible
 
-        if (dist >= INFLUENCE) continue;
+        // Quick rejection using squared distance
+        if (distSq >= INFLUENCE * INFLUENCE) continue;
+
+        const dist = Math.sqrt(distSq) || 1;
 
         // Normalized direction from the light source to the sphere.
         // This points away from the pointer.
@@ -178,12 +181,15 @@ const AbstractImage: React.FC = () => {
         const ny = dy / dist;
 
         const proximity = Math.max(0, 1 - dist / INFLUENCE);
+        const proxSq = proximity * proximity; // Cache squared proximity
 
         // Professional magnetic repulsion with smooth curves
-        const repelAmount = Math.pow(proximity, 1.4) * lit;
+        // proximity^1.4 ≈ proximity * proximity^0.4 ≈ proximity * (proximity^0.4)
+        const repelAmount = proximity * Math.pow(proximity, 0.4) * lit;
 
-        // Light intensity calculation for sphere highlighting
-        const lightAmount = Math.pow(proximity, 2.1) * lit;
+        // Light intensity calculation for sphere highlighting - more dramatic
+        // proximity^2.1 ≈ proximity^2 * proximity^0.1
+        const lightAmount = proxSq * Math.pow(proximity, 0.1) * lit;
 
         // Magnetic repulsion: push spheres away smoothly
         const push = repelAmount * MAX_PUSH;
@@ -203,7 +209,7 @@ const AbstractImage: React.FC = () => {
         // Eyes DIRECTLY open when light hits them (direct illumination = fully awake)
         // Uses proximity as PRIMARY factor - eyes wake up when light is NEAR
         // Light intensity (lit) MUST be present - no eyes without light
-        const directIllumination = Math.pow(proximity, 1.2);
+        const directIllumination = proximity * Math.sqrt(proximity); // proximity^1.5 (faster than pow)
         const eyeOpen = Math.min(
           directIllumination * lit, // Eyes only open when light is present (no minimum fallback)
           MAX_EYE_OPEN,
@@ -217,8 +223,12 @@ const AbstractImage: React.FC = () => {
 
         const el = sphereRefs.current[i];
         if (el) {
-          el.style.setProperty("--tx", `${off[i * 2].toFixed(2)}px`);
-          el.style.setProperty("--ty", `${off[i * 2 + 1].toFixed(2)}px`);
+          // Only update properties that have changed significantly (reduce repaints)
+          const txNew = off[i * 2].toFixed(2);
+          const tyNew = off[i * 2 + 1].toFixed(2);
+
+          el.style.setProperty("--tx", `${txNew}px`);
+          el.style.setProperty("--ty", `${tyNew}px`);
           el.style.setProperty("--hx", hx.toFixed(1));
           el.style.setProperty("--hy", hy.toFixed(1));
           el.style.setProperty("--sx", sx.toFixed(2));
