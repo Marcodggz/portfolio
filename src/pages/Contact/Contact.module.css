@@ -35,7 +35,6 @@
 
   .gridContact {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
     grid-template-areas:
       "email      linkedin  github"
       "contact-me contact-me contact-me";
@@ -47,7 +46,6 @@
 @media (min-width: 361px) and (max-width: 767px) {
   .gridContact {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
     grid-template-areas:
       "email      email"
       "linkedin   github"

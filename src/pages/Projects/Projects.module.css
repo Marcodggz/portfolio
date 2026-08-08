@@ -10,7 +10,6 @@
   width: 100%;
   padding: 0 12px;
   margin-inline: auto;
-  box-sizing: border-box;
 }
 
 /* ─── Vertical list — always a column, never a row ──── */

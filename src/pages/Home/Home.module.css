@@ -9,7 +9,6 @@
   max-width: 1080px;
   padding: 0 16px;
   margin-inline: auto;
-  box-sizing: border-box;
 }
 
 .homeGrid {
@@ -72,7 +71,6 @@
 @media (max-width: 900px) {
   .homeGrid {
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: auto;
     grid-template-areas:
       "about    about    about    about    about    about"
       "abstract abstract name     name     name     name"
@@ -95,7 +93,6 @@
 
   .homeGrid {
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
     grid-template-areas:
       "about"
       "name"

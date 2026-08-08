@@ -14,11 +14,9 @@
   border-radius: 16px;
   padding: 10px 20px;
   color: #e7e9ee;
-  box-sizing: border-box;
 }
 
 .vision h2 {
-  margin: 0;
   font-size: 1.7rem;
   line-height: 1.2;
   font-weight: 400;

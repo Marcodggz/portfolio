@@ -36,7 +36,6 @@
   border-radius: 16px;
   overflow: hidden;
   isolation: isolate;
-  box-sizing: border-box;
   border: 1px solid rgba(99, 97, 97, 0.16);
 
   /* Professional layered background with subtle depth */
