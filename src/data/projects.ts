@@ -1,8 +1,8 @@
 import type { ProjectData } from '../types'
-import jammmingImage from '../assets/jammming-screenshot.png'
-import portfolioImage from '../assets/portfolio-screenshot.png'
-import bellokImage from '../assets/bellok.png'
-import dayzImage from '../assets/DayZ.png'
+import jammmingImage from '../assets/jammming-screenshot.webp'
+import portfolioImage from '../assets/portfolio-screenshot.webp'
+import bellokImage from '../assets/bellok.webp'
+import dayzImage from '../assets/DayZ.webp'
 
 export const projects: ProjectData[] = [
   {
