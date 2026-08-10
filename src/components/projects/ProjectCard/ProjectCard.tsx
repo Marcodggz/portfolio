@@ -1,4 +1,6 @@
 import React from "react";
+import { useLanguage } from "../../../context/useLanguage";
+import { translations } from "../../../data/translations";
 import type { ProjectData } from "../../../types";
 import styles from "./ProjectCard.module.css";
 
@@ -7,6 +9,12 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const { language } = useLanguage();
+  const t = translations[language].projects;
+
+  // Get the description from translations based on the descriptionKey
+  const description = t[project.descriptionKey as keyof typeof t] as string;
+
   // Generate a simple kebab-case ID from the project title for styling
   const projectId = project.title.toLowerCase().replace(/['\s]+/g, "-");
   const hasLiveUrl = Boolean(project.liveUrl);
@@ -41,7 +49,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <div className={styles.projectFlexContainer}>
         <div className={styles.projectHeader}>
           <div className={styles.projectText}>
-            <p>{project.description}</p>
+            <p>{description}</p>
           </div>
 
           <div className={styles.languages}>
@@ -60,10 +68,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           href={project.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`View ${project.title} live project`}
+          aria-label={t.viewLiveProject.replace("{{title}}", project.title)}
         >
           <i className="fa-solid fa-link" aria-hidden="true" />
-          <span className={styles.btnLabel}>Live</span>
+          <span className={styles.btnLabel}>{t.live}</span>
         </a>
       )}
 
@@ -72,10 +80,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         href={project.githubUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`View ${project.title} GitHub repository`}
+        aria-label={t.viewGitHub.replace("{{title}}", project.title)}
       >
         <i className="devicon-github-original" aria-hidden="true" />
-        <span className={styles.btnLabel}>GitHub</span>
+        <span className={styles.btnLabel}>{t.github}</span>
       </a>
     </article>
   );

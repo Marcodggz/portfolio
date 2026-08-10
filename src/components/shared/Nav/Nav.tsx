@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useLanguage } from "../../../context/useLanguage";
+import { translations } from "../../../data/translations";
 import styles from "./Nav.module.css";
 
 const PILL_TRANSITION =
@@ -7,6 +9,8 @@ const PILL_TRANSITION =
 
 const Nav: React.FC = () => {
   const { pathname } = useLocation();
+  const { language } = useLanguage();
+  const t = translations[language].nav;
   const containerRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
@@ -37,7 +41,7 @@ const Nav: React.FC = () => {
 
   useLayoutEffect(() => {
     measure();
-  }, [pathname, measure]);
+  }, [pathname, measure, language]);
 
   useEffect(() => {
     if (typeof ResizeObserver === "undefined") return;
@@ -67,7 +71,7 @@ const Nav: React.FC = () => {
               end
               className={({ isActive }) => (isActive ? "active" : undefined)}
             >
-              Home
+              {t.home}
             </NavLink>
           </li>
           <li>
@@ -75,7 +79,7 @@ const Nav: React.FC = () => {
               to="/projects"
               className={({ isActive }) => (isActive ? "active" : undefined)}
             >
-              Projects
+              {t.projects}
             </NavLink>
           </li>
           <li>
@@ -83,7 +87,7 @@ const Nav: React.FC = () => {
               to="/contact"
               className={({ isActive }) => (isActive ? "active" : undefined)}
             >
-              Contact
+              {t.contact}
             </NavLink>
           </li>
         </ul>

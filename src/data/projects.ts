@@ -7,8 +7,7 @@ import dayzImage from '../assets/DayZ.png'
 export const projects: ProjectData[] = [
   {
     title: 'Jammming',
-    description:
-      'React playlist builder that lets users search tracks, create playlists, and save them to Spotify using the Spotify Web API and OAuth PKCE. Includes a demo mode so anyone can try the main flows without Spotify access.',
+    descriptionKey: 'jammmingDescription',
     image: jammmingImage,
     imageAlt: 'Screenshot of the Jammming app showing track search and an editable playlist',
     technologies: ['React', 'JavaScript', 'Spotify API', 'OAuth PKCE', 'CSS'],
@@ -17,8 +16,7 @@ export const projects: ProjectData[] = [
   },
   {
     title: 'Portfolio',
-    description:
-      'Personal portfolio built with React, TypeScript and CSS Modules. It showcases selected projects, responsive layouts, accessible contact flows, and a clean component-based structure.',
+    descriptionKey: 'portfolioDescription',
     image: portfolioImage,
     imageAlt: 'Screenshot of the Portfolio home page layout',
     technologies: ['React', 'TypeScript', 'CSS Modules'],
@@ -27,8 +25,7 @@ export const projects: ProjectData[] = [
   },
   {
     title: "Bellok's Killfeed",
-    description:
-      'Production-style Discord bot that transforms DayZ server logs into live kill notifications, persistent player statistics, leaderboards, and activity heatmaps. Built with strict TypeScript, automated testing, and defensive handling of external API failures.',
+    descriptionKey: 'bellokDescription',
     image: bellokImage,
     imageAlt: "Bellok's Killfeed project placeholder",
     technologies: ['TypeScript','Node.js', 'Discord.js', 'Nitrado API'],
@@ -36,8 +33,7 @@ export const projects: ProjectData[] = [
   },
   {
     title: 'DayZ Vanilla + Server',
-    description:
-      'Version-controlled DayZ server configuration for Livonia, managed through validated XML and JSON files. Includes custom loot, spawn and economy settings, rollback-friendly changes, and deployment to Nitrado.',
+    descriptionKey: 'dayzDescription',
     image: dayzImage,
     imageAlt: 'DayZ Vanilla + Server project placeholder',
     technologies: ['XML', 'JSON', 'Nitrado'],

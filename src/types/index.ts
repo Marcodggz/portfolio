@@ -1,6 +1,6 @@
 export interface ProjectData {
   title: string
-  description: string
+  descriptionKey: string
   image: string
   imageAlt: string
   technologies: string[]

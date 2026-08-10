@@ -1,7 +1,12 @@
-import React from 'react'
-import styles from './LinkedInSection.module.css'
+import React from "react";
+import { useLanguage } from "../../../context/useLanguage";
+import { translations } from "../../../data/translations";
+import styles from "./LinkedInSection.module.css";
 
 const LinkedInSection: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations[language].contact;
+
   return (
     <div className={styles.linkedin}>
       <a
@@ -9,12 +14,12 @@ const LinkedInSection: React.FC = () => {
         href="https://www.linkedin.com/in/marcodggz/"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Open LinkedIn profile"
+        aria-label={t.linkedinAriaLabel}
       >
         <i className="devicon-linkedin-plain" aria-hidden="true" />
       </a>
     </div>
-  )
-}
+  );
+};
 
-export default LinkedInSection
+export default LinkedInSection;

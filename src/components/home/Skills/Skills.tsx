@@ -1,11 +1,16 @@
-import React from 'react'
-import { skills } from '../../../data/skills'
-import styles from './Skills.module.css'
+import React from "react";
+import { useLanguage } from "../../../context/useLanguage";
+import { translations } from "../../../data/translations";
+import { skills } from "../../../data/skills";
+import styles from "./Skills.module.css";
 
 const Skills: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations[language].home;
+
   return (
     <section className={styles.skills} aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Technologies I have worked with</h2>
+      <h2 id="skills-heading">{t.technologiesHeading}</h2>
       <div className={styles.skillsIcons}>
         {skills.map((skill) => (
           <div
@@ -23,7 +28,7 @@ const Skills: React.FC = () => {
         ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;
