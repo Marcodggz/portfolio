@@ -240,9 +240,9 @@
   }
 
   /* Specific image positioning for DayZ server — show title area */
-  .pic[data-project-image="dayz-vanilla-+-server"] {
+  .pic[data-project-image="dayz-vanilla+-server"] {
     object-fit: cover;
-    object-position: left top;
+    object-position: 20% top;
   }
 
   /* Ensure Bellok's image is centered properly */

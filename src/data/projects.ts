@@ -32,7 +32,7 @@ export const projects: ProjectData[] = [
     githubUrl: 'https://github.com/Marcodggz/bellok-dayz-bot',
   },
   {
-    title: 'DayZ Vanilla + Server',
+    title: 'DayZ Vanilla+ Server',
     descriptionKey: 'dayzDescription',
     image: dayzImage,
     imageAlt: 'DayZ Vanilla + Server project placeholder',
