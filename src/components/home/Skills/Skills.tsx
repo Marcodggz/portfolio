@@ -9,7 +9,11 @@ const Skills: React.FC = () => {
   const t = translations[language].home;
 
   return (
-    <section className={styles.skills} aria-labelledby="skills-heading">
+    <section
+      className={styles.skills}
+      data-language={language}
+      aria-labelledby="skills-heading"
+    >
       <h2 id="skills-heading">{t.technologiesHeading}</h2>
       <div className={styles.skillsIcons}>
         {skills.map((skill) => (

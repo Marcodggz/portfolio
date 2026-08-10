@@ -168,6 +168,16 @@
   font-size: 15px;
 }
 
+/* Spanish-specific adjustments to fit longer words within same visual space */
+.navLinksEs {
+  gap: 20px;
+  font-size: 14.5px;
+}
+
+.navLinksEs :global(a) {
+  padding: 7px 10px;
+}
+
 .navLinks :global(a) {
   display: inline-block;
   padding: 7px 12px;

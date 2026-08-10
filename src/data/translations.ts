@@ -13,7 +13,7 @@ export const translations = {
       aboutText:
         'Software Engineer focused on writing clean, high-performance code and building reliable digital products. I care about technical quality, product thinking, system efficiency, edge cases, and maintainability. Driven by continuous learning, agile workflows, and shipping well-tested software.',
       softwareEngineer: 'Software Engineer',
-      technologiesHeading: 'Technologies I have worked with',
+      technologiesHeading: 'Technologies I work with',
       vision: '"Envision it. Build it."',
       certificationsHeading: 'Courses & Certifications',
       inProgress: 'In progress',
@@ -28,18 +28,17 @@ export const translations = {
       jammmingDescription:
         'React playlist builder that lets users search tracks, create playlists, and save them to Spotify using the Spotify Web API and OAuth PKCE. Includes a demo mode so anyone can try the main flows without Spotify access.',
       portfolioDescription:
-        'Personal portfolio built with React, TypeScript and CSS Modules. It showcases selected projects, responsive layouts, accessible contact flows, and a clean component-based structure.',
+        'Personal portfolio built with React, TypeScript, and CSS Modules. It brings together a selection of projects in a responsive and accessible interface, with a clear, reusable, and maintainable component architecture.',
       bellokDescription:
-        'Production-style Discord bot that transforms DayZ server logs into live kill notifications, persistent player statistics, leaderboards, and activity heatmaps. Built with strict TypeScript, automated testing, and defensive handling of external API failures.',
+        'Discord bot for DayZ servers that processes game logs in real time to generate killfeeds, persistent statistics, rankings, and activity heatmaps. Built with TypeScript in strict mode, automated testing, and a modular architecture focused on reliability and maintainability.',
       dayzDescription:
-        'Version-controlled DayZ server configuration for Livonia, managed through validated XML and JSON files. Includes custom loot, spawn and economy settings, rollback-friendly changes, and deployment to Nitrado.',
+        'Custom DayZ server for Livonia, with version-controlled XML and JSON configuration and an automated validation workflow using Shell and Python. Includes custom loot, spawn and economy settings, reversible changes, deployment to Nitrado, and validation checks run through GitHub Actions before changes are integrated.',
     },
     contact: {
       heading: 'Contact',
       githubProfileHeading: 'Github Profile',
-      githubProfileText: 'Find more of my repositories',
-      formHeading: 'Contact with me',
-      formSubtitle: 'You can also get in touch with me through this form below.',
+      formHeading: 'Let\'s talk',
+      formSubtitle: 'You can reach me directly through this form.',
       nameLabel: 'Name',
       emailLabel: 'Email',
       messageLabel: 'Message',
@@ -78,10 +77,10 @@ export const translations = {
     home: {
       aboutHeading: 'Sobre mí',
       aboutText:
-        'Desarrollador de Software enfocado en escribir código limpio y de alto rendimiento para construir productos digitales confiables. Me preocupo por la calidad técnica, la visión de producto, la eficiencia del sistema, los casos extremos y la mantenibilidad. Impulsado por el aprendizaje continuo, metodologías ágiles y entregar software bien probado.',
+        'Desarrollador de Software centrado en crear productos digitales sólidos, con código limpio y de alto rendimiento. Valoro la calidad técnica, la visión de producto, la eficiencia, los edge cases y la mantenibilidad. Me motiva seguir aprendiendo, trabajar con metodologías ágiles y entregar software bien probado.',
       softwareEngineer: 'Desarrollador de Software',
       technologiesHeading: 'Tecnologías con las que trabajo',
-      vision: '"Imagínalo. Constrúyelo."',
+      vision: '"Imagínalo. Créalo."',
       certificationsHeading: 'Cursos y Certificaciones',
       inProgress: 'En curso',
     },
@@ -93,24 +92,23 @@ export const translations = {
       viewGitHub: 'Ver repositorio en GitHub: {{title}}',
       // Individual project descriptions
       jammmingDescription:
-        'Aplicación React para crear listas de reproducción que permite buscar canciones, organizar listas y guardarlas en Spotify mediante la API Web de Spotify y OAuth PKCE. Incluye un modo demo para que cualquiera pueda probar las funciones principales sin necesidad de acceso a Spotify.',
+        'Aplicación en React para crear y gestionar playlists de Spotify, con búsqueda de canciones, organización de listas y guardado mediante la Spotify Web API y OAuth PKCE. Incluye un modo demo que permite probar las funciones principales sin iniciar sesión con Spotify.',
       portfolioDescription:
-        'Portfolio personal desarrollado con React, TypeScript y CSS Modules. Muestra proyectos seleccionados, diseños responsivos, flujos de contacto accesibles y una estructura limpia basada en componentes.',
+        'Portfolio personal desarrollado con React, TypeScript y CSS Modules. Reúne una selección de proyectos en una interfaz responsive y accesible, con una arquitectura de componentes clara, reutilizable y fácil de mantener.',
       bellokDescription:
-        'Bot de Discord de nivel producción que transforma los logs del servidor DayZ en notificaciones de bajas en tiempo real, estadísticas persistentes de jugadores, clasificaciones y mapas de calor de actividad. Desarrollado con TypeScript estricto, testing automatizado y manejo defensivo de fallos en APIs externas.',
+        'Bot de Discord para servidores de DayZ que procesa logs en tiempo real para generar killfeeds, estadísticas persistentes, rankings y mapas de calor de actividad. Construido con TypeScript en modo estricto, testing automatizado y una arquitectura modular orientada a la fiabilidad y mantenibilidad.',
       dayzDescription:
-        'Configuración versionada de servidor DayZ para Livonia, gestionada mediante archivos XML y JSON validados. Incluye configuración personalizada de loot, spawns y economía, cambios reversibles y despliegue en Nitrado.',
+        'Servidor DayZ personalizado para Livonia, con configuración versionada en XML y JSON y un flujo de validación automatizado con Shell y Python. Incluye ajustes de loot, spawns y economía, cambios reversibles y despliegue en Nitrado, con validaciones ejecutadas también en GitHub Actions antes de integrar cambios.',
     },
     contact: {
       heading: 'Contacto',
       githubProfileHeading: 'Perfil de Github',
-      githubProfileText: 'Descubre más repositorios',
-      formHeading: 'Escríbeme',
-      formSubtitle: 'También puedes contactar conmigo a través de este formulario.',
+      formHeading: '¿Hablamos?',
+      formSubtitle: 'Puedes escribirme directamente desde este formulario.',
       nameLabel: 'Nombre',
       emailLabel: 'Email',
       messageLabel: 'Mensaje',
-      namePlaceholder: 'Escribe tu nombre',
+      namePlaceholder: 'Tu nombre',
       emailPlaceholder: 'tu@email.com',
       messagePlaceholder: 'Escribe tu mensaje aquí',
       sendButton: 'Enviar mensaje',

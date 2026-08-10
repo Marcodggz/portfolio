@@ -8,7 +8,7 @@ const WebDev: React.FC = () => {
   const t = translations[language].home;
 
   return (
-    <div className={styles.webDev}>
+    <div className={styles.webDev} data-language={language}>
       <h2>{t.softwareEngineer}</h2>
     </div>
   );

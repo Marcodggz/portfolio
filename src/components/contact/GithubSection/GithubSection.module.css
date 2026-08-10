@@ -38,13 +38,6 @@
   font-weight: 600;
 }
 
-.githubText p {
-  font-size: 1.3rem;
-  line-height: 1.4;
-  font-weight: 300;
-  color: var(--color-text-secondary);
-}
-
 .url i {
   color: #f5efef;
   font-size: 3.4rem;

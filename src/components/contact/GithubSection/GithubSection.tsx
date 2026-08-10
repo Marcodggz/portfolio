@@ -19,7 +19,6 @@ const GithubSection: React.FC = () => {
         <i className="devicon-github-original" aria-hidden="true" />
         <div className={styles.githubText}>
           <h2>{t.githubProfileHeading}</h2>
-          <p>{t.githubProfileText}</p>
         </div>
       </a>
     </div>

@@ -28,7 +28,7 @@ export const projects: ProjectData[] = [
     descriptionKey: 'bellokDescription',
     image: bellokImage,
     imageAlt: "Bellok's Killfeed project placeholder",
-    technologies: ['TypeScript','Node.js', 'Discord.js', 'Nitrado API'],
+    technologies: ['TypeScript','Node.js', 'Discord.js', 'Nitrado API', 'GitHub Actions'],
     githubUrl: 'https://github.com/Marcodggz/bellok-dayz-bot',
   },
   {
@@ -36,7 +36,7 @@ export const projects: ProjectData[] = [
     descriptionKey: 'dayzDescription',
     image: dayzImage,
     imageAlt: 'DayZ Vanilla + Server project placeholder',
-    technologies: ['XML', 'JSON', 'Nitrado'],
+    technologies: ['XML', 'JSON', 'Python', 'Shell', 'GitHub Actions'],
     githubUrl: 'https://github.com/Marcodggz/DayZ-Vanilla-Plus-Server',
   },
 ]

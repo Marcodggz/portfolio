@@ -64,7 +64,10 @@ const Nav: React.FC = () => {
     <nav className={styles.nav} aria-label="Main navigation">
       <div className={styles.navContainer} ref={containerRef}>
         <span className={styles.pill} aria-hidden="true" />
-        <ul className={styles.navLinks} ref={listRef}>
+        <ul
+          className={`${styles.navLinks} ${language === "es" ? styles.navLinksEs : ""}`}
+          ref={listRef}
+        >
           <li>
             <NavLink
               to="/"
