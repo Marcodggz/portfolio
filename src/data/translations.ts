@@ -77,7 +77,7 @@ export const translations = {
     home: {
       aboutHeading: 'Sobre mí',
       aboutText:
-        'Desarrollador de Software centrado en crear productos digitales sólidos, con código limpio y de alto rendimiento. Valoro la calidad técnica, la visión de producto, la eficiencia, los edge cases y la mantenibilidad. Me motiva seguir aprendiendo, trabajar con metodologías ágiles y entregar software bien probado.',
+        'Desarrollador de Software centrado en crear productos digitales sólidos, con código limpio y de alto rendimiento. Valoro la calidad técnica, la visión de producto, la eficiencia, los edge cases y la mantenibilidad. Me motiva seguir aprendiendo, trabajar con metodologías ágiles y desarrollar software fiable y bien testeado.',
       softwareEngineer: 'Desarrollador de Software',
       technologiesHeading: 'Tecnologías con las que trabajo',
       vision: '"Imagínalo. Créalo."',
@@ -92,7 +92,7 @@ export const translations = {
       viewGitHub: 'Ver repositorio en GitHub: {{title}}',
       // Individual project descriptions
       jammmingDescription:
-        'Aplicación en React para crear y gestionar playlists de Spotify, con búsqueda de canciones, organización de listas y guardado mediante la Spotify Web API y OAuth PKCE. Incluye un modo demo que permite probar las funciones principales sin iniciar sesión con Spotify.',
+        'Aplicación en React para crear y gestionar playlists de Spotify, con búsqueda de canciones, organización de listas y guardado mediante la Spotify Web API y OAuth PKCE. Incluye modo demo para probar funciones sin iniciar sesión con Spotify.',
       portfolioDescription:
         'Portfolio personal desarrollado con React, TypeScript y CSS Modules. Reúne una selección de proyectos en una interfaz responsive y accesible, con una arquitectura de componentes clara, reutilizable y fácil de mantener.',
       bellokDescription:
