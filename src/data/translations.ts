@@ -15,7 +15,7 @@ export const translations = {
       softwareEngineer: 'Software Engineer',
       technologiesHeading: 'Technologies I work with',
       vision: '"Envision it. Build it."',
-      certificationsHeading: 'Courses & Certifications',
+      certificationsHeading: 'Courses & Learning',
       inProgress: 'In progress',
     },
     projects: {
@@ -81,7 +81,7 @@ export const translations = {
       softwareEngineer: 'Desarrollador de Software',
       technologiesHeading: 'Tecnologías con las que trabajo',
       vision: '"Imagínalo. Créalo."',
-      certificationsHeading: 'Cursos y Certificaciones',
+      certificationsHeading: 'Cursos y Formación',
       inProgress: 'En curso',
     },
     projects: {

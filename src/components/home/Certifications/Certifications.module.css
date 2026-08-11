@@ -24,8 +24,8 @@
 .certList {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 3rem;
-  row-gap: 0.7rem;
+  column-gap: 2.5rem;
+  row-gap: 1rem;
 
   width: min(100%, 40rem);
   margin: auto;
@@ -33,14 +33,35 @@
 }
 
 .certItem {
-  font-size: 1.2rem;
-  color: #d9dde4;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.certName {
+  font-size: 1.25rem;
+  color: #e8edf4;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.certIssuer {
+  font-size: 0.95rem;
+  color: rgba(217, 221, 228, 0.6);
+  font-weight: 400;
   line-height: 1.4;
 }
 
-.certItem span {
-  color: var(--color-text-secondary);
-  font-size: 1.1rem;
+.certIssuer::before {
+  content: "·";
+  margin-right: 0.35rem;
+  color: rgba(217, 221, 228, 0.3);
+}
+
+.certIssuer span {
+  color: rgba(217, 221, 228, 0.5);
 }
 
 @media (max-width: 600px) {
@@ -54,13 +75,14 @@
 
   .certList {
     grid-template-columns: 1fr;
+    row-gap: 0.9rem;
   }
 
-  .certItem {
-    font-size: 1rem;
+  .certName {
+    font-size: 1.1rem;
   }
 
-  .certItem span {
-    font-size: 0.9rem;
+  .certIssuer {
+    font-size: 0.85rem;
   }
 }

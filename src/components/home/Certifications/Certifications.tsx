@@ -13,12 +13,15 @@ const Certifications: React.FC = () => {
       <h2 id="cert-heading">{t.certificationsHeading}</h2>
       <div className={styles.certList}>
         {certifications.map((cert) => (
-          <p key={cert.name} className={styles.certItem}>
-            {cert.name} <span>- {cert.issuer}</span>
-            {cert.inProgress && (
-              <span aria-label={t.inProgress}> ({t.inProgress})</span>
-            )}
-          </p>
+          <div key={cert.name} className={styles.certItem}>
+            <div className={styles.certName}>{cert.name}</div>
+            <div className={styles.certIssuer}>
+              {cert.issuer}
+              {cert.inProgress && (
+                <span aria-label={t.inProgress}> ({t.inProgress})</span>
+              )}
+            </div>
+          </div>
         ))}
       </div>
     </section>
