@@ -4,17 +4,18 @@
 }
 
 .homeContainer {
-  /* Fluid width capped at a fixed max, with fixed side padding. */
+  /* Fluid width capped at a fixed max, with flexible side padding. */
   width: 100%;
   max-width: 1080px;
   padding: 0 16px;
   margin-inline: auto;
+  box-sizing: border-box;
 }
 
 .homeGrid {
   display: grid;
   gap: 18px;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   /* minmax lets rows grow when content exceeds the minimum. */
   grid-template-rows:
     minmax(220px, auto)
@@ -65,18 +66,60 @@
   min-width: 0;
 }
 
-/* ── Tablet portrait ≤ 900px — covers 820 × 1180 ────────────────────────── */
-/*    Container at 820px: 820px wide, inner grid = 788px (minus 16px each   */
-/*    side of container padding). 6 columns at ~115px each.                 */
-@media (max-width: 900px) {
+/* ── Narrow Desktop 1025px–1051px ────────────────────────────────────────── */
+/*    Final stabilization before tablet breakpoint                           */
+@media (min-width: 1025px) and (max-width: 1051px) {
+  .homeContainer {
+    padding: 0 10px;
+  }
+
   .homeGrid {
-    grid-template-columns: repeat(6, 1fr);
+    gap: 13px;
+  }
+}
+
+/* ── Tablet ≤ 1024px ─────────────────────────────────────────────────────── */
+/*    AbstractImage hidden (pointer-based interaction).                      */
+/*    WebDev hidden (role shown in NameCard instead).                        */
+/*    Clean vertical reading flow: name+role → about → tech → courses → quote */
+@media (max-width: 1024px) {
+  .homeContainer {
+    /* Constrain content width for tablet to prevent excessive stretching.
+       At 1024px: comfortable outer margins
+       At 820px: effective use of space without becoming too narrow */
+    max-width: 720px;
+    padding: 0 16px;
+  }
+
+  .homeGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
     grid-template-areas:
-      "about    about    about    about    about    about"
-      "abstract abstract name     name     name     name"
-      "webdev   webdev   webdev   vision   vision   vision"
-      "skills   skills   skills   skills   skills   skills"
-      "cert     cert     cert     cert     cert     cert";
+      "name"
+      "about"
+      "skills"
+      "cert"
+      "vision";
+    gap: 18px;
+  }
+
+  /* Hide AbstractImage on tablet and below - pointer-based interaction */
+  .abstractImage {
+    display: none;
+  }
+
+  /* Hide WebDev on tablet - role is shown in NameCard instead */
+  .webDev {
+    display: none;
+  }
+
+  /* Ensure all visible cards span the full width */
+  .nameCard,
+  .aboutMe,
+  .skills,
+  .certifications,
+  .vision {
+    grid-column: 1 / -1;
   }
 }
 

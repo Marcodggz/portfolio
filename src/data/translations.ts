@@ -12,6 +12,8 @@ export const translations = {
       aboutHeading: 'About',
       aboutText:
         'Software Engineer focused on writing clean, high-performance code and building reliable digital products. I care about technical quality, product thinking, system efficiency, edge cases, and maintainability. Driven by continuous learning, agile workflows, and shipping well-tested software.',
+      aboutTextTablet:
+        'Focused on writing clean, high-performance code and building reliable digital products. I care about technical quality, product thinking, system efficiency, edge cases, and maintainability. Driven by continuous learning, agile workflows, and shipping well-tested software.',
       softwareEngineer: 'Software Engineer',
       technologiesHeading: 'Technologies I work with',
       vision: '"Envision it. Build it."',
@@ -78,6 +80,8 @@ export const translations = {
       aboutHeading: 'Sobre mí',
       aboutText:
         'Desarrollador de Software centrado en crear productos digitales sólidos, con código limpio y de alto rendimiento. Valoro la calidad técnica, la visión de producto, la eficiencia, los edge cases y la mantenibilidad. Me motiva seguir aprendiendo, trabajar con metodologías ágiles y desarrollar software fiable y bien testeado.',
+      aboutTextTablet:
+        'Centrado en crear productos digitales sólidos, con código limpio y de alto rendimiento. Valoro la calidad técnica, la visión de producto, la eficiencia, los edge cases y la mantenibilidad. Me motiva seguir aprendiendo, trabajar con metodologías ágiles y desarrollar software fiable y bien testeado.',
       softwareEngineer: 'Desarrollador de Software',
       technologiesHeading: 'Tecnologías con las que trabajo',
       vision: '"Imagínalo. Créalo."',

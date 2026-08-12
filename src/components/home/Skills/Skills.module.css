@@ -44,6 +44,24 @@
   text-align: center;
 }
 
+/* ── Tablet ≤ 1024px ────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .skills {
+    /* Remove height: 100% to prevent excessive stretching */
+    height: auto;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .skills h2 {
+    font-size: 1.7rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .skills[data-language="es"] h2 {
+    font-size: 1.6rem;
+  }
+}
+
 .iconSkill {
   position: relative;
   display: grid;

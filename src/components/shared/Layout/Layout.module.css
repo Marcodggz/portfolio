@@ -13,8 +13,11 @@
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   width: 100%;
-  padding: 1rem 2rem 0;
-  gap: 22rem;
+  max-width: 1144px;
+  margin-inline: auto;
+  padding: 1rem clamp(1rem, 3vw, 2rem) 0;
+  gap: clamp(2rem, 20vw, 22rem);
+  box-sizing: border-box;
 }
 
 /* Give the bare <main> element an explicit width so that width: 100%
@@ -56,11 +59,31 @@
   justify-content: center;
 }
 
-/* Language switcher in third column, aligned to start */
+/* Language switcher in third column, aligned to end */
 .languageSwitcherWrapper {
   grid-column: 3;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
+}
+
+/* ── Narrow Desktop 1025px–1051px ────────────────────────────────────────── */
+/*    Reduce header gap in tightest desktop range before tablet              */
+@media (min-width: 1025px) and (max-width: 1051px) {
+  .headerWrapper {
+    gap: 6rem;
+  }
+}
+
+/* ── Tablet ≤ 1024px ─────────────────────────────────────────────────────── */
+/*    Override desktop header layout for responsive nav centering.           */
+@media (max-width: 1024px) {
+  .headerWrapper {
+    gap: 1rem;
+  }
+
+  .languageSwitcherWrapper {
+    justify-content: flex-end;
+  }
 }
 
 /* Responsive adjustments */
