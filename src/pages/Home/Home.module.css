@@ -123,45 +123,27 @@
   }
 }
 
-/* ── Mobile ≤ 600px — covers 390 × 844 and 320 × 568 ────────────────────── */
+/* ── Mobile ≤ 600px ──────────────────────────────────────────────────────── */
+/*    Single-column layout: name+role → about → tech → courses → quote       */
+/*    AbstractImage, WebDev, and MD coin hidden (consistent with tablet)     */
 @media (max-width: 600px) {
   .home {
-    padding: 16px 0 48px 0;
+    padding: 16px 0 32px 0;
   }
 
-  /* Bump side gutters from 16px to 20px for comfortable breathing room. */
   .homeContainer {
     padding: 0 20px;
   }
 
   .homeGrid {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
     grid-template-areas:
-      "about"
       "name"
-      "webdev"
-      "vision"
+      "about"
       "skills"
       "cert"
-      "abstract";
-    gap: 18px;
-  }
-
-  /* Explicit column reset — ensures every item spans the single column
-     regardless of any desktop grid-area column placement that could persist. */
-  .aboutMe,
-  .webDev,
-  .nameCard,
-  .vision,
-  .skills,
-  .abstractImage,
-  .certifications {
-    grid-column: 1 / -1;
-  }
-
-  /* AbstractImage has height: 100% but no text content.
-     Without this the row collapses to 0px. */
-  .abstractImage {
-    min-height: 160px;
+      "vision";
+    gap: 16px;
   }
 }
