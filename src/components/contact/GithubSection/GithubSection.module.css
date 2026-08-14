@@ -5,11 +5,26 @@
   background: linear-gradient(
     5deg,
     rgba(255, 255, 255, 0.06),
-    rgba(77, 176, 238, 0.329)
+    var(--color-surface-accent)
   );
   border: 2px solid var(--border-glass);
   border-radius: 16px;
   color: var(--color-text-primary);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+.github:hover {
+  border-color: rgba(200, 210, 220, 0.55);
+  box-shadow: 0 0 20px rgba(200, 210, 220, 0.15);
+  transform: translateY(-1px);
+}
+
+.github:focus-within {
+  border-color: rgba(200, 210, 220, 0.65);
+  box-shadow: 0 0 24px rgba(200, 210, 220, 0.2);
 }
 
 .url {
@@ -23,6 +38,16 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.url:hover {
+  color: #ffffff;
+}
+
+.url:focus-visible {
+  outline: 2px solid rgba(190, 200, 210, 0.8);
+  outline-offset: 3px;
 }
 
 .githubText {
@@ -39,8 +64,13 @@
 }
 
 .url i {
-  color: #f5efef;
+  color: #d8dde2;
   font-size: 3.4rem;
+  transition: color 0.3s ease;
+}
+
+.url:hover i {
+  color: #f0f2f4;
 }
 
 @media (max-width: 900px) {

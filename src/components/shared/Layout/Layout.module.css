@@ -4,7 +4,7 @@
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  background-color: black;
+  background: var(--background-app);
 }
 
 /* Header wrapper for nav and language selector */

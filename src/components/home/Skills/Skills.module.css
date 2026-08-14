@@ -92,9 +92,10 @@
 
 .iconSkill i {
   font-size: 44px;
-  opacity: 0.9;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
+  opacity: 0.92;
+  transition:
+    transform 0.18s ease,
+    opacity 0.2s ease;
 }
 
 .iconSkill:hover,
@@ -110,7 +111,8 @@
 
 .iconSkill:hover i,
 .iconSkill:focus-visible i {
-  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
 }
 
 .iconSkill:focus-visible {

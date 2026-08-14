@@ -34,12 +34,20 @@
   background: linear-gradient(
     15deg,
     rgba(255, 255, 255, 0.06),
-    rgba(77, 176, 238, 0.329)
+    var(--color-surface-accent)
   );
   border: 2px solid var(--border-glass);
   width: 100%;
   padding: 5px;
   border-radius: 8px;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.innerWrapper:focus-within {
+  border-color: var(--color-focus);
+  box-shadow: 0 0 16px rgba(77, 176, 238, 0.15);
 }
 
 .innerWrapper textarea {
@@ -60,33 +68,49 @@
   color: white;
   background: transparent;
   font-size: 0.9rem;
-}
-
-.contactMe form input:focus-visible,
-.contactMe form textarea:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 2px;
-  border-radius: 2px;
+  outline: none;
 }
 
 .contactMe form input:focus,
 .contactMe form textarea:focus {
   color: white;
+  outline: none;
 }
 
 .buttonMessage {
   padding: 10px;
   border-radius: 8px;
-  background: linear-gradient(15deg, #5789bb7d, rgba(77, 176, 238, 0.329));
-  border: 3px solid var(--border-glass);
-  color: white;
+  background: rgba(77, 176, 238, 0.16);
+  border: 3px solid rgba(77, 176, 238, 0.38);
+  color: var(--color-text-primary);
   font-size: 1rem;
   cursor: pointer;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+.buttonMessage:hover:not(:disabled) {
+  background: rgba(77, 176, 238, 0.24);
+  border-color: rgba(77, 176, 238, 0.55);
+  box-shadow: 0 0 18px rgba(77, 176, 238, 0.18);
+}
+
+.buttonMessage:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.buttonMessage:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .buttonMessage:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 3px;
+  box-shadow: 0 0 20px rgba(77, 176, 238, 0.2);
 }
 
 .statusMessage {

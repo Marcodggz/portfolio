@@ -9,15 +9,26 @@
 :root {
   /* Color Variables */
   --color-focus: #4db0ee;
+  --color-nav-accent: #72c5e6;
+  --color-language-accent: #8ab8c8;
+  --color-surface-accent: rgba(77, 176, 238, 0.24);
   --color-text-primary: #e7e9ee;
-  --color-text-secondary: #a9acb0;
+  --color-text-secondary: #b3b8bd;
+  --color-text-meta: rgba(174, 205, 224, 0.62);
+  --background-app:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(77, 176, 238, 0.08),
+      transparent 42%
+    ),
+    linear-gradient(180deg, #05080c 0%, #020406 55%, #000000 100%);
 
   /* Border Variables */
   --border-glass: rgba(255, 255, 255, 0.18);
 }
 
 html {
-  background-color: black;
+  background: var(--background-app);
   /* Force scrollbar gutter to prevent layout shift when scrollbar appears */
   overflow-y: scroll;
 }
