@@ -34,7 +34,7 @@
   background: linear-gradient(
     25deg,
     rgba(255, 255, 255, 0.06),
-    rgba(77, 176, 238, 0.329)
+    var(--color-surface-accent)
   );
   border: 2px solid var(--border-glass);
   border-radius: 16px;
@@ -53,7 +53,7 @@
   background: linear-gradient(
     25deg,
     rgba(255, 255, 255, 0.06),
-    rgba(77, 176, 238, 0.329)
+    var(--color-surface-accent)
   );
   border: 2px solid var(--border-glass);
   border-radius: 16px;
@@ -70,7 +70,7 @@
   background: linear-gradient(
     25deg,
     rgba(255, 255, 255, 0.06),
-    rgba(77, 176, 238, 0.329)
+    var(--color-surface-accent)
   );
   border: 2px solid var(--border-glass);
   border-radius: 16px;
@@ -78,20 +78,69 @@
   min-height: 64px;
   text-decoration: none;
   cursor: pointer;
-  transition: color 0.4s;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease;
 }
 
 .linkButton {
   grid-area: link;
+  border-color: rgba(77, 176, 238, 0.35);
+}
+
+.linkButton i {
+  color: #6db4e0;
+}
+
+.linkButton:hover,
+.linkButton:focus-visible {
+  background: linear-gradient(
+    25deg,
+    rgba(77, 176, 238, 0.12),
+    rgba(77, 176, 238, 0.35)
+  );
+  border-color: rgba(77, 176, 238, 0.55);
+  box-shadow: 0 0 18px rgba(77, 176, 238, 0.15);
+  transform: translateY(-1px);
+}
+
+.linkButton:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
 }
 
 .githubButton {
   grid-area: github;
+  border-color: rgba(190, 200, 210, 0.3);
 }
 
-.linkButton:hover,
-.githubButton:hover {
-  color: #928f8f;
+.githubButton i {
+  color: #d8dde2;
+  transition: color 0.3s ease;
+}
+
+.githubButton:hover,
+.githubButton:focus-visible {
+  background: linear-gradient(
+    25deg,
+    rgba(200, 210, 220, 0.12),
+    rgba(200, 210, 220, 0.2)
+  );
+  border-color: rgba(200, 210, 220, 0.6);
+  box-shadow: 0 0 20px rgba(200, 210, 220, 0.18);
+  transform: translateY(-1px);
+}
+
+.githubButton:hover i {
+  color: #ffffff;
+}
+
+.githubButton:focus-visible {
+  outline: 2px solid rgba(200, 210, 220, 0.75);
+  outline-offset: 3px;
 }
 
 /* ─── Image — natural aspect ratio on mobile/tablet ── */
@@ -117,6 +166,34 @@
   padding: 6px;
   border-radius: 5px;
   flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: color 0.3s ease;
+}
+
+/* ─── Project-specific title icon colors ──────────────── */
+
+/* Jammming → Spotify green */
+.gridProject[data-project="jammming"] .layerIcon {
+  color: #5ed97c;
+  border-color: rgba(30, 215, 96, 0.15);
+}
+
+/* Portfolio → portfolio cyan */
+.gridProject[data-project="portfolio"] .layerIcon {
+  color: #6db4e0;
+  border-color: rgba(77, 176, 238, 0.2);
+}
+
+/* Bellok's Killfeed → Discord blue */
+.gridProject[data-project="bellok-s-killfeed"] .layerIcon {
+  color: #7c8ef5;
+  border-color: rgba(88, 101, 242, 0.15);
+}
+
+/* DayZ Vanilla+ Server → earthy amber */
+.gridProject[data-project="dayz-vanilla+-server"] .layerIcon {
+  color: #d4a574;
+  border-color: rgba(212, 165, 116, 0.15);
 }
 
 .title h2 {
@@ -155,14 +232,192 @@
 }
 
 .boxLanguage {
-  background-color: #4b4c4dc2;
+  background-color: rgba(75, 76, 77, 0.35);
+  border: 1px solid rgba(75, 76, 77, 0.5);
   padding: 4px 12px;
   border-radius: 40px;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .language {
   font-size: 0.85rem;
-  color: #f5efef;
+  color: #e8ecf0;
+}
+
+/* ─── Semantic technology colors ─────────────────────── */
+
+/* JavaScript → warm yellow */
+.boxLanguage[data-tech="javascript"] {
+  background-color: rgba(240, 219, 79, 0.12);
+  border-color: rgba(240, 219, 79, 0.35);
+}
+.boxLanguage[data-tech="javascript"] .language {
+  color: #f0db4f;
+}
+
+/* TypeScript → blue */
+.boxLanguage[data-tech="typescript"] {
+  background-color: rgba(49, 120, 198, 0.15);
+  border-color: rgba(49, 120, 198, 0.4);
+}
+.boxLanguage[data-tech="typescript"] .language {
+  color: #5fa3e0;
+}
+
+/* React → cyan/blue */
+.boxLanguage[data-tech="react"] {
+  background-color: rgba(97, 218, 251, 0.12);
+  border-color: rgba(97, 218, 251, 0.35);
+}
+.boxLanguage[data-tech="react"] .language {
+  color: #61dafb;
+}
+
+/* Node.js → green */
+.boxLanguage[data-tech="node-js"],
+.boxLanguage[data-tech="nodejs"] {
+  background-color: rgba(104, 160, 99, 0.15);
+  border-color: rgba(104, 160, 99, 0.4);
+}
+.boxLanguage[data-tech="node-js"] .language,
+.boxLanguage[data-tech="nodejs"] .language {
+  color: #8cc084;
+}
+
+/* CSS / CSS Modules → blue */
+.boxLanguage[data-tech="css"],
+.boxLanguage[data-tech="css-modules"] {
+  background-color: rgba(38, 77, 228, 0.12);
+  border-color: rgba(38, 77, 228, 0.35);
+}
+.boxLanguage[data-tech="css"] .language,
+.boxLanguage[data-tech="css-modules"] .language {
+  color: #5e9fd6;
+}
+
+/* HTML → orange */
+.boxLanguage[data-tech="html"],
+.boxLanguage[data-tech="html5"] {
+  background-color: rgba(227, 79, 38, 0.12);
+  border-color: rgba(227, 79, 38, 0.35);
+}
+.boxLanguage[data-tech="html"] .language,
+.boxLanguage[data-tech="html5"] .language {
+  color: #e87c5c;
+}
+
+/* Python → blue */
+.boxLanguage[data-tech="python"] {
+  background-color: rgba(55, 118, 171, 0.15);
+  border-color: rgba(55, 118, 171, 0.4);
+}
+.boxLanguage[data-tech="python"] .language {
+  color: #6ba3d4;
+}
+
+/* PHP → muted indigo */
+.boxLanguage[data-tech="php"] {
+  background-color: rgba(119, 123, 180, 0.12);
+  border-color: rgba(119, 123, 180, 0.35);
+}
+.boxLanguage[data-tech="php"] .language {
+  color: #9fa3d1;
+}
+
+/* Discord.js → Discord blue/indigo */
+.boxLanguage[data-tech="discord-js"],
+.boxLanguage[data-tech="discordjs"] {
+  background-color: rgba(88, 101, 242, 0.12);
+  border-color: rgba(88, 101, 242, 0.35);
+}
+.boxLanguage[data-tech="discord-js"] .language,
+.boxLanguage[data-tech="discordjs"] .language {
+  color: #7c8ef5;
+}
+
+/* GitHub / GitHub Actions → neutral light gray */
+.boxLanguage[data-tech="github"],
+.boxLanguage[data-tech="github-actions"] {
+  background-color: rgba(173, 186, 199, 0.1);
+  border-color: rgba(173, 186, 199, 0.3);
+}
+.boxLanguage[data-tech="github"] .language,
+.boxLanguage[data-tech="github-actions"] .language {
+  color: #b4c0cc;
+}
+
+/* Shell → muted green */
+.boxLanguage[data-tech="shell"] {
+  background-color: rgba(137, 224, 81, 0.1);
+  border-color: rgba(137, 224, 81, 0.3);
+}
+.boxLanguage[data-tech="shell"] .language {
+  color: #a0d56f;
+}
+
+/* JSON → light neutral */
+.boxLanguage[data-tech="json"] {
+  background-color: rgba(173, 186, 199, 0.1);
+  border-color: rgba(173, 186, 199, 0.3);
+}
+.boxLanguage[data-tech="json"] .language {
+  color: #b4c0cc;
+}
+
+/* XML → amber/orange-ish */
+.boxLanguage[data-tech="xml"] {
+  background-color: rgba(255, 152, 0, 0.1);
+  border-color: rgba(255, 152, 0, 0.3);
+}
+.boxLanguage[data-tech="xml"] .language {
+  color: #ffb366;
+}
+
+/* Spotify API → Spotify green */
+.boxLanguage[data-tech="spotify-api"] {
+  background-color: rgba(30, 215, 96, 0.12);
+  border-color: rgba(30, 215, 96, 0.35);
+}
+.boxLanguage[data-tech="spotify-api"] .language {
+  color: #5ed97c;
+}
+
+/* OAuth PKCE → secure blue */
+.boxLanguage[data-tech="oauth-pkce"] {
+  background-color: rgba(75, 154, 217, 0.12);
+  border-color: rgba(75, 154, 217, 0.35);
+}
+.boxLanguage[data-tech="oauth-pkce"] .language {
+  color: #74a8d4;
+}
+
+/* Nitrado API → tech blue */
+.boxLanguage[data-tech="nitrado-api"] {
+  background-color: rgba(0, 150, 255, 0.12);
+  border-color: rgba(0, 150, 255, 0.35);
+}
+.boxLanguage[data-tech="nitrado-api"] .language {
+  color: #5ba5e6;
+}
+
+/* Vite → violet/purple */
+.boxLanguage[data-tech="vite"] {
+  background-color: rgba(189, 147, 249, 0.12);
+  border-color: rgba(189, 147, 249, 0.35);
+}
+.boxLanguage[data-tech="vite"] .language {
+  color: #bd93f9;
+}
+
+/* Vitest → green */
+.boxLanguage[data-tech="vitest"] {
+  background-color: rgba(114, 185, 82, 0.12);
+  border-color: rgba(114, 185, 82, 0.35);
+}
+.boxLanguage[data-tech="vitest"] .language {
+  color: #8cc66f;
 }
 
 /* ─── Button text hidden — icon-only buttons ─────────── */
@@ -245,8 +500,14 @@
     object-position: 20% top;
   }
 
-  /* Ensure Bellok's image is centered properly */
-  .pic[data-project-image="belloks-killfeed"] {
+  /* Preserve Bellok's 4:3 screenshot proportions on desktop */
+  .gridProject[data-project="bellok-s-killfeed"] .projectImages {
+    aspect-ratio: 4 / 3;
+    align-self: center;
+  }
+
+  .pic[data-project-image="bellok-s-killfeed"] {
+    object-fit: cover;
     object-position: center center;
   }
 }

@@ -54,7 +54,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
           <div className={styles.languages}>
             {project.technologies.map((tech) => (
-              <div key={tech} className={styles.boxLanguage}>
+              <div
+                key={tech}
+                className={styles.boxLanguage}
+                data-tech={tech.toLowerCase().replace(/[.\s]+/g, "-")}
+              >
                 <span className={styles.language}>{tech}</span>
               </div>
             ))}
