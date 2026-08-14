@@ -1,51 +1,52 @@
 .emailSection {
   grid-area: email;
   display: flex;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
   align-items: center;
   padding: 25px;
   background: linear-gradient(
     5deg,
     rgba(255, 255, 255, 0.06),
-    rgba(77, 176, 238, 0.329)
+    var(--color-surface-accent)
   );
   border: 2px solid var(--border-glass);
   border-radius: 16px;
   color: var(--color-text-primary);
-}
-
-.email {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(84, 84, 84, 0.561);
-  padding: 0;
-  border-radius: 10px;
-  width: 100%;
-}
-
-.email a {
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  color: #f5efef;
-  font-size: 1.1rem;
-  border-radius: 10px;
-  font-weight: 400;
-  padding: 10px 25px;
-  transition: color 0.4s;
   cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.email a:hover {
-  color: #928f8f;
+.emailSection:hover {
+  border-color: rgba(232, 179, 90, 0.5);
+  box-shadow: 0 0 20px rgba(232, 179, 90, 0.12);
 }
 
-.email i {
+.emailSection:focus-visible {
+  outline: 2px solid rgba(232, 179, 90, 0.7);
+  outline-offset: 3px;
+  border-color: rgba(232, 179, 90, 0.6);
+  box-shadow: 0 0 24px rgba(232, 179, 90, 0.15);
+}
+
+.emailSection i {
   font-size: 1.4rem;
-  color: #f5efef;
-  padding-right: 15px;
+  color: #e8b35a;
+  flex-shrink: 0;
+  transition: color 0.3s ease;
+}
+
+.emailSection:hover i {
+  color: #f0c570;
+}
+
+.emailText {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--color-text-primary);
 }
 
 @media (max-width: 900px) {
@@ -54,11 +55,11 @@
     min-height: 120px;
   }
 
-  .email a {
+  .emailText {
     font-size: 1.1rem;
   }
 
-  .email i {
+  .emailSection i {
     font-size: 1.4rem;
   }
 }
@@ -69,12 +70,11 @@
     min-height: 90px;
   }
 
-  .email a {
+  .emailText {
     font-size: 1rem;
-    padding: 10px 12px;
   }
 
-  .email i {
+  .emailSection i {
     font-size: 1.3rem;
   }
 }
@@ -85,17 +85,11 @@
     padding: 8px 16px;
   }
 
-  .email {
-    background-color: transparent;
+  .emailText {
+    display: none;
   }
 
-  .email a {
-    font-size: 0;
-    padding: 0;
-  }
-
-  .email i {
+  .emailSection i {
     font-size: 1.9rem;
-    padding-right: 0;
   }
 }
