@@ -375,6 +375,147 @@ const AbstractImage: React.FC = () => {
     };
   }, [spheres]);
 
+  // Periodically blink one fully visible sphere to hint that the field is
+  // interactive even before the pointer reaches it.
+  useEffect(() => {
+    const card = cardRef.current;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!card || reduceMotion.matches || spheres.length === 0) return;
+
+    const fullyVisible = spheres
+      .map((sphere, index) => ({ sphere, index }))
+      .filter(
+        ({ sphere }) =>
+          sphere.cx - sphere.size / 2 >= 0 &&
+          sphere.cy - sphere.size / 2 >= 0 &&
+          sphere.cx + sphere.size / 2 <= size.w &&
+          sphere.cy + sphere.size / 2 <= size.h,
+      )
+      .map(({ index }) => index);
+    const candidates = fullyVisible.length
+      ? fullyVisible
+      : spheres.map((_, index) => index);
+
+    let previousIndex = -1;
+    let nextBlinkTimeout: number | undefined;
+    let pointerInside = false;
+    let nextBlinkDelay = 2000;
+    const activeAnimations = new Map<number, number>();
+
+    const stopBlinking = () => {
+      if (nextBlinkTimeout !== undefined) {
+        window.clearTimeout(nextBlinkTimeout);
+        nextBlinkTimeout = undefined;
+      }
+      activeAnimations.forEach((frame) => cancelAnimationFrame(frame));
+      activeAnimations.clear();
+      nextBlinkDelay = 2000;
+      sphereRefs.current.forEach((sphere) => {
+        sphere?.style.setProperty("--eye-open", "0");
+      });
+    };
+
+    const scheduleNextBlink = (delay: number) => {
+      nextBlinkTimeout = window.setTimeout(blinkRandomSphere, delay);
+    };
+
+    const blinkRandomSphere = () => {
+      nextBlinkTimeout = undefined;
+      if (pointerInside) return;
+
+      const availableCandidates = candidates.filter(
+        (index) => !activeAnimations.has(index),
+      );
+
+      // If every eligible sphere is still blinking, wait for the next slot
+      // instead of starting a second animation on an already active sphere.
+      if (availableCandidates.length === 0) {
+        scheduleNextBlink(nextBlinkDelay);
+        nextBlinkDelay = nextBlinkDelay === 2000 ? 3000 : 2000;
+        return;
+      }
+
+      let candidate =
+        availableCandidates[
+          Math.floor(Math.random() * availableCandidates.length)
+        ];
+      if (availableCandidates.length > 1) {
+        while (candidate === previousIndex) {
+          candidate =
+            availableCandidates[
+              Math.floor(Math.random() * availableCandidates.length)
+            ];
+        }
+      }
+      previousIndex = candidate;
+
+      const sphere = sphereRefs.current[candidate];
+      if (sphere) {
+        const startedAt = performance.now();
+        const animateSleepyEyes = (now: number) => {
+          if (pointerInside) return;
+
+          const progress = Math.min((now - startedAt) / 5000, 1);
+          let eyeOpen = 0;
+
+          // Three sleepy partial openings using the existing eye CSS.
+          if (progress < 0.13) {
+            eyeOpen = (progress / 0.13) * 0.65;
+          } else if (progress < 0.23) {
+            eyeOpen = ((0.23 - progress) / 0.1) * 0.65;
+          } else if (progress < 0.36) {
+            eyeOpen = ((progress - 0.23) / 0.13) * 0.52;
+          } else if (progress < 0.46) {
+            eyeOpen = ((0.46 - progress) / 0.1) * 0.52;
+          } else if (progress < 0.57) {
+            eyeOpen = ((progress - 0.46) / 0.11) * 0.48;
+          } else if (progress < 0.69) {
+            eyeOpen = ((0.69 - progress) / 0.12) * 0.48;
+          }
+
+          sphere.style.setProperty("--eye-open", eyeOpen.toFixed(3));
+
+          if (progress < 1) {
+            activeAnimations.set(candidate, requestAnimationFrame(animateSleepyEyes));
+          } else {
+            activeAnimations.delete(candidate);
+            sphere.style.setProperty("--eye-open", "0");
+          }
+        };
+
+        activeAnimations.set(candidate, requestAnimationFrame(animateSleepyEyes));
+      }
+
+      // Stagger pairs by 2s, then 3s. With 5s animations this keeps at most
+      // two visible cues active at once without making the field noisy.
+      scheduleNextBlink(nextBlinkDelay);
+      nextBlinkDelay = nextBlinkDelay === 2000 ? 3000 : 2000;
+    };
+
+    const handlePointerEnter = () => {
+      pointerInside = true;
+      stopBlinking();
+    };
+    const handlePointerLeave = () => {
+      pointerInside = false;
+      stopBlinking();
+      scheduleNextBlink(5000);
+    };
+
+    card.addEventListener("pointerenter", handlePointerEnter);
+    card.addEventListener("pointerleave", handlePointerLeave);
+    card.addEventListener("pointercancel", handlePointerLeave);
+
+    scheduleNextBlink(3000);
+
+    return () => {
+      stopBlinking();
+      card.removeEventListener("pointerenter", handlePointerEnter);
+      card.removeEventListener("pointerleave", handlePointerLeave);
+      card.removeEventListener("pointercancel", handlePointerLeave);
+    };
+  }, [size.h, size.w, spheres]);
+
   return (
     <div ref={cardRef} className={styles.abstractImage} aria-hidden="true">
       {/* Soft diffused light source - no rays, just smooth glow */}
