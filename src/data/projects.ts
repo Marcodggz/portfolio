@@ -6,6 +6,14 @@ import dayzImage from '../assets/DayZ.webp'
 
 export const projects: ProjectData[] = [
   {
+    title: "Bellok's Killfeed",
+    descriptionKey: 'bellokDescription',
+    image: bellokImage,
+    imageAlt: "Bellok's Killfeed project placeholder",
+    technologies: ['TypeScript','Node.js', 'Discord.js', 'Nitrado API', 'GitHub Actions'],
+    githubUrl: 'https://github.com/Marcodggz/bellok-dayz-bot',
+  },
+  {
     title: 'Jammming',
     descriptionKey: 'jammmingDescription',
     image: jammmingImage,
@@ -15,6 +23,14 @@ export const projects: ProjectData[] = [
     githubUrl: 'https://github.com/Marcodggz/jammming',
   },
   {
+    title: 'DayZ Vanilla+ Server',
+    descriptionKey: 'dayzDescription',
+    image: dayzImage,
+    imageAlt: 'DayZ Vanilla + Server project placeholder',
+    technologies: ['XML', 'JSON', 'Python', 'Shell', 'GitHub Actions'],
+    githubUrl: 'https://github.com/Marcodggz/DayZ-Vanilla-Plus-Server',
+  },
+  {
     title: 'Portfolio',
     descriptionKey: 'portfolioDescription',
     image: portfolioImage,
@@ -22,21 +38,5 @@ export const projects: ProjectData[] = [
     technologies: ['React', 'TypeScript', 'CSS Modules'],
     liveUrl: 'https://tu-portfolio-url.vercel.app/', // Uncomment when deployed
     githubUrl: 'https://github.com/Marcodggz/portfolio',
-  },
-  {
-    title: "Bellok's Killfeed",
-    descriptionKey: 'bellokDescription',
-    image: bellokImage,
-    imageAlt: "Bellok's Killfeed project placeholder",
-    technologies: ['TypeScript','Node.js', 'Discord.js', 'Nitrado API', 'GitHub Actions'],
-    githubUrl: 'https://github.com/Marcodggz/bellok-dayz-bot',
-  },
-  {
-    title: 'DayZ Vanilla+ Server',
-    descriptionKey: 'dayzDescription',
-    image: dayzImage,
-    imageAlt: 'DayZ Vanilla + Server project placeholder',
-    technologies: ['XML', 'JSON', 'Python', 'Shell', 'GitHub Actions'],
-    githubUrl: 'https://github.com/Marcodggz/DayZ-Vanilla-Plus-Server',
   },
 ]

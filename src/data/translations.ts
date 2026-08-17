@@ -24,15 +24,17 @@ export const translations = {
       heading: 'Projects',
       live: 'Live',
       github: 'GitHub',
+      scroll: 'scroll',
+      scrollTo: 'Scroll to',
       viewLiveProject: 'View {{title}} live project',
       viewGitHub: 'View {{title}} GitHub repository',
       // Individual project descriptions
       jammmingDescription:
         'React playlist builder that lets users search tracks, create playlists, and save them to Spotify using the Spotify Web API and OAuth PKCE. Includes a demo mode so anyone can try the main flows without Spotify access.',
       portfolioDescription:
-        'Personal portfolio built with React, TypeScript, and CSS Modules. It brings together a selection of projects in a responsive and accessible interface, with a clear, reusable, and maintainable component architecture.',
+        'Personal portfolio built with React, TypeScript, and CSS Modules, focused on responsive design, accessibility, and maintainable component architecture. It showcases selected projects through a clean, adaptive interface with semantic structure, keyboard-friendly interactions, and layouts designed to stay consistent across screen sizes.',
       bellokDescription:
-        'Discord bot for DayZ servers that processes game logs in real time to generate killfeeds, persistent statistics, rankings, and activity heatmaps. Built with TypeScript in strict mode, automated testing, and a modular architecture focused on reliability and maintainability.',
+        'Discord bot for DayZ servers that processes game logs in real time to generate structured killfeeds, persistent player statistics, leaderboards, and activity heatmaps. Built with strict TypeScript and integrated with Discord and the Nitrado API, with automated testing and a modular architecture designed for reliable event processing, maintainability, and resilience to external service failures.',
       dayzDescription:
         'Custom DayZ server for Livonia, with version-controlled XML and JSON configuration and an automated validation workflow using Shell and Python. Includes custom loot, spawn and economy settings, reversible changes, deployment to Nitrado, and validation checks run through GitHub Actions before changes are integrated.',
     },
@@ -92,15 +94,17 @@ export const translations = {
       heading: 'Proyectos',
       live: 'Ver',
       github: 'GitHub',
+      scroll: 'Desliza',
+      scrollTo: 'Desliza hasta',
       viewLiveProject: 'Ver proyecto en vivo: {{title}}',
       viewGitHub: 'Ver repositorio en GitHub: {{title}}',
       // Individual project descriptions
       jammmingDescription:
         'Aplicación en React para crear y gestionar playlists de Spotify, con búsqueda de canciones, organización de listas y guardado mediante la Spotify Web API y OAuth PKCE. Incluye modo demo para probar funciones sin iniciar sesión con Spotify.',
       portfolioDescription:
-        'Portfolio personal desarrollado con React, TypeScript y CSS Modules. Reúne una selección de proyectos en una interfaz responsive y accesible, con una arquitectura de componentes clara, reutilizable y fácil de mantener.',
+        'Portfolio personal desarrollado con React, TypeScript y CSS Modules, centrado en el diseño responsive, la accesibilidad y una arquitectura de componentes fácil de mantener. Presenta una selección de proyectos mediante una interfaz limpia y adaptable, con estructura semántica, interacciones optimizadas para teclado y layouts diseñados para mantener su coherencia en cualquier tamaño de pantalla.',
       bellokDescription:
-        'Bot de Discord para servidores de DayZ que procesa logs en tiempo real para generar killfeeds, estadísticas persistentes, rankings y mapas de calor de actividad. Construido con TypeScript en modo estricto, testing automatizado y una arquitectura modular orientada a la fiabilidad y mantenibilidad.',
+        'Bot de Discord para servidores de DayZ que procesa logs del juego en tiempo real para generar killfeeds estructurados, estadísticas persistentes de jugadores, tablas de clasificación y mapas de calor de actividad. Desarrollado con TypeScript estricto e integrado con Discord y la API de Nitrado, incorpora testing automatizado y una arquitectura modular diseñada para procesar eventos de forma fiable, facilitar el mantenimiento y resistir fallos de servicios externos.',
       dayzDescription:
         'Servidor DayZ personalizado para Livonia, con configuración versionada en XML y JSON y un flujo de validación automatizado con Shell y Python. Incluye ajustes de loot, spawns y economía, cambios reversibles y despliegue en Nitrado, con validaciones ejecutadas también en GitHub Actions antes de integrar cambios.',
     },
