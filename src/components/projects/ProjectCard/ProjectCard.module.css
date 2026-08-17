@@ -22,10 +22,10 @@
     "github github";
 }
 
-/* ─── Title area — no card, sits on page background ── */
+/* ─── Title area — aligns with the image's inner edge ── */
 .projectTitleArea {
   grid-area: title;
-  padding: 4px 0 10px;
+  padding: 4px 0 14px;
 }
 
 /* ─── Screenshot ─────────────────────────────────────── */
@@ -438,36 +438,60 @@
 }
 
 /* ─── Tablet landscape / Desktop  ≥ 1024 px ──────────
-   Two-column card: image left (2fr), content right.
-   The page list stays vertical — this only changes
-   the internal layout of each card.                  */
+   Side-by-side project scene: image first in the visual
+   hierarchy, with the supporting content beside it.    */
 @media (min-width: 1024px) {
   .gridProject {
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: minmax(0, 1.3fr) minmax(360px, 1fr);
     grid-template-areas:
-      "image  title   title"
-      "image  text    text"
-      "image  link    github";
+      "title title"
+      "image text"
+      "image actions";
     grid-template-rows: auto 1fr auto;
-    gap: 20px;
+    gap: 16px 20px;
   }
 
   /* When there's no live URL, GitHub button spans full width on desktop too */
   .gridProject[data-has-live-url="false"] {
     grid-template-areas:
-      "image  title   title"
-      "image  text    text"
-      "image  github  github";
+      "title title"
+      "image text"
+      "image actions";
+    grid-template-rows: auto 1fr auto;
   }
 
-  /* Image panel stretches to match the full height of the right content stack */
+  .linkButton,
+  .githubButton {
+    grid-area: actions;
+  }
+
+  .linkButton + .githubButton {
+    margin-left: calc(50% + 8px);
+  }
+
+  .linkButton {
+    margin-right: calc(50% + 8px);
+  }
+
+  .githubButton {
+    margin-left: calc(50% + 8px);
+  }
+
+  .gridProject[data-has-live-url="false"] .githubButton {
+    margin: 0;
+  }
+
   .projectImages {
-    min-height: unset;
     align-self: stretch;
-    align-items: stretch;
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 0;
   }
 
-  /* object-fit: cover — image fills the full container, no empty framing */
+  .projectFlexContainer {
+    height: 100%;
+  }
+
   .pic {
     object-fit: cover;
     height: 100%;
@@ -484,8 +508,14 @@
   }
 
   .projectHeader {
-    padding: 24px 28px;
-    gap: 24px;
+    height: 100%;
+    padding: 20px 22px;
+    gap: 18px;
+    justify-content: space-between;
+  }
+
+  .languages {
+    margin-top: 8px;
   }
 
   .linkButton,
@@ -502,8 +532,11 @@
 
   /* Preserve Bellok's 4:3 screenshot proportions on desktop */
   .gridProject[data-project="bellok-s-killfeed"] .projectImages {
-    aspect-ratio: 4 / 3;
-    align-self: center;
+    aspect-ratio: auto;
+  }
+
+  .gridProject[data-project="portfolio"] .projectImages {
+    aspect-ratio: auto;
   }
 
   .pic[data-project-image="bellok-s-killfeed"] {
