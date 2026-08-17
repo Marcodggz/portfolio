@@ -14,14 +14,14 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <a href="#main-content" className={styles.skipLink}>
         {t.skipToMainContent}
       </a>
-      <div className={styles.headerWrapper}>
+      <header className={styles.headerWrapper}>
         <div className={styles.navColumn}>
           <Nav />
         </div>
         <div className={styles.languageSwitcherWrapper}>
           <LanguageSwitcher />
         </div>
-      </div>
+      </header>
       <main id="main-content">{children}</main>
     </div>
   );
