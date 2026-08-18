@@ -16,61 +16,80 @@
   color: var(--color-text-primary);
 }
 
-.circle {
-  width: 94px;
-  height: 94px;
-  border-radius: 50%;
+.mark {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #232629 0%, #3d4248 100%);
+  width: 94px;
+  height: 94px;
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  border: 1px solid rgba(174, 215, 236, 0.45);
+  border-radius: 22px 8px 22px 8px;
+  background:
+    linear-gradient(135deg, rgba(77, 176, 238, 0.16), transparent 48%),
+    linear-gradient(145deg, rgba(35, 38, 41, 0.96), rgba(18, 22, 28, 0.98));
   color: #ffffff;
-  font-weight: 300;
-  font-size: 1.4rem;
-  letter-spacing: 0.15em;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  position: relative;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   box-shadow:
     0 10px 28px rgba(0, 0, 0, 0.6),
     0 3px 10px rgba(0, 0, 0, 0.4),
-    inset 0 2px 2px rgba(255, 255, 255, 0.3),
-    inset 0 -3px 6px rgba(0, 0, 0, 0.35);
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -12px 24px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
-.circle::before {
+.mark::before {
   content: "";
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    rgba(77, 176, 238, 0.5) 0%,
-    rgba(255, 255, 255, 0.25) 50%,
-    rgba(77, 176, 238, 0.3) 100%
-  );
-  z-index: -1;
-}
-
-.circle::after {
-  content: "";
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  right: 8px;
-  bottom: 8px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 32% 28%,
-    rgba(255, 255, 255, 0.35) 0%,
-    rgba(255, 255, 255, 0.1) 35%,
-    transparent 60%
-  );
+  inset: 8px;
+  border: 1px solid rgba(174, 215, 236, 0.16);
+  border-radius: 14px 4px 14px 4px;
   pointer-events: none;
+}
+
+.mark::after {
+  content: "";
+  position: absolute;
+  top: -28%;
+  right: -22%;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background: rgba(77, 176, 238, 0.3);
+  filter: blur(22px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.markGlyph {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 64px;
+  height: 46px;
+  aspect-ratio: 73 / 52;
+  max-width: 100%;
+  transform-origin: center;
+}
+
+.markPath,
+.markAccent {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3.2;
+}
+
+.markPath {
+  stroke: #d7e5eb;
+  filter: drop-shadow(0 0 3px rgba(174, 215, 236, 0.24));
+}
+
+.markAccent {
+  stroke: var(--color-nav-accent);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 5px rgba(114, 197, 230, 0.72));
 }
 
 /* Desktop: identity wrapper contains only h1, role hidden */
@@ -112,13 +131,22 @@
 @media (max-width: 1024px) {
   .nameCard {
     padding: 16px 24px;
-    gap: 0;
+    gap: 10px;
     min-height: 0;
   }
 
-  /* Hide the MD coin at tablet */
-  .circle {
-    display: none;
+  .mark {
+    width: 64px;
+    height: 64px;
+  }
+
+  .mark::before {
+    inset: 6px;
+    border-radius: 11px 3px 11px 3px;
+  }
+
+  .markGlyph {
+    transform: scale(0.68);
   }
 
   /* Show the role text at tablet */
@@ -142,7 +170,22 @@
 /* ── Mobile ≤ 600px ──────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   .nameCard {
-    padding: 20px 18px;
+    padding: 16px 18px 18px;
+    gap: 8px;
+  }
+
+  .mark {
+    width: 52px;
+    height: 52px;
+  }
+
+  .mark::before {
+    inset: 4px;
+    border-radius: 8px 3px 8px 3px;
+  }
+
+  .markGlyph {
+    transform: scale(0.52);
   }
 
   .name {
