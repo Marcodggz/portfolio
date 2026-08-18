@@ -111,6 +111,7 @@
     justify-content: flex-end;
     align-items: flex-start;
     gap: 0;
+    min-height: 64px;
     padding: 12px 20px 0;
   }
 
@@ -139,6 +140,7 @@
 /* ── Narrow mobile ≤ 480px ───────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .headerWrapper {
+    min-height: 58px;
     padding: 10px 16px 0;
   }
 }
