@@ -21,12 +21,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 94px;
-  height: 94px;
+  width: 88px;
+  height: 88px;
   aspect-ratio: 1;
   flex: 0 0 auto;
   border: 1px solid rgba(174, 215, 236, 0.45);
-  border-radius: 22px 8px 22px 8px;
+  border-radius: 19px 7px 19px 7px;
   background:
     linear-gradient(135deg, rgba(77, 176, 238, 0.16), transparent 48%),
     linear-gradient(145deg, rgba(35, 38, 41, 0.96), rgba(18, 22, 28, 0.98));
@@ -42,9 +42,9 @@
 .mark::before {
   content: "";
   position: absolute;
-  inset: 8px;
+  inset: 7px;
   border: 1px solid rgba(174, 215, 236, 0.16);
-  border-radius: 14px 4px 14px 4px;
+  border-radius: 13px 4px 13px 4px;
   pointer-events: none;
 }
 
@@ -138,6 +138,7 @@
   .mark {
     width: 64px;
     height: 64px;
+    border-radius: 15px 6px 15px 6px;
   }
 
   .mark::before {
@@ -177,11 +178,11 @@
   .mark {
     width: 52px;
     height: 52px;
+    border-radius: 12px 4px 12px 4px;
   }
 
   .mark::before {
-    inset: 4px;
-    border-radius: 8px 3px 8px 3px;
+    display: none;
   }
 
   .markGlyph {
