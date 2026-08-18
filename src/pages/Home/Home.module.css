@@ -125,7 +125,7 @@
 
 /* ── Mobile ≤ 600px ──────────────────────────────────────────────────────── */
 /*    Single-column layout: name+role → about → tech → courses → quote       */
-/*    AbstractImage, WebDev, and MD coin hidden (consistent with tablet)     */
+/*    AbstractImage and WebDev hidden; NameCard keeps its compact mark        */
 @media (max-width: 600px) {
   .home {
     padding: 16px 0 32px 0;
