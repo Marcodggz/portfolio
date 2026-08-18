@@ -6,9 +6,10 @@ import styles from "./ProjectCard.module.css";
 
 interface ProjectCardProps {
   project: ProjectData;
+  priority?: boolean;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, priority = false }) => {
   const { language } = useLanguage();
   const t = translations[language].projects;
 
@@ -41,7 +42,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           className={styles.pic}
           src={project.image}
           alt={project.imageAlt}
+          width={project.imageWidth}
+          height={project.imageHeight}
           data-project-image={projectId}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
+          decoding={priority ? "sync" : "async"}
         />
       </div>
 

@@ -2,6 +2,8 @@ export interface ProjectData {
   title: string
   descriptionKey: string
   image: string
+  imageWidth: number
+  imageHeight: number
   imageAlt: string
   technologies: string[]
   liveUrl?: string

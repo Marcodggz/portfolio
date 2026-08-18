@@ -143,7 +143,7 @@
   outline-offset: 3px;
 }
 
-/* ─── Image — natural aspect ratio on mobile/tablet ── */
+/* ─── Image — reserve space while the asset decodes ─── */
 .pic {
   width: 100%;
   height: auto;
