@@ -29,8 +29,15 @@
 
 html {
   background: var(--background-app);
+  color-scheme: dark;
   /* Force scrollbar gutter to prevent layout shift when scrollbar appears */
   overflow-y: scroll;
+}
+
+body,
+#root {
+  min-height: 100vh;
+  background: var(--background-app);
 }
 
 /* ─── Screen-reader-only utility ─────────────────────────────────────────────
