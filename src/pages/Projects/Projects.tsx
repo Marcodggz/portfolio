@@ -82,7 +82,7 @@ const Projects: React.FC = () => {
               }
               className={`${styles.projectReveal} ${visibleProjects.has(index) || index === 0 ? styles.projectVisible : ""}`}
             >
-              <ProjectCard project={project} />
+              <ProjectCard project={project} priority={index === 0} />
               {index === 0 && (
                 <button
                   className={`${styles.scrollIndicator} ${hasReachedNextProject ? styles.scrollIndicatorHidden : ""}`}

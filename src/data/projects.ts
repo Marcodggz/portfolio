@@ -9,6 +9,8 @@ export const projects: ProjectData[] = [
     title: "Bellok's Killfeed",
     descriptionKey: 'bellokDescription',
     image: bellokImage,
+    imageWidth: 1200,
+    imageHeight: 900,
     imageAlt: "Bellok's Killfeed project placeholder",
     technologies: ['TypeScript','Node.js', 'Discord.js', 'Nitrado API', 'GitHub Actions'],
     githubUrl: 'https://github.com/Marcodggz/bellok-dayz-bot',
@@ -17,6 +19,8 @@ export const projects: ProjectData[] = [
     title: 'Jammming',
     descriptionKey: 'jammmingDescription',
     image: jammmingImage,
+    imageWidth: 1200,
+    imageHeight: 658,
     imageAlt: 'Screenshot of the Jammming app showing track search and an editable playlist',
     technologies: ['React', 'JavaScript', 'Spotify API', 'OAuth PKCE', 'CSS'],
     liveUrl: 'https://jammming-navy.vercel.app/',
@@ -26,6 +30,8 @@ export const projects: ProjectData[] = [
     title: 'DayZ Vanilla+ Server',
     descriptionKey: 'dayzDescription',
     image: dayzImage,
+    imageWidth: 1200,
+    imageHeight: 800,
     imageAlt: 'DayZ Vanilla + Server project placeholder',
     technologies: ['XML', 'JSON', 'Python', 'Shell', 'GitHub Actions'],
     githubUrl: 'https://github.com/Marcodggz/DayZ-Vanilla-Plus-Server',
@@ -34,9 +40,19 @@ export const projects: ProjectData[] = [
     title: 'Portfolio',
     descriptionKey: 'portfolioDescription',
     image: portfolioImage,
+    imageWidth: 1200,
+    imageHeight: 840,
     imageAlt: 'Screenshot of the Portfolio home page layout',
     technologies: ['React', 'TypeScript', 'CSS Modules'],
     liveUrl: 'https://tu-portfolio-url.vercel.app/', // Uncomment when deployed
     githubUrl: 'https://github.com/Marcodggz/portfolio',
   },
 ]
+
+// Start fetching project artwork before the user navigates to the projects page.
+// The assets are small and this removes the first-visit image flash.
+if (typeof window !== 'undefined') {
+  const preload = new Image()
+  preload.decoding = 'async'
+  preload.src = projects[0].image
+}
