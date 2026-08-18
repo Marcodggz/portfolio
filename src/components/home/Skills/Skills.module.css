@@ -181,7 +181,10 @@
   }
 
   .skills h2 {
+    width: 100%;
+    margin-inline: auto;
     font-size: 1.5rem;
+    text-align: center;
   }
 
   .skills[data-language="es"] h2 {

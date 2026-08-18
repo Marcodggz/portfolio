@@ -56,8 +56,9 @@
 /* ── Mobile ≤ 600px ─────────────────────────────────────── */
 @media (max-width: 600px) {
   .flexContactContainer {
-    width: min(100% - 1rem, 700px);
-    padding: 0 10px;
+    width: calc(100% - 40px);
+    max-width: 700px;
+    padding: 0;
   }
 }
 
