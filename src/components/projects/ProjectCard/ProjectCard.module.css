@@ -425,6 +425,47 @@
   display: none;
 }
 
+/* ─── Mobile typography ──────────────────────────────── */
+@media (max-width: 600px) {
+  .projectHeader {
+    padding: 16px 18px;
+    gap: 16px;
+  }
+
+  .title {
+    gap: 10px;
+  }
+
+  .layerIcon {
+    font-size: 1.35rem;
+    padding: 5px;
+  }
+
+  .title h2 {
+    font-size: 1.55rem;
+    line-height: 1.2;
+  }
+
+  .projectText {
+    gap: 10px;
+  }
+
+  .projectText p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 375px) {
+  .title h2 {
+    font-size: 1.45rem;
+  }
+
+  .projectText p {
+    font-size: 0.9rem;
+  }
+}
+
 /* ─── Tablet portrait  ≥ 600 px ─────────────────────
    Still one-column card; container controls width.   */
 @media (min-width: 600px) {

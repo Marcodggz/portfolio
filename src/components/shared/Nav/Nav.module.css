@@ -195,6 +195,7 @@
 /* ── Mobile ≤ 600px ──────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   .navLinks {
+    min-width: 0;
     gap: 24px;
     font-size: 16px;
   }
@@ -206,6 +207,7 @@
 
   .navLinks :global(a) {
     padding: 8px 13px;
+    white-space: nowrap;
   }
 
   .navLinksEs :global(a) {
