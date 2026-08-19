@@ -70,6 +70,22 @@
     height: auto;
   }
 
+  .certList {
+    grid-template-columns: 1fr;
+    row-gap: 0.6rem;
+  }
+
+  .certItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+  }
+
   .certifications h2 {
     font-size: 1.7rem;
   }
@@ -80,6 +96,36 @@
 
   .certIssuer {
     font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .certIssuer::before {
+    content: none;
+  }
+}
+
+/* ── Desktop certification cards ≥ 1025px ───────────── */
+@media (min-width: 1025px) {
+  .certifications h2 {
+    width: min(100%, 40rem);
+    margin-inline: auto;
+  }
+
+  .certList {
+    gap: 1rem;
+  }
+
+  .certItem {
+    min-height: 48px;
+    padding: 0.55rem 0.8rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+  }
+
+  .certName,
+  .certIssuer {
+    white-space: nowrap;
   }
 }
 
