@@ -49,21 +49,6 @@
   color: var(--color-text-primary);
 }
 
-@media (max-width: 900px) {
-  .emailSection {
-    grid-row: auto;
-    min-height: 120px;
-  }
-
-  .emailText {
-    font-size: 1.1rem;
-  }
-
-  .emailSection i {
-    font-size: 1.4rem;
-  }
-}
-
 @media (max-width: 600px) {
   .emailSection {
     padding: 15px;
@@ -87,10 +72,10 @@
   }
 
   .emailSection i {
-    font-size: clamp(2.1rem, 3vw, 2.4rem);
+    font-size: clamp(2rem, 2.5vw, 2.4rem);
   }
 
   .emailText {
-    font-size: clamp(1.2rem, 1.8vw, 1.35rem);
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
   }
 }
