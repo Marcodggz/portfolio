@@ -1,6 +1,6 @@
-# Marco DGGZ — Software Engineer Portfolio
+# Marco Dominguez — Software Engineer
 
-Personal portfolio for **Marco Dominguez**, a software engineer focused on clean, maintainable code and reliable digital products.
+Personal portfolio showcasing selected projects and a focus on clean, maintainable code and reliable digital products.
 
 ## At a glance
 
