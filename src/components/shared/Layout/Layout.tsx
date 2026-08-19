@@ -3,6 +3,7 @@ import { useLanguage } from "../../../context/useLanguage";
 import { translations } from "../../../data/translations";
 import Nav from "../Nav/Nav";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
+import Footer from "../Footer/Footer";
 import styles from "./Layout.module.css";
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -23,6 +24,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </div>
       </header>
       <main id="main-content">{children}</main>
+      <Footer />
     </div>
   );
 };

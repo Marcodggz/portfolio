@@ -7,6 +7,11 @@ export const translations = {
     },
     layout: {
       skipToMainContent: 'Skip to main content',
+      footer: {
+        socialLinksLabel: 'Social links',
+        emailAriaLabel: 'Send email',
+        linkedinAriaLabel: 'Open LinkedIn profile',
+      },
     },
     home: {
       aboutHeading: 'About',
@@ -66,6 +71,7 @@ export const translations = {
       messageMaxLength: 'Message must be less than 500 characters.',
       // Aria labels
       linkedinAriaLabel: 'Open LinkedIn profile',
+      emailAriaLabel: 'Send email',
       githubAriaLabel: 'Open GitHub profile',
     },
   },
@@ -77,6 +83,11 @@ export const translations = {
     },
     layout: {
       skipToMainContent: 'Ir al contenido principal',
+      footer: {
+        socialLinksLabel: 'Enlaces sociales',
+        emailAriaLabel: 'Enviar email',
+        linkedinAriaLabel: 'Abrir perfil de LinkedIn',
+      },
     },
     home: {
       aboutHeading: 'Sobre mí',
@@ -136,6 +147,7 @@ export const translations = {
       messageMaxLength: 'El mensaje debe tener menos de 500 caracteres.',
       // Aria labels
       linkedinAriaLabel: 'Abrir perfil de LinkedIn',
+      emailAriaLabel: 'Enviar email',
       githubAriaLabel: 'Abrir perfil de GitHub',
     },
   },

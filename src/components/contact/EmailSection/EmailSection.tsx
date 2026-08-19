@@ -1,15 +1,21 @@
 import React from "react";
+import { useLanguage } from "../../../context/useLanguage";
+import { translations } from "../../../data/translations";
+import { contactLinks } from "../../../data/contact";
 import styles from "./EmailSection.module.css";
 
 const EmailSection: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations[language].contact;
+
   return (
     <a
       className={styles.emailSection}
-      href="mailto:marcodmgzgil@gmail.com?subject=Mail%20from%20your%20portfolio"
-      aria-label="Send email to marcodmgzgil@gmail.com"
+      href={contactLinks.emailHref}
+      aria-label={t.emailAriaLabel}
     >
       <i className="fa-solid fa-envelope" aria-hidden="true" />
-      <span className={styles.emailText}>marcodmgzgil@gmail.com</span>
+      <span className={styles.emailText}>{contactLinks.email}</span>
     </a>
   );
 };
