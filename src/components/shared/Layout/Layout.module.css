@@ -113,7 +113,7 @@
 
   /* Add bottom padding to main content to prevent overlap with fixed nav */
   .mainContent > main {
-    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   }
 }
 

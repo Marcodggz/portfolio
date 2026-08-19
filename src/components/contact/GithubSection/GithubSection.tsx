@@ -1,6 +1,7 @@
 import React from "react";
 import { useLanguage } from "../../../context/useLanguage";
 import { translations } from "../../../data/translations";
+import { contactLinks } from "../../../data/contact";
 import styles from "./GithubSection.module.css";
 
 const GithubSection: React.FC = () => {
@@ -11,7 +12,7 @@ const GithubSection: React.FC = () => {
     <div className={styles.github}>
       <a
         className={styles.url}
-        href="https://github.com/Marcodggz"
+        href={contactLinks.github}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={t.githubAriaLabel}
