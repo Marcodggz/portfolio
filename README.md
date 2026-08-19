@@ -15,9 +15,9 @@ Personal portfolio showcasing selected projects and a focus on clean, maintainab
 | Project | What it demonstrates | Stack |
 | --- | --- | --- |
 | [Bellok's Killfeed](https://github.com/Marcodggz/bellok-dayz-bot) | Real-time event processing, persistent player statistics, Discord integration, and resilience around external services | TypeScript, Node.js, Discord.js, Nitrado API, GitHub Actions |
-| [Jammming](https://jammming-navy.vercel.app/) | Search, playlist creation, Spotify integration, OAuth PKCE, and a demo mode for trying the main flows | React, JavaScript, Spotify Web API, CSS |
+| [Jammming](https://jammming-navy.vercel.app/) · [GitHub](https://github.com/Marcodggz/jammming) | Search, playlist creation, Spotify integration, OAuth PKCE, and a demo mode for trying the main flows | React, JavaScript, Spotify Web API, CSS |
 | [DayZ Vanilla+ Server](https://github.com/Marcodggz/DayZ-Vanilla-Plus-Server) | Version-controlled configuration, validation workflows, and repeatable deployment changes | XML, JSON, Python, Shell, GitHub Actions |
-| Portfolio | Responsive presentation, semantic structure, keyboard-friendly interactions, and reusable UI components | React, TypeScript, CSS Modules |
+| [Portfolio](https://marcodggz.com/) | Responsive presentation, semantic structure, keyboard-friendly interactions, and reusable UI components | React, TypeScript, CSS Modules |
 
 ## Highlights
 
