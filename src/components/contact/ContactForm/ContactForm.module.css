@@ -119,7 +119,7 @@
   min-height: 1.2em;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .contactMe {
     margin-top: 40px;
     padding-top: 20px;

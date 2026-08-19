@@ -52,18 +52,6 @@
   outline-offset: 3px;
 }
 
-@media (max-width: 900px) {
-  .linkedin {
-    grid-row: auto;
-    min-height: 120px;
-  }
-
-  .url {
-    font-size: 3.2rem;
-    padding-top: 0;
-  }
-}
-
 @media (max-width: 600px) {
   .linkedin {
     min-height: 80px;
@@ -81,6 +69,7 @@
   }
 
   .url {
-    font-size: clamp(3.2rem, 4vw, 3.8rem);
+    font-size: clamp(3.2rem, 3.5vw, 3.6rem);
+    padding-top: 0;
   }
 }

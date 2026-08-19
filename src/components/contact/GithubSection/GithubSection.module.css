@@ -51,7 +51,7 @@
 }
 
 .githubText {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 7px;
   align-items: center;
@@ -73,28 +73,6 @@
   color: #f0f2f4;
 }
 
-@media (max-width: 900px) {
-  .github {
-    grid-row: auto;
-    min-height: 120px;
-  }
-
-  .url i {
-    font-size: 3.2rem;
-  }
-
-  .githubText {
-    display: none;
-  }
-}
-
-/* GitHub remains icon-only until the desktop layout begins. */
-@media (min-width: 901px) and (max-width: 1024px) {
-  .githubText {
-    display: none;
-  }
-}
-
 @media (max-width: 600px) {
   .github {
     min-height: 80px;
@@ -112,6 +90,12 @@
   }
 
   .url i {
-    font-size: clamp(3.2rem, 4vw, 3.8rem);
+    font-size: clamp(3.2rem, 3.5vw, 3.6rem);
+  }
+}
+
+@media (min-width: 1025px) {
+  .githubText {
+    display: flex;
   }
 }
