@@ -7,8 +7,7 @@ Personal portfolio showcasing selected projects and a focus on clean, maintainab
 - **Role:** Software Engineer
 - **Focus:** React, TypeScript, JavaScript, Node.js, accessibility, responsive UI, and maintainable architecture
 - **Languages:** English and Spanish
-- **Live project demo:** [Jammming](https://jammming-navy.vercel.app/)
-- **GitHub:** [github.com/Marcodggz](https://github.com/Marcodggz)
+- **Live site:** [marcodggz.com](https://marcodggz.com/)
 - **LinkedIn:** [linkedin.com/in/marcodggz](https://www.linkedin.com/in/marcodggz/)
 
 ## Featured work
@@ -58,4 +57,4 @@ The portfolio is an active personal project. Content, project links, and visual 
 
 ## Contact
 
-The fastest ways to reach me are [LinkedIn](https://www.linkedin.com/in/marcodggz/) and [GitHub](https://github.com/Marcodggz/).
+The best way to reach me is by [email](mailto:marcodmgzgil@gmail.com), or through [LinkedIn](https://www.linkedin.com/in/marcodggz/).
