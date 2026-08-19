@@ -25,31 +25,26 @@
     "contact-me  contact-me";
 }
 
-/* ── Tablet landscape ≥ 768px and ≤ 900px ─────────────── */
-@media (min-width: 768px) and (max-width: 900px) {
-  .flexContactContainer {
-    width: min(100% - 2rem, 740px);
-    max-width: 740px;
-    padding: 0 10px;
-  }
-
-  .gridContact {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas:
-      "email      linkedin  github"
-      "contact-me contact-me contact-me";
-    gap: 14px;
-  }
-}
-
-/* ── Tablet portrait ≥ 361px and ≤ 767px ─────────────── */
-@media (min-width: 361px) and (max-width: 767px) {
+/* ── Tablet and mobile layout 361px–1024px ──────────── */
+@media (min-width: 361px) and (max-width: 1024px) {
   .gridContact {
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto;
     grid-template-areas:
       "email      email"
       "linkedin   github"
       "contact-me contact-me";
+  }
+}
+
+/* ── Tablet spacing 601px–1024px ────────────────────── */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .contact {
+    padding-top: 52px;
+  }
+
+  .gridContact {
+    grid-template-rows: auto auto auto;
   }
 }
 

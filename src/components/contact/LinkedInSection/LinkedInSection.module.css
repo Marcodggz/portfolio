@@ -74,12 +74,13 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 900px) {
+@media (min-width: 601px) and (max-width: 1024px) {
   .linkedin {
-    min-height: 68px;
+    height: auto;
+    min-height: 88px;
   }
 
   .url {
-    font-size: 1.9rem;
+    font-size: clamp(3.2rem, 4vw, 3.8rem);
   }
 }
