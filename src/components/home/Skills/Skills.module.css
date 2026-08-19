@@ -173,6 +173,60 @@
   }
 }
 
+/* ── Tablet portrait 601px–1024px ───────────────────────────────────────── */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .skills h2 {
+    width: 100%;
+    max-width: none;
+    margin-inline: auto;
+    font-size: 1.95rem;
+    line-height: 1.15;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .skills[data-language="es"] h2 {
+    font-size: 1.85rem;
+  }
+
+  .skillsIcons {
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    grid-template-rows: repeat(2, auto);
+    gap: 0.75rem;
+    max-width: 100%;
+  }
+
+  .iconSkill {
+    grid-column: span 2;
+    max-width: none;
+    padding: 0.65rem;
+  }
+
+  .iconSkill:nth-child(6) {
+    grid-column: 2 / span 2;
+    grid-row: 2;
+  }
+
+  .iconSkill:nth-child(7) {
+    grid-column: 4 / span 2;
+    grid-row: 2;
+  }
+
+  .iconSkill:nth-child(8) {
+    grid-column: 6 / span 2;
+    grid-row: 2;
+  }
+
+  .iconSkill:nth-child(9) {
+    grid-column: 8 / span 2;
+    grid-row: 2;
+  }
+
+  .iconSkill i {
+    font-size: 44px;
+  }
+}
+
 /* ── Mobile ≤ 600px ──────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   .skills {

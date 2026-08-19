@@ -62,42 +62,19 @@
 /* Language switcher in third column, aligned to end */
 .languageSwitcherWrapper {
   position: absolute;
-  top: 50%;
+  top: calc(50% + 8px);
   right: 2rem;
   display: flex;
   justify-content: flex-end;
   transform: translateY(-50%);
 }
 
-/* ── Narrow Desktop 1025px–1051px ────────────────────────────────────────── */
-/*    Reduce header gap in tightest desktop range before tablet              */
-@media (min-width: 1025px) and (max-width: 1051px) {
-}
-
-/* ── Tablet ≤ 1024px ─────────────────────────────────────────────────────── */
-/*    Override desktop header layout for responsive nav centering.           */
-@media (max-width: 1024px) {
-}
-
-/* ── Tablet and below ≤ 768px ────────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .headerWrapper {
-    flex-direction: column;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem 0;
-  }
-
+/* ── Portrait tablet selector placement 601px–768px ─────────────────────── */
+@media (min-width: 601px) and (max-width: 768px) and (orientation: portrait) {
   .languageSwitcherWrapper {
-    position: static;
+    top: 10px;
+    right: 1rem;
     transform: none;
-  }
-}
-
-/* ── Tablet only 601px–768px ─────────────────────────────────────────────── */
-@media (min-width: 601px) and (max-width: 768px) {
-  .headerWrapper {
-    gap: 0.75rem;
-    padding: 0.75rem 1rem 0;
   }
 }
 
@@ -129,6 +106,9 @@
   /* Language switcher stays top-right in normal flow */
   .languageSwitcherWrapper {
     position: static;
+    top: auto;
+    right: auto;
+    transform: none;
   }
 
   /* Add bottom padding to main content to prevent overlap with fixed nav */
