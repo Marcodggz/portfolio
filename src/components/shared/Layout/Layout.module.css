@@ -15,9 +15,9 @@
   justify-content: center;
   width: 100%;
   max-width: 1200px;
-  min-height: 108px;
+  min-height: 124px;
   margin-inline: auto;
-  padding: 1rem 2rem 0;
+  padding: 0 2rem;
   box-sizing: border-box;
 }
 
@@ -62,7 +62,7 @@
 /* Language switcher in third column, aligned to end */
 .languageSwitcherWrapper {
   position: absolute;
-  top: calc(50% + 8px);
+  top: 50%;
   right: 2rem;
   display: flex;
   justify-content: flex-end;
