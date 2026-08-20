@@ -97,8 +97,7 @@
     opacity 0.2s ease;
 }
 
-.iconSkill:hover,
-.iconSkill:focus-visible {
+.iconSkill:hover {
   transform: translateY(-2px);
   background: rgba(255, 255, 255, 0.065);
   border-color: rgba(154, 211, 239, 0.2);
@@ -108,15 +107,9 @@
   z-index: 3;
 }
 
-.iconSkill:hover i,
-.iconSkill:focus-visible i {
+.iconSkill:hover i {
   opacity: 1;
   transform: scale(1.05);
-}
-
-.iconSkill:focus-visible {
-  outline: 2px solid rgba(118, 194, 232, 0.72);
-  outline-offset: 3px;
 }
 
 .caption {
@@ -148,8 +141,7 @@
     visibility 0.16s ease;
 }
 
-.iconSkill:hover .caption,
-.iconSkill:focus-visible .caption {
+.iconSkill:hover .caption {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
@@ -161,13 +153,11 @@
     transition: none;
   }
 
-  .iconSkill:hover,
-  .iconSkill:focus-visible {
+  .iconSkill:hover {
     transform: none;
   }
 
-  .iconSkill:hover .caption,
-  .iconSkill:focus-visible .caption {
+  .iconSkill:hover .caption {
     transform: translateX(-50%);
   }
 }

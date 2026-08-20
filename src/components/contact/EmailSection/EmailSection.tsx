@@ -12,7 +12,7 @@ const EmailSection: React.FC = () => {
     <a
       className={styles.emailSection}
       href={contactLinks.emailHref}
-      aria-label={t.emailAriaLabel}
+      aria-label={`${t.emailAriaLabel}: ${contactLinks.email}`}
     >
       <i className="fa-solid fa-envelope" aria-hidden="true" />
       <span className={styles.emailText}>{contactLinks.email}</span>
