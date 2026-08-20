@@ -29,6 +29,10 @@
   flex: 1;
 }
 
+.mainContent > main:focus {
+  outline: none;
+}
+
 /* ─── Skip-to-main link ──────────────────────────────────────────────────────
    Hidden off-screen by default; slides into view on keyboard focus only.    */
 .skipLink {
