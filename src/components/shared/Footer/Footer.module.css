@@ -3,7 +3,7 @@
   max-width: 1080px;
   margin: 0.5rem auto 0;
   padding: 0.65rem 1rem 0.8rem;
-  color: rgba(174, 205, 224, 0.36);
+  color: rgba(179, 184, 189, 0.72);
   font-size: 0.66rem;
 }
 
@@ -28,7 +28,7 @@
   justify-content: center;
   width: 1.35rem;
   height: 1.35rem;
-  color: rgba(174, 205, 224, 0.4);
+  color: rgba(179, 184, 189, 0.76);
   font-size: 0.72rem;
   text-decoration: none;
   transition: color 0.2s ease;

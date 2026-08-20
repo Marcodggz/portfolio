@@ -108,6 +108,7 @@ const ContactForm: React.FC = () => {
               type="text"
               id="name"
               name="name"
+              autoComplete="name"
               placeholder={t.namePlaceholder}
               value={fields.name}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -131,6 +132,7 @@ const ContactForm: React.FC = () => {
               type="email"
               id="email"
               name="_replyto"
+              autoComplete="email"
               placeholder={t.emailPlaceholder}
               value={fields.email}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

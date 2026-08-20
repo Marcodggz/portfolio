@@ -11,6 +11,7 @@ const Nav: React.FC = () => {
   const { pathname } = useLocation();
   const { language } = useLanguage();
   const t = translations[language].nav;
+  const layoutT = translations[language].layout;
   const containerRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
@@ -61,7 +62,7 @@ const Nav: React.FC = () => {
   }, []);
 
   return (
-    <nav className={styles.nav} aria-label="Main navigation">
+    <nav className={styles.nav} aria-label={layoutT.mainNavigation}>
       <div className={styles.navContainer} ref={containerRef}>
         <span className={styles.pill} aria-hidden="true" />
         <ul

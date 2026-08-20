@@ -11,7 +11,7 @@ export const projects: ProjectData[] = [
     image: bellokImage,
     imageWidth: 1200,
     imageHeight: 900,
-    imageAlt: "Bellok's Killfeed project placeholder",
+    imageAlt: "Screenshot of Bellok's Killfeed project showing a Discord killfeed interface",
     technologies: ['TypeScript','Node.js', 'Discord.js', 'Nitrado API', 'GitHub Actions'],
     githubUrl: 'https://github.com/Marcodggz/bellok-dayz-bot',
   },
@@ -32,7 +32,7 @@ export const projects: ProjectData[] = [
     image: dayzImage,
     imageWidth: 1200,
     imageHeight: 800,
-    imageAlt: 'DayZ Vanilla + Server project placeholder',
+    imageAlt: 'Screenshot of the DayZ Vanilla+ Server project showing its custom server configuration',
     technologies: ['XML', 'JSON', 'Python', 'Shell', 'GitHub Actions'],
     githubUrl: 'https://github.com/Marcodggz/DayZ-Vanilla-Plus-Server',
   },
@@ -44,7 +44,7 @@ export const projects: ProjectData[] = [
     imageHeight: 840,
     imageAlt: 'Screenshot of the Portfolio home page layout',
     technologies: ['React', 'TypeScript', 'CSS Modules'],
-    liveUrl: 'https://tu-portfolio-url.vercel.app/', // Uncomment when deployed
+    liveUrl: 'https://marcodggz.com/',
     githubUrl: 'https://github.com/Marcodggz/portfolio',
   },
 ]

@@ -7,6 +7,15 @@ export const translations = {
     },
     layout: {
       skipToMainContent: 'Skip to main content',
+      mainNavigation: 'Main navigation',
+      languageSelector: 'Language selector',
+      switchToEnglish: 'Switch to English',
+      switchToSpanish: 'Switch to Spanish',
+      pageTitles: {
+        home: 'Portfolio',
+        projects: 'Projects',
+        contact: 'Contact',
+      },
       footer: {
         socialLinksLabel: 'Social links',
         emailAriaLabel: 'Send email',
@@ -83,6 +92,15 @@ export const translations = {
     },
     layout: {
       skipToMainContent: 'Ir al contenido principal',
+      mainNavigation: 'Navegación principal',
+      languageSelector: 'Selector de idioma',
+      switchToEnglish: 'Cambiar a inglés',
+      switchToSpanish: 'Cambiar a español',
+      pageTitles: {
+        home: 'Portfolio',
+        projects: 'Proyectos',
+        contact: 'Contacto',
+      },
       footer: {
         socialLinksLabel: 'Enlaces sociales',
         emailAriaLabel: 'Enviar email',
