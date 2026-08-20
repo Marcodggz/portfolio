@@ -1,6 +1,6 @@
 .footer {
   width: 100%;
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0.5rem auto 0;
   padding: 0.65rem 1rem 0.8rem;
   color: rgba(179, 184, 189, 0.72);
@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.8rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(174, 205, 224, 0.1);
   padding-top: 0.6rem;
 }
 
@@ -45,6 +45,7 @@
 
 @media (max-width: 600px) {
   .footer {
+    max-width: none;
     margin-top: 0.15rem;
     padding: 0.4rem 1.25rem calc(5rem + env(safe-area-inset-bottom, 0px));
     text-align: center;
