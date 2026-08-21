@@ -12,7 +12,7 @@ export interface ProjectData {
 
 export interface SkillItem {
   name: string
-  iconClass: string
+  icon: string
   label: string
 }
 

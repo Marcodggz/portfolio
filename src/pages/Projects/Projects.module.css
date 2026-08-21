@@ -72,8 +72,9 @@
   animation: none;
 }
 
-.scrollIndicator i {
-  font-size: 0.75rem;
+.scrollIndicator svg {
+  width: 0.75rem;
+  height: 0.75rem;
 }
 
 .scrollIndicator:hover,

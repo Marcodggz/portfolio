@@ -3,6 +3,7 @@ import { useLanguage } from "../../../context/useLanguage";
 import { translations } from "../../../data/translations";
 import { contactLinks } from "../../../data/contact";
 import styles from "./LinkedInSection.module.css";
+import linkedinIcon from "../../../assets/icons/linkedin.svg";
 
 const LinkedInSection: React.FC = () => {
   const { language } = useLanguage();
@@ -17,7 +18,7 @@ const LinkedInSection: React.FC = () => {
         rel="noopener noreferrer"
         aria-label={t.linkedinAriaLabel}
       >
-        <i className="devicon-linkedin-plain" aria-hidden="true" />
+        <img src={linkedinIcon} alt="" aria-hidden="true" />
       </a>
     </div>
   );

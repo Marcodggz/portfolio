@@ -8,7 +8,7 @@
     var(--color-surface-accent)
   );
   border: 2px solid var(--border-glass);
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   color: var(--color-text-primary);
   transition:
     border-color 0.3s ease,
@@ -63,14 +63,18 @@
   font-weight: 600;
 }
 
-.url i {
+.url img {
   color: #d8dde2;
-  font-size: 3.4rem;
+  width: 3.4rem;
+  height: 3.4rem;
+  filter: brightness(0) invert(1);
+  opacity: 0.88;
   transition: color 0.3s ease;
 }
 
-.url:hover i {
+.url:hover img {
   color: #f0f2f4;
+  opacity: 1;
 }
 
 @media (max-width: 600px) {
@@ -78,8 +82,9 @@
     min-height: 80px;
   }
 
-  .url i {
-    font-size: 2.8rem;
+  .url img {
+    width: 2.8rem;
+    height: 2.8rem;
   }
 }
 
@@ -89,8 +94,9 @@
     min-height: 88px;
   }
 
-  .url i {
-    font-size: clamp(3.2rem, 3.5vw, 3.6rem);
+  .url img {
+    width: clamp(3.2rem, 3.5vw, 3.6rem);
+    height: clamp(3.2rem, 3.5vw, 3.6rem);
   }
 }
 

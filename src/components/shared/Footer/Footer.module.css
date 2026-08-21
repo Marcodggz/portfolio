@@ -34,6 +34,13 @@
   transition: color 0.2s ease;
 }
 
+.socialLinks a svg {
+  display: block;
+  width: 0.72rem;
+  height: 0.72rem;
+  flex-shrink: 0;
+}
+
 .socialLinks a:hover {
   color: rgba(231, 233, 238, 0.78);
 }

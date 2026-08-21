@@ -3,6 +3,10 @@ import { useLanguage } from "../../../context/useLanguage";
 import { translations } from "../../../data/translations";
 import type { ProjectData } from "../../../types";
 import styles from "./ProjectCard.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLayerGroup } from "@fortawesome/free-solid-svg-icons/faLayerGroup";
+import { faLink } from "@fortawesome/free-solid-svg-icons/faLink";
+import githubIcon from "../../../assets/icons/github.svg";
 
 interface ProjectCardProps {
   project: ProjectData;
@@ -30,7 +34,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, priority = false }) 
       <div className={styles.projectTitleArea}>
         <div className={styles.title}>
           <span className={styles.layerIcon} aria-hidden="true">
-            <i className="fa-solid fa-layer-group" />
+            <FontAwesomeIcon icon={faLayerGroup} />
           </span>
           <h2>{project.title}</h2>
         </div>
@@ -80,7 +84,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, priority = false }) 
           rel="noopener noreferrer"
           aria-label={t.viewLiveProject.replace("{{title}}", project.title)}
         >
-          <i className="fa-solid fa-link" aria-hidden="true" />
+          <FontAwesomeIcon icon={faLink} aria-hidden="true" />
           <span className={styles.btnLabel}>{t.live}</span>
         </a>
       )}
@@ -92,7 +96,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, priority = false }) 
         rel="noopener noreferrer"
         aria-label={t.viewGitHub.replace("{{title}}", project.title)}
       >
-        <i className="devicon-github-original" aria-hidden="true" />
+        <img src={githubIcon} alt="" aria-hidden="true" />
         <span className={styles.btnLabel}>{t.github}</span>
       </a>
     </article>

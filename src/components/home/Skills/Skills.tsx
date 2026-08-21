@@ -23,7 +23,7 @@ const Skills: React.FC = () => {
             role="img"
             aria-label={skill.label}
           >
-            <i className={skill.iconClass} aria-hidden="true" />
+            <img src={skill.icon} alt="" aria-hidden="true" />
             <span className={styles.caption} aria-hidden="true">
               {skill.label}
             </span>

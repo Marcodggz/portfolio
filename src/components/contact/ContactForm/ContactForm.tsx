@@ -2,20 +2,21 @@ import React, { useState } from "react";
 import { useLanguage } from "../../../context/useLanguage";
 import { translations } from "../../../data/translations";
 import styles from "./ContactForm.module.css";
+import {
+  validateContactForm,
+  type ContactErrorKey,
+  type ContactFields,
+} from "./validation";
 
 type FormStatus = "idle" | "sending" | "sent" | "error";
 
-type FormErrors = {
-  name?: string;
-  email?: string;
-  message?: string;
-};
+type FormErrors = Partial<Record<keyof ContactFields, string>>;
 
 const ContactForm: React.FC = () => {
   const { language } = useLanguage();
   const t = translations[language].contact;
 
-  const [fields, setFields] = useState({
+  const [fields, setFields] = useState<ContactFields>({
     name: "",
     email: "",
     message: "",
@@ -24,40 +25,20 @@ const ContactForm: React.FC = () => {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errors, setErrors] = useState<FormErrors>({});
 
-  const validateForm = (): FormErrors => {
-    const newErrors: FormErrors = {};
-
-    if (!fields.name.trim()) {
-      newErrors.name = t.nameRequired;
-    } else if (fields.name.trim().length < 2) {
-      newErrors.name = t.nameMinLength;
-    } else if (fields.name.trim().length > 100) {
-      newErrors.name = t.nameMaxLength;
-    }
-
-    if (!fields.email.trim()) {
-      newErrors.email = t.emailRequired;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) {
-      newErrors.email = t.emailInvalid;
-    }
-
-    if (!fields.message.trim()) {
-      newErrors.message = t.messageRequired;
-    } else if (fields.message.trim().length < 10) {
-      newErrors.message = t.messageMinLength;
-    } else if (fields.message.trim().length > 500) {
-      newErrors.message = t.messageMaxLength;
-    }
-
-    return newErrors;
-  };
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const validationErrors = validateForm();
+    const validationErrorKeys = validateContactForm(fields);
+    const validationErrors = Object.fromEntries(
+      Object.entries(validationErrorKeys).map(([field, errorKey]) => [
+        field,
+        t[errorKey as ContactErrorKey],
+      ]),
+    ) as FormErrors;
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      const firstErrorField = Object.keys(validationErrors)[0];
+      document.getElementById(firstErrorField)?.focus();
       return;
     }
 

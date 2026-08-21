@@ -1,0 +1,40 @@
+.notFound {
+  display: grid;
+  min-height: 55vh;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-3);
+  padding: var(--space-6) var(--space-4);
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.code {
+  color: var(--color-focus);
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.notFound h1 {
+  font-size: var(--text-xl);
+}
+
+.notFound p:not(.code) {
+  max-width: 36rem;
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+}
+
+.homeLink {
+  margin-top: var(--space-2);
+  border: 1px solid var(--color-focus);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-4);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.homeLink:hover {
+  background: var(--color-surface-accent);
+}

@@ -11,7 +11,7 @@
     var(--color-surface-accent)
   );
   border: 2px solid var(--border-glass);
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   color: var(--color-text-primary);
   text-decoration: none;
   cursor: pointer;
@@ -32,14 +32,15 @@
   box-shadow: 0 0 24px rgba(232, 179, 90, 0.15);
 }
 
-.emailSection i {
-  font-size: 1.4rem;
+.emailSection svg {
+  width: 1.4rem;
+  height: 1.4rem;
   color: #e8b35a;
   flex-shrink: 0;
   transition: color 0.3s ease;
 }
 
-.emailSection:hover i {
+.emailSection:hover svg {
   color: #f0c570;
 }
 
@@ -59,8 +60,9 @@
     font-size: 1rem;
   }
 
-  .emailSection i {
-    font-size: 1.3rem;
+  .emailSection svg {
+    width: 1.3rem;
+    height: 1.3rem;
   }
 }
 
@@ -71,8 +73,9 @@
     padding: 16px;
   }
 
-  .emailSection i {
-    font-size: clamp(2rem, 2.5vw, 2.4rem);
+  .emailSection svg {
+    width: clamp(2rem, 2.5vw, 2.4rem);
+    height: clamp(2rem, 2.5vw, 2.4rem);
   }
 
   .emailText {
