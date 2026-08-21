@@ -39,7 +39,7 @@
   border: 2px solid var(--border-glass);
   width: 100%;
   padding: 5px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease;
@@ -79,7 +79,7 @@
 
 .buttonMessage {
   padding: 10px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   background: rgba(77, 176, 238, 0.16);
   border: 3px solid rgba(77, 176, 238, 0.38);
   color: var(--color-text-primary);

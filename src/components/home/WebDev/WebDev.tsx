@@ -8,9 +8,9 @@ const WebDev: React.FC = () => {
   const t = translations[language].home;
 
   return (
-    <div className={styles.webDev} data-language={language}>
-      <h2>{t.softwareEngineer}</h2>
-    </div>
+    <section className={styles.webDev} data-language={language} aria-labelledby="web-dev-heading">
+      <h2 id="web-dev-heading">{t.softwareEngineer}</h2>
+    </section>
   );
 };
 

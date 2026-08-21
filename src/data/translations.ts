@@ -15,6 +15,7 @@ export const translations = {
         home: 'Portfolio',
         projects: 'Projects',
         contact: 'Contact',
+        notFound: 'Page not found',
       },
       footer: {
         socialLinksLabel: 'Social links',
@@ -30,9 +31,15 @@ export const translations = {
         'Focused on writing clean, high-performance code and building reliable digital products. I care about technical quality, product thinking, system efficiency, edge cases, and maintainability. Driven by continuous learning, agile workflows, and shipping well-tested software.',
       softwareEngineer: 'Software Engineer',
       technologiesHeading: 'Technologies I work with',
-      vision: '"Envision it. Build it."',
+      visionFirst: 'Envision it',
+      visionSecond: 'Build it',
       certificationsHeading: 'Courses & Learning',
       inProgress: 'In progress',
+    },
+    notFound: {
+      heading: 'Page not found',
+      description: 'The page you are looking for does not exist or has moved.',
+      backHome: 'Back to home',
     },
     projects: {
       heading: 'Projects',
@@ -100,6 +107,7 @@ export const translations = {
         home: 'Portfolio',
         projects: 'Proyectos',
         contact: 'Contacto',
+        notFound: 'Página no encontrada',
       },
       footer: {
         socialLinksLabel: 'Enlaces sociales',
@@ -115,9 +123,15 @@ export const translations = {
         'Centrado en crear productos digitales sólidos, con código limpio y de alto rendimiento. Valoro la calidad técnica, la visión de producto, la eficiencia, los edge cases y la mantenibilidad. Me motiva seguir aprendiendo, trabajar con metodologías ágiles y desarrollar software fiable y bien testeado.',
       softwareEngineer: 'Desarrollador de Software',
       technologiesHeading: 'Tecnologías con las que trabajo',
-      vision: '"Imagínalo. Créalo."',
+      visionFirst: 'Imagínalo',
+      visionSecond: 'Créalo',
       certificationsHeading: 'Cursos y Formación',
       inProgress: 'En curso',
+    },
+    notFound: {
+      heading: 'Página no encontrada',
+      description: 'La página que buscas no existe o se ha movido.',
+      backHome: 'Volver al inicio',
     },
     projects: {
       heading: 'Proyectos',

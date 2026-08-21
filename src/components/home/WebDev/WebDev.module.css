@@ -1,7 +1,7 @@
 .webDev {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--space-1);
   align-items: center;
   justify-content: center;
   height: 100%;
@@ -11,27 +11,27 @@
     var(--color-surface-accent)
   );
   border: 1px solid var(--border-glass);
-  border-radius: 16px;
-  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
   color: var(--color-text-primary);
 }
 
 .webDev h2 {
-  font-size: 1.75rem;
+  font-size: var(--text-role);
   font-weight: 400;
   line-height: 1.2;
 }
 
 .webDev[data-language="es"] h2 {
-  font-size: 1.5rem;
+  font-size: var(--text-md);
 }
 
 @media (max-width: 600px) {
   .webDev {
-    padding: 18px 20px;
+    padding: var(--space-3) var(--space-3);
   }
 
   .webDev h2 {
-    font-size: 1.5rem;
+    font-size: var(--text-md);
   }
 }

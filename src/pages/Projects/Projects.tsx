@@ -4,6 +4,8 @@ import { translations } from "../../data/translations";
 import { projects } from "../../data/projects";
 import ProjectCard from "../../components/projects/ProjectCard/ProjectCard";
 import styles from "./Projects.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons/faArrowDown";
 
 const Projects: React.FC = () => {
   const { language } = useLanguage();
@@ -91,7 +93,7 @@ const Projects: React.FC = () => {
                   aria-label={`${t.scrollTo} ${projects[index + 1].title}`}
                 >
                   <span>{t.scroll}</span>
-                  <i className="fa-solid fa-arrow-down" />
+                  <FontAwesomeIcon icon={faArrowDown} />
                 </button>
               )}
             </div>

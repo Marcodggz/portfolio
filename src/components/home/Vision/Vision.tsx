@@ -7,21 +7,15 @@ const Vision: React.FC = () => {
   const { language } = useLanguage();
   const t = translations[language].home;
 
-  // Split the vision text: "Envision it. Build it." or "Imagínalo. Créalo."
-  const visionText = t.vision;
-  const hasQuotes = visionText.startsWith('"') && visionText.endsWith('"');
-  const textWithoutQuotes = hasQuotes ? visionText.slice(1, -1) : visionText;
-  const parts = textWithoutQuotes.split(". ");
-
   return (
-    <div className={styles.vision}>
-      <h2>
-        {hasQuotes && '"'}
-        <span className={styles.visionFirst}>{parts[0]}.</span>{" "}
-        <span className={styles.visionSecond}>{parts[1]}</span>
-        {hasQuotes && '"'}
+    <section className={styles.vision} aria-labelledby="vision-heading">
+      <h2 id="vision-heading">
+        &quot;
+        <span className={styles.visionFirst}>{t.visionFirst}.</span>{" "}
+        <span className={styles.visionSecond}>{t.visionSecond}</span>
+        &quot;
       </h2>
-    </div>
+    </section>
   );
 };
 

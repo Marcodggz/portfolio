@@ -1,11 +1,13 @@
-import { useEffect, useLayoutEffect } from "react";
+import { lazy, Suspense, useEffect, useLayoutEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useLanguage } from "./context/useLanguage";
 import { translations } from "./data/translations";
 import Layout from "./components/shared/Layout/Layout";
 import Home from "./pages/Home/Home";
-import Projects from "./pages/Projects/Projects";
-import Contact from "./pages/Contact/Contact";
+import NotFound from "./pages/NotFound/NotFound";
+
+const Projects = lazy(() => import("./pages/Projects/Projects"));
+const Contact = lazy(() => import("./pages/Contact/Contact"));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -27,7 +29,7 @@ const getPageTitleKey = (pathname: string): PageTitleKey => {
     case "/contact":
       return "contact";
     default:
-      return "home";
+      return pathname === "/" ? "home" : "notFound";
   }
 };
 
@@ -44,11 +46,20 @@ function App() {
   return (
     <Layout>
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <Suspense
+        fallback={
+          <div role="status" className="routeLoading">
+            Loading...
+          </div>
+        }
+      >
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </Layout>
   );
 }
