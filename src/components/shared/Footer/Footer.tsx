@@ -3,6 +3,9 @@ import { useLanguage } from "../../../context/useLanguage";
 import { translations } from "../../../data/translations";
 import { contactLinks } from "../../../data/contact";
 import styles from "./Footer.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
+import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons/faLinkedinIn";
 
 const Footer: React.FC = () => {
   const { language } = useLanguage();
@@ -21,7 +24,7 @@ const Footer: React.FC = () => {
             href={contactLinks.emailHref}
             aria-label={t.emailAriaLabel}
           >
-            <i className="fa-solid fa-envelope" aria-hidden="true" />
+            <FontAwesomeIcon icon={faEnvelope} aria-hidden="true" />
           </a>
           <a
             href={contactLinks.linkedin}
@@ -29,7 +32,7 @@ const Footer: React.FC = () => {
             rel="noopener noreferrer"
             aria-label={t.linkedinAriaLabel}
           >
-            <i className="fa-brands fa-linkedin-in" aria-hidden="true" />
+            <FontAwesomeIcon icon={faLinkedinIn} aria-hidden="true" />
           </a>
         </nav>
       </div>

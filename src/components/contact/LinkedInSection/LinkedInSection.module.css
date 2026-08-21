@@ -6,7 +6,7 @@
     var(--color-surface-accent)
   );
   border: 2px solid var(--border-glass);
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   color: var(--color-text-primary);
   transition:
     border-color 0.3s ease,
@@ -43,6 +43,12 @@
   transition: color 0.3s ease;
 }
 
+.url img {
+  width: 3.4rem;
+  height: 3.4rem;
+  filter: brightness(0) saturate(100%) invert(63%) sepia(25%) saturate(1069%) hue-rotate(170deg) brightness(89%) contrast(86%);
+}
+
 .url:hover {
   color: #6db4e8;
 }
@@ -60,6 +66,12 @@
   .url {
     font-size: 2.6rem;
   }
+
+  .url img {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+
 }
 
 @media (min-width: 601px) and (max-width: 1024px) {
@@ -69,7 +81,12 @@
   }
 
   .url {
-    font-size: clamp(3.2rem, 3.5vw, 3.6rem);
     padding-top: 0;
   }
+
+  .url img {
+    width: clamp(3.2rem, 3.5vw, 3.6rem);
+    height: clamp(3.2rem, 3.5vw, 3.6rem);
+  }
+
 }

@@ -3,6 +3,7 @@ import { useLanguage } from "../../../context/useLanguage";
 import { translations } from "../../../data/translations";
 import { contactLinks } from "../../../data/contact";
 import styles from "./GithubSection.module.css";
+import githubIcon from "../../../assets/icons/github.svg";
 
 const GithubSection: React.FC = () => {
   const { language } = useLanguage();
@@ -17,7 +18,7 @@ const GithubSection: React.FC = () => {
         rel="noopener noreferrer"
         aria-label={t.githubAriaLabel}
       >
-        <i className="devicon-github-original" aria-hidden="true" />
+        <img src={githubIcon} alt="" aria-hidden="true" />
         <div className={styles.githubText}>
           <h2>{t.githubProfileHeading}</h2>
         </div>
