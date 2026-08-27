@@ -5,6 +5,7 @@ export interface ProjectData {
   imageWidth: number
   imageHeight: number
   imageAlt: string
+  eager?: boolean
   technologies: string[]
   liveUrl?: string
   githubUrl: string

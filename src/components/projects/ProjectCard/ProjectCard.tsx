@@ -16,6 +16,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, priority = false }) => {
   const { language } = useLanguage();
   const t = translations[language].projects;
+  const shouldLoadEagerly = priority || project.eager === true;
 
   // Get the description from translations based on the descriptionKey
   const description = t[project.descriptionKey as keyof typeof t] as string;
@@ -49,9 +50,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, priority = false }) 
           width={project.imageWidth}
           height={project.imageHeight}
           data-project-image={projectId}
-          loading={priority ? "eager" : "lazy"}
-          fetchPriority={priority ? "high" : "auto"}
-          decoding={priority ? "sync" : "async"}
+          loading={shouldLoadEagerly ? "eager" : "lazy"}
+          fetchPriority={shouldLoadEagerly ? "high" : "auto"}
+          decoding={shouldLoadEagerly ? "sync" : "async"}
         />
       </div>
 
