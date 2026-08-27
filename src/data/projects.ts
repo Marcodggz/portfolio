@@ -43,6 +43,7 @@ export const projects: ProjectData[] = [
     imageWidth: 1200,
     imageHeight: 840,
     imageAlt: 'Screenshot of the Portfolio home page layout',
+    eager: true,
     technologies: ['React', 'TypeScript', 'CSS Modules'],
     liveUrl: 'https://marcodggz.com/',
     githubUrl: 'https://github.com/Marcodggz/portfolio',
