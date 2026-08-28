@@ -67,6 +67,39 @@
     0 2px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* A quiet affordance for first-time visitors. It appears once after the
+   ambient hint has had time to establish the scene, then yields to the
+   pointer interaction on hover. */
+.cursorHint {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  z-index: 2;
+  max-width: calc(100% - 32px);
+  transform: translateX(-50%) translateY(4px);
+  color: rgba(238, 243, 250, 0.58);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.cursorHintVisible {
+  opacity: 0.58;
+  transform: translateX(-50%) translateY(0);
+}
+
+.abstractImage:hover .cursorHint {
+  opacity: 0;
+  transform: translateX(-50%) translateY(2px);
+}
+
 /* The flashlight SOURCE - strong diffused light that doesn't pass through spheres.
    Spheres block the light creating natural shadows behind them. */
 .underLight {
@@ -138,16 +171,16 @@
     scale(var(--scale));
   will-change: transform;
 
-  /* Esfera con volumen natural - siempre mantiene su forma 3D */
+  /* Naturally shaded sphere that always preserves its 3D form */
   background:
-    /* Iluminación direccional que SOLO aparece cuando la luz les da */
+    /* Directional lighting that appears only when the light reaches the sphere */
     radial-gradient(
       circle at calc(var(--hx) * 1%) calc(var(--hy) * 1%),
       rgba(140, 170, 210, calc(var(--glow) * 0.75)) 0%,
       rgba(100, 130, 180, calc(var(--glow) * 0.45)) 35%,
       transparent 65%
     ),
-    /* Gradiente volumétrico base con tonos azul-slate más ricos y profundos */
+    /* Rich, deep blue-slate base gradient for natural volume */
     radial-gradient(
         circle at 50% 46%,
         #4a5568 0%,
@@ -157,16 +190,16 @@
         #1a1f28 100%
       );
 
-  /* Sombras dinámicas SOLO cuando hay luz */
+  /* Dynamic shadows that appear only when the light is present */
   box-shadow:
-    /* Sombra interna direccional SOLO con luz */
+    /* Directional inner shadow that appears only with light */
     inset calc(var(--sx) * -4px * var(--glow))
       calc(var(--sy) * -4px * var(--glow)) calc(12px * var(--glow))
       rgba(0, 0, 0, calc(var(--glow) * 0.6)),
-    /* Sombras proyectadas SOLO con luz */ calc(var(--sx) * 3px * var(--glow))
+    /* Cast shadows that appear only with light */ calc(var(--sx) * 3px * var(--glow))
       calc(var(--sy) * 3px * var(--glow)) calc(8px * var(--glow))
       rgba(0, 0, 0, calc(var(--glow) * 0.5)),
-    /* Glow exterior SOLO con luz */ 0 0 calc(14px * var(--glow))
+    /* Exterior glow that appears only with light */ 0 0 calc(14px * var(--glow))
       rgba(120, 170, 230, calc(var(--glow) * 0.45));
 }
 
@@ -191,7 +224,7 @@
   height: calc(3px + var(--eye-open) * 13px);
   border-radius: 50%;
 
-  /* Blanco puro muy brillante */
+  /* Bright, clean white */
   background: radial-gradient(
     ellipse at center,
     rgba(255, 255, 255, calc(1 * var(--eye-open))) 0%,
@@ -199,16 +232,16 @@
     rgba(248, 252, 255, calc(0.98 * var(--eye-open))) 100%
   );
 
-  /* Animación más pronunciada */
+  /* Gentle opening so the cue does not dominate the composition */
   transform: translate(-50%, -50%) scaleY(calc(0.1 + var(--eye-open) * 0.9));
 
-  /* Transiciones rápidas y naturales */
+  /* Fast, natural transitions */
   transition:
-    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
     width 0.25s ease-out,
     height 0.25s ease-out;
 
-  /* Borde negro fino y limpio como en la referencia */
+  /* Thin, clean black outline */
   box-shadow:
     inset 0 0 0 calc(0.5px * var(--eye-open))
       rgba(8, 10, 12, calc(1 * var(--eye-open))),
@@ -217,7 +250,7 @@
     0 0 calc(3px * var(--eye-open))
       rgba(255, 255, 255, calc(0.2 * var(--eye-open)));
 
-  /* Borde fino y definido */
+  /* Thin, defined border */
   border: calc(0.6px * var(--eye-open)) solid
     rgba(8, 10, 12, calc(1 * var(--eye-open)));
 
@@ -235,7 +268,7 @@
   height: calc(3px + var(--eye-open) * 13px);
   border-radius: 50%;
 
-  /* Blanco puro muy brillante */
+  /* Bright, clean white */
   background: radial-gradient(
     ellipse at center,
     rgba(255, 255, 255, calc(1 * var(--eye-open))) 0%,
@@ -243,16 +276,16 @@
     rgba(248, 252, 255, calc(0.98 * var(--eye-open))) 100%
   );
 
-  /* Animación más pronunciada */
+  /* Gentle opening so the cue does not dominate the composition */
   transform: translate(-50%, -50%) scaleY(calc(0.1 + var(--eye-open) * 0.9));
 
-  /* Transiciones rápidas y naturales */
+  /* Fast, natural transitions */
   transition:
-    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
     width 0.25s ease-out,
     height 0.25s ease-out;
 
-  /* Borde negro fino y limpio como en la referencia */
+  /* Thin, clean black outline */
   box-shadow:
     inset 0 0 0 calc(0.5px * var(--eye-open))
       rgba(8, 10, 12, calc(1 * var(--eye-open))),
@@ -261,7 +294,7 @@
     0 0 calc(3px * var(--eye-open))
       rgba(255, 255, 255, calc(0.2 * var(--eye-open)));
 
-  /* Borde fino y definido */
+  /* Thin, defined border */
   border: calc(0.6px * var(--eye-open)) solid
     rgba(8, 10, 12, calc(1 * var(--eye-open)));
 
@@ -285,7 +318,7 @@
   height: calc(4px + var(--eye-open) * 3.5px);
   border-radius: 50%;
 
-  /* Negro puro e intenso */
+  /* Deep, intense black */
   background: radial-gradient(
     circle at 35% 30%,
     rgba(40, 45, 50, calc(0.85 * var(--eye-open))) 0%,
@@ -293,7 +326,7 @@
     rgba(5, 7, 9, calc(1 * var(--eye-open))) 100%
   );
 
-  /* Movimiento más visible y natural - aumentado a 0.6% */
+  /* More visible, natural movement with a 0.6% range */
   transform: translate(-50%, -50%)
     translate(
       calc(var(--pupil-x) * var(--eye-open) * 0.6%),
@@ -302,14 +335,14 @@
 
   opacity: var(--eye-open);
 
-  /* Tracking suave y rápido */
+  /* Smooth, responsive tracking */
   transition:
     transform 0.1s ease-out,
     opacity 0.25s ease-out,
     width 0.25s ease-out,
     height 0.25s ease-out;
 
-  /* Sombras limpias para definición */
+  /* Clean shadows for definition */
   box-shadow:
     inset 0 1px 2px rgba(0, 0, 0, calc(0.85 * var(--eye-open))),
     0 0 calc(2px * var(--eye-open)) rgba(0, 0, 0, calc(0.5 * var(--eye-open))),
@@ -328,7 +361,7 @@
   height: calc(4px + var(--eye-open) * 3.5px);
   border-radius: 50%;
 
-  /* Negro puro e intenso */
+  /* Deep, intense black */
   background: radial-gradient(
     circle at 35% 30%,
     rgba(40, 45, 50, calc(0.85 * var(--eye-open))) 0%,
@@ -336,7 +369,7 @@
     rgba(5, 7, 9, calc(1 * var(--eye-open))) 100%
   );
 
-  /* Movimiento más visible y natural - aumentado a 0.6% */
+  /* More visible, natural movement with a 0.6% range */
   transform: translate(-50%, -50%)
     translate(
       calc(var(--pupil-x) * var(--eye-open) * 0.6%),
@@ -345,14 +378,14 @@
 
   opacity: var(--eye-open);
 
-  /* Tracking suave y rápido */
+  /* Smooth, responsive tracking */
   transition:
     transform 0.1s ease-out,
     opacity 0.25s ease-out,
     width 0.25s ease-out,
     height 0.25s ease-out;
 
-  /* Sombras limpias para definición */
+  /* Clean shadows for definition */
   box-shadow:
     inset 0 1px 2px rgba(0, 0, 0, calc(0.85 * var(--eye-open))),
     0 0 calc(2px * var(--eye-open)) rgba(0, 0, 0, calc(0.5 * var(--eye-open))),

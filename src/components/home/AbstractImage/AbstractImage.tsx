@@ -1,4 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { translations } from "../../../data/translations";
+import { useLanguage } from "../../../context/useLanguage";
 import styles from "./AbstractImage.module.css";
 
 /**
@@ -46,6 +48,19 @@ type SphereStyle = React.CSSProperties & {
   "--pupil-y"?: string;
 };
 
+const CursorHint: React.FC<{
+  hintRef: React.RefObject<HTMLSpanElement | null>;
+}> = ({ hintRef }) => {
+  const { language } = useLanguage();
+  const hint = translations[language].home.cursorHint;
+
+  return (
+    <span ref={hintRef} className={styles.cursorHint}>
+      {hint}
+    </span>
+  );
+};
+
 // Production-optimized constants for performance and visual quality
 const CELL = 58; // Horizontal grid pitch (px) - optimized spacing for 48px spheres
 const ROW = 50; // Vertical row pitch (px) - maintains hex packing ratio
@@ -91,12 +106,19 @@ const buildField = (w: number, h: number): Sphere[] => {
   return spheres;
 };
 
-const AbstractImage: React.FC = () => {
+const AbstractImage: React.FC = React.memo(() => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const hintRef = useRef<HTMLSpanElement>(null);
   const sphereRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const [size, setSize] = useState({ w: 0, h: 0 });
 
   const spheres = useMemo(() => buildField(size.w, size.h), [size.w, size.h]);
+  const spheresRef = useRef<Sphere[]>([]);
+  const hasSpheres = spheres.length > 0;
+
+  useEffect(() => {
+    spheresRef.current = spheres;
+  }, [spheres]);
 
   // Live animation state, kept in refs so the rAF loop never triggers renders.
   const sizeRef = useRef({ w: 0, h: 0 }); // latest card size (px)
@@ -133,7 +155,7 @@ const AbstractImage: React.FC = () => {
     if (!card) return;
 
     // Reset per-sphere offset state for the current field.
-    offsets.current = new Float32Array(spheres.length * 2);
+    offsets.current = new Float32Array(spheresRef.current.length * 2);
     activeIds.current = new Set();
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -165,9 +187,17 @@ const AbstractImage: React.FC = () => {
       const off = offsets.current;
       const next = new Set<number>();
 
-      for (let i = 0; i < spheres.length; i++) {
-        const dx = spheres[i].cx - px;
-        const dy = spheres[i].cy - py;
+      const currentSpheres = spheresRef.current;
+      if (off.length !== currentSpheres.length * 2) {
+        const nextOffsets = new Float32Array(currentSpheres.length * 2);
+        nextOffsets.set(off.subarray(0, nextOffsets.length));
+        offsets.current = nextOffsets;
+      }
+      const currentOffsets = offsets.current;
+
+      for (let i = 0; i < currentSpheres.length; i++) {
+        const dx = currentSpheres[i].cx - px;
+        const dy = currentSpheres[i].cy - py;
         const distSq = dx * dx + dy * dy; // Avoid sqrt when possible
 
         // Quick rejection using squared distance
@@ -193,8 +223,16 @@ const AbstractImage: React.FC = () => {
 
         // Magnetic repulsion: push spheres away smoothly
         const push = repelAmount * MAX_PUSH;
-        off[i * 2] = lerp(off[i * 2], nx * push, PUSH_SMOOTH);
-        off[i * 2 + 1] = lerp(off[i * 2 + 1], ny * push, PUSH_SMOOTH);
+        currentOffsets[i * 2] = lerp(
+          currentOffsets[i * 2],
+          nx * push,
+          PUSH_SMOOTH,
+        );
+        currentOffsets[i * 2 + 1] = lerp(
+          currentOffsets[i * 2 + 1],
+          ny * push,
+          PUSH_SMOOTH,
+        );
 
         // Highlight position inside the sphere.
         // The lit side faces the pointer, so it is opposite to nx / ny.
@@ -224,8 +262,8 @@ const AbstractImage: React.FC = () => {
         const el = sphereRefs.current[i];
         if (el) {
           // Only update properties that have changed significantly (reduce repaints)
-          const txNew = off[i * 2].toFixed(2);
-          const tyNew = off[i * 2 + 1].toFixed(2);
+          const txNew = currentOffsets[i * 2].toFixed(2);
+          const tyNew = currentOffsets[i * 2 + 1].toFixed(2);
 
           el.style.setProperty("--tx", `${txNew}px`);
           el.style.setProperty("--ty", `${tyNew}px`);
@@ -251,13 +289,20 @@ const AbstractImage: React.FC = () => {
       activeIds.current.forEach((i) => {
         if (next.has(i)) return;
 
-        off[i * 2] = lerp(off[i * 2], 0, PUSH_SMOOTH);
-        off[i * 2 + 1] = lerp(off[i * 2 + 1], 0, PUSH_SMOOTH);
+        currentOffsets[i * 2] = lerp(currentOffsets[i * 2], 0, PUSH_SMOOTH);
+        currentOffsets[i * 2 + 1] = lerp(
+          currentOffsets[i * 2 + 1],
+          0,
+          PUSH_SMOOTH,
+        );
 
         const el = sphereRefs.current[i];
         if (el) {
-          el.style.setProperty("--tx", `${off[i * 2].toFixed(2)}px`);
-          el.style.setProperty("--ty", `${off[i * 2 + 1].toFixed(2)}px`);
+          el.style.setProperty("--tx", `${currentOffsets[i * 2].toFixed(2)}px`);
+          el.style.setProperty(
+            "--ty",
+            `${currentOffsets[i * 2 + 1].toFixed(2)}px`,
+          );
           // Reset all animation properties - eyes fully closed, no glow
           el.style.setProperty("--glow", "0");
           el.style.setProperty("--shadow-alpha", "0.22");
@@ -272,7 +317,10 @@ const AbstractImage: React.FC = () => {
           el.style.setProperty("--pupil-y", "0");
         }
 
-        if (Math.abs(off[i * 2]) > 0.05 || Math.abs(off[i * 2 + 1]) > 0.05) {
+        if (
+          Math.abs(currentOffsets[i * 2]) > 0.05 ||
+          Math.abs(currentOffsets[i * 2 + 1]) > 0.05
+        ) {
           next.add(i);
         }
       });
@@ -373,33 +421,41 @@ const AbstractImage: React.FC = () => {
       cancelAnimationFrame(frame.current);
       running.current = false;
     };
-  }, [spheres]);
+  }, [hasSpheres]);
 
   // Periodically blink one fully visible sphere to hint that the field is
   // interactive even before the pointer reaches it.
   useEffect(() => {
     const card = cardRef.current;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (!card || reduceMotion.matches || spheres.length === 0) return;
+    if (!card || reduceMotion.matches || !hasSpheres) return;
 
-    const fullyVisible = spheres
-      .map((sphere, index) => ({ sphere, index }))
-      .filter(
-        ({ sphere }) =>
-          sphere.cx - sphere.size / 2 >= 0 &&
-          sphere.cy - sphere.size / 2 >= 0 &&
-          sphere.cx + sphere.size / 2 <= size.w &&
-          sphere.cy + sphere.size / 2 <= size.h,
-      )
-      .map(({ index }) => index);
-    const candidates = fullyVisible.length
-      ? fullyVisible
-      : spheres.map((_, index) => index);
+    const getCandidates = () => {
+      const currentSpheres = spheresRef.current;
+      const { w, h } = sizeRef.current;
+      const fullyVisible = currentSpheres
+        .map((sphere, index) => ({ sphere, index }))
+        .filter(
+          ({ sphere }) =>
+            sphere.cx - sphere.size / 2 >= 0 &&
+            sphere.cy - sphere.size / 2 >= 0 &&
+            sphere.cx + sphere.size / 2 <= w &&
+            sphere.cy + sphere.size / 2 <= h,
+        )
+        .map(({ index }) => index);
+      return fullyVisible.length
+        ? fullyVisible
+        : currentSpheres.map((_, index) => index);
+    };
 
     let previousIndex = -1;
     let nextBlinkTimeout: number | undefined;
+    let hintTimeout: number | undefined;
     let pointerInside = false;
-    let nextBlinkDelay = 2000;
+    // Keep the hint present without turning the decorative field into the
+    // main event. Each cue is soft and spaced out so the pointer remains the
+    // strongest visual trigger.
+    let nextBlinkDelay = 2800;
     const activeAnimations = new Map<number, number>();
 
     const stopBlinking = () => {
@@ -409,10 +465,28 @@ const AbstractImage: React.FC = () => {
       }
       activeAnimations.forEach((frame) => cancelAnimationFrame(frame));
       activeAnimations.clear();
-      nextBlinkDelay = 2000;
+      nextBlinkDelay = 2800;
       sphereRefs.current.forEach((sphere) => {
         sphere?.style.setProperty("--eye-open", "0");
       });
+    };
+
+    const hideHint = () => {
+      if (hintTimeout !== undefined) {
+        window.clearTimeout(hintTimeout);
+        hintTimeout = undefined;
+      }
+      hintRef.current?.classList.remove(styles.cursorHintVisible);
+    };
+
+    const scheduleHint = (delay: number) => {
+      hideHint();
+      hintTimeout = window.setTimeout(() => {
+        if (!pointerInside) {
+          hintRef.current?.classList.add(styles.cursorHintVisible);
+        }
+        hintTimeout = undefined;
+      }, delay);
     };
 
     const scheduleNextBlink = (delay: number) => {
@@ -423,6 +497,7 @@ const AbstractImage: React.FC = () => {
       nextBlinkTimeout = undefined;
       if (pointerInside) return;
 
+      const candidates = getCandidates();
       const availableCandidates = candidates.filter(
         (index) => !activeAnimations.has(index),
       );
@@ -431,7 +506,7 @@ const AbstractImage: React.FC = () => {
       // instead of starting a second animation on an already active sphere.
       if (availableCandidates.length === 0) {
         scheduleNextBlink(nextBlinkDelay);
-        nextBlinkDelay = nextBlinkDelay === 2000 ? 3000 : 2000;
+        nextBlinkDelay = nextBlinkDelay === 2800 ? 3800 : 2800;
         return;
       }
 
@@ -452,25 +527,33 @@ const AbstractImage: React.FC = () => {
       const sphere = sphereRefs.current[candidate];
       if (sphere) {
         const startedAt = performance.now();
+        const timingVariation = 0.94 + hash(candidate + startedAt) * 0.12;
+        const ease = (value: number) => value * value * (3 - 2 * value);
         const animateSleepyEyes = (now: number) => {
           if (pointerInside) return;
 
-          const progress = Math.min((now - startedAt) / 5000, 1);
+          // A longer, more readable cue: three distinct sleepy blinks
+          // spread across six seconds instead of disappearing too quickly.
+          const progress = Math.min(
+            ((now - startedAt) / 6000) * timingVariation,
+            1,
+          );
           let eyeOpen = 0;
 
-          // Three sleepy partial openings using the existing eye CSS.
-          if (progress < 0.13) {
-            eyeOpen = (progress / 0.13) * 0.65;
-          } else if (progress < 0.23) {
-            eyeOpen = ((0.23 - progress) / 0.1) * 0.65;
-          } else if (progress < 0.36) {
-            eyeOpen = ((progress - 0.23) / 0.13) * 0.52;
-          } else if (progress < 0.46) {
-            eyeOpen = ((0.46 - progress) / 0.1) * 0.52;
-          } else if (progress < 0.57) {
-            eyeOpen = ((progress - 0.46) / 0.11) * 0.48;
-          } else if (progress < 0.69) {
-            eyeOpen = ((0.69 - progress) / 0.12) * 0.48;
+          // Uneven, eased phases feel more alive: wake, close, peek, then
+          // settle back to sleep.
+          if (progress < 0.14) {
+            eyeOpen = ease(progress / 0.14) * 0.7;
+          } else if (progress < 0.25) {
+            eyeOpen = ease((0.25 - progress) / 0.11) * 0.7;
+          } else if (progress < 0.4) {
+            eyeOpen = ease((progress - 0.25) / 0.15) * 0.56;
+          } else if (progress < 0.52) {
+            eyeOpen = ease((0.52 - progress) / 0.12) * 0.56;
+          } else if (progress < 0.68) {
+            eyeOpen = ease((progress - 0.52) / 0.16) * 0.44;
+          } else if (progress < 0.82) {
+            eyeOpen = ease((0.82 - progress) / 0.14) * 0.44;
           }
 
           sphere.style.setProperty("--eye-open", eyeOpen.toFixed(3));
@@ -486,38 +569,48 @@ const AbstractImage: React.FC = () => {
         activeAnimations.set(candidate, requestAnimationFrame(animateSleepyEyes));
       }
 
-      // Stagger pairs by 2s, then 3s. With 5s animations this keeps at most
-      // two visible cues active at once without making the field noisy.
+      // Stagger by 2.8s, then 3.8s. With 6s animations this keeps a quiet
+      // sense of life without making the whole field compete for attention.
       scheduleNextBlink(nextBlinkDelay);
-      nextBlinkDelay = nextBlinkDelay === 2000 ? 3000 : 2000;
+      nextBlinkDelay = nextBlinkDelay === 2800 ? 3800 : 2800;
     };
 
     const handlePointerEnter = () => {
       pointerInside = true;
       stopBlinking();
+      hideHint();
     };
     const handlePointerLeave = () => {
       pointerInside = false;
       stopBlinking();
-      scheduleNextBlink(5000);
+      // Restart the wake-up cue shortly after the pointer leaves. The hint
+      // follows six seconds after that cue, so the behaviour is demonstrated
+      // before it is explained.
+      scheduleNextBlink(1500);
+      scheduleHint(7500);
     };
 
     card.addEventListener("pointerenter", handlePointerEnter);
     card.addEventListener("pointerleave", handlePointerLeave);
     card.addEventListener("pointercancel", handlePointerLeave);
 
-    scheduleNextBlink(3000);
+    // Let the spheres demonstrate their behaviour almost immediately. The
+    // hint is scheduled 6.2s after this first wake-up cue.
+    scheduleNextBlink(800);
+    scheduleHint(7000);
 
     return () => {
       stopBlinking();
+      hideHint();
       card.removeEventListener("pointerenter", handlePointerEnter);
       card.removeEventListener("pointerleave", handlePointerLeave);
       card.removeEventListener("pointercancel", handlePointerLeave);
     };
-  }, [size.h, size.w, spheres]);
+  }, [hasSpheres]);
 
   return (
     <div ref={cardRef} className={styles.abstractImage} aria-hidden="true">
+      <CursorHint hintRef={hintRef} />
       {/* Soft diffused light source - no rays, just smooth glow */}
       <div className={styles.underLight} aria-hidden="true" />
       <div className={styles.field}>
@@ -559,6 +652,6 @@ const AbstractImage: React.FC = () => {
       <div className={styles.sheen} />
     </div>
   );
-};
+});
 
 export default AbstractImage;
