@@ -35,6 +35,7 @@ export const translations = {
       visionSecond: 'Build it',
       certificationsHeading: 'Courses & Learning',
       inProgress: 'In progress',
+      cursorHint: 'Move your cursor',
     },
     notFound: {
       heading: 'Page not found',
@@ -127,6 +128,7 @@ export const translations = {
       visionSecond: 'Créalo',
       certificationsHeading: 'Cursos y Formación',
       inProgress: 'En curso',
+      cursorHint: 'Mueve el cursor',
     },
     notFound: {
       heading: 'Página no encontrada',
