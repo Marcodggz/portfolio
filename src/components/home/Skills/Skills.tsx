@@ -23,7 +23,7 @@ const Skills: React.FC = () => {
         {coreSkills.map((skill) => (
           <div key={skill.name} className={styles.coreSkill}>
             <img src={skill.icon} alt="" aria-hidden="true" />
-            <span className={styles.skillName}>{skill.label}</span>
+            <span>{skill.label}</span>
           </div>
         ))}
       </div>
@@ -38,7 +38,7 @@ const Skills: React.FC = () => {
               ) : (
                 <span className={styles.aiMark} aria-hidden="true">AI</span>
               )}
-              <span className={styles.skillName}>{skill.label}</span>
+              <span>{skill.label}</span>
             </span>
           ))}
         </div>

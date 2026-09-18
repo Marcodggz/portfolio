@@ -21,8 +21,8 @@
     minmax(220px, auto)
     minmax(80px, auto)
     minmax(80px, auto)
-    minmax(94px, auto)
-    minmax(72px, auto);
+    minmax(112px, auto)
+    minmax(96px, auto);
   grid-template-areas:
     "about   about   about   about   about   about   about   about   abstract abstract abstract abstract"
     "webdev  webdev  webdev  webdev  name    name    name    name    abstract abstract abstract abstract"
@@ -81,7 +81,7 @@
 /* ── Tablet ≤ 1024px ─────────────────────────────────────────────────────── */
 /*    AbstractImage hidden (pointer-based interaction).                      */
 /*    WebDev hidden (role shown in NameCard instead).                        */
-/*    Clean vertical reading flow: name+role → about → tech → courses → quote */
+/*    Clean vertical reading flow: name+role → about → tech → availability → quote */
 @media (max-width: 1024px) {
   .homeContainer {
     /* Constrain content width for tablet to prevent excessive stretching.
@@ -124,7 +124,7 @@
 }
 
 /* ── Mobile ≤ 600px ──────────────────────────────────────────────────────── */
-/*    Single-column layout: name+role → about → tech → courses → quote       */
+/*    Single-column layout: name+role → about → tech → availability → quote  */
 /*    AbstractImage and WebDev hidden; NameCard keeps its compact mark        */
 @media (max-width: 600px) {
   .home {
