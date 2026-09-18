@@ -83,48 +83,44 @@
 }
 
 /* ── Mobile ≤ 600px ──────────────────────────────────────────────────────── */
-/*    Nav fixed at bottom, language selector top-right in normal flow        */
+/*    Keep both controls in normal flow so navigation never covers content.  */
 @media (max-width: 600px) {
   .headerWrapper {
-    /* Simplified header: only contains language switcher at top-right */
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     gap: 0;
-    min-height: 64px;
-    padding: 12px 20px 0;
+    min-height: 126px;
+    padding: 10px 20px 12px;
   }
 
-  /* Nav moves to fixed position at bottom */
+  /* The nav remains easy to find without obscuring the reading flow. */
   .navColumn {
-    position: fixed;
-    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-    left: 50%;
+    position: static;
     width: calc(100% - 32px);
     max-width: 320px;
-    transform: translateX(-50%);
-    z-index: 1000;
+    margin-top: 8px;
   }
 
-  /* Language switcher stays top-right in normal flow */
+  /* Language selector stays aligned to the top-right. */
   .languageSwitcherWrapper {
     position: static;
-    top: auto;
-    right: auto;
+    align-self: flex-end;
+    order: -1;
     transform: none;
   }
 
-  /* Add bottom padding to main content to prevent overlap with fixed nav */
+  /* Restore regular end spacing now that the nav is part of the page flow. */
   .mainContent > main {
-    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: 16px;
   }
 }
 
 /* ── Narrow mobile ≤ 480px ───────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .headerWrapper {
-    min-height: 58px;
+    min-height: 118px;
     padding: 10px 16px 0;
   }
 }
