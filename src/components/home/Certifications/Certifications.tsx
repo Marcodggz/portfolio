@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "../../../context/useLanguage";
 import { translations } from "../../../data/translations";
-import { certifications } from "../../../data/certifications";
 import styles from "./Certifications.module.css";
 
 const Certifications: React.FC = () => {
@@ -9,21 +9,26 @@ const Certifications: React.FC = () => {
   const t = translations[language].home;
 
   return (
-    <section className={styles.certifications} aria-labelledby="cert-heading">
-      <h2 id="cert-heading">{t.certificationsHeading}</h2>
-      <div className={styles.certList}>
-        {certifications.map((cert) => (
-          <div key={cert.name} className={styles.certItem}>
-            <div className={styles.certName}>{cert.name}</div>
-            <div className={styles.certIssuer}>
-              {cert.issuer}
-              {cert.inProgress && (
-                <span aria-label={t.inProgress}> ({t.inProgress})</span>
-              )}
-            </div>
+    <section className={styles.certifications} aria-label={t.availabilityHeading}>
+      <div className={styles.actionRow}>
+        <div className={styles.availabilityIntro}>
+          <span className={styles.statusDot} aria-hidden="true" />
+          <p>{t.availabilityIntro}</p>
+        </div>
+        <div className={styles.actions}>
+          <Link className={styles.projectsLink} to="/projects">{t.viewProjects}</Link>
+          <span className={styles.actionDivider} aria-hidden="true" />
+          <Link className={styles.contactLink} to="/contact">{t.contactCta}</Link>
+        </div>
+      </div>
+      <dl className={styles.availabilityFacts}>
+        {t.availabilityFacts.map((fact) => (
+          <div key={fact.label} className={styles.availabilityFact}>
+            <dt>{fact.label}</dt>
+            <dd>{fact.value}</dd>
           </div>
         ))}
-      </div>
+      </dl>
     </section>
   );
 };
