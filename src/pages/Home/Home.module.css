@@ -19,10 +19,10 @@
   /* minmax lets rows grow when content exceeds the minimum. */
   grid-template-rows:
     minmax(220px, auto)
-    minmax(90px, auto)
-    minmax(90px, auto)
-    minmax(110px, auto)
-    minmax(80px, auto);
+    minmax(80px, auto)
+    minmax(80px, auto)
+    minmax(94px, auto)
+    minmax(72px, auto);
   grid-template-areas:
     "about   about   about   about   about   about   about   about   abstract abstract abstract abstract"
     "webdev  webdev  webdev  webdev  name    name    name    name    abstract abstract abstract abstract"

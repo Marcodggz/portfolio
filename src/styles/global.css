@@ -33,7 +33,7 @@
   --color-surface-accent: rgba(77, 176, 238, 0.24);
   --color-text-primary: #e7e9ee;
   --color-text-secondary: #b3b8bd;
-  --color-text-meta: rgba(174, 205, 224, 0.62);
+  --color-text-meta: rgba(174, 205, 224, 0.72);
   --background-app:
     radial-gradient(
       ellipse at 50% 0%,

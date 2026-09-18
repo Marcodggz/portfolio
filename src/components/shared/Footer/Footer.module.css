@@ -3,7 +3,7 @@
   max-width: 1200px;
   margin: 0.5rem auto 0;
   padding: 0.65rem 1rem 0.8rem;
-  color: rgba(179, 184, 189, 0.72);
+  color: rgba(179, 184, 189, 0.82);
   font-size: 0.66rem;
 }
 
@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.8rem;
-  border-top: 1px solid rgba(174, 205, 224, 0.1);
+  border-top: 1px solid rgba(174, 205, 224, 0.16);
   padding-top: 0.6rem;
 }
 
@@ -28,7 +28,7 @@
   justify-content: center;
   width: 1.35rem;
   height: 1.35rem;
-  color: rgba(179, 184, 189, 0.76);
+  color: rgba(179, 184, 189, 0.88);
   font-size: 0.72rem;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -54,7 +54,7 @@
   .footer {
     max-width: none;
     margin-top: 0.15rem;
-    padding: 0.4rem 1.25rem calc(5rem + env(safe-area-inset-bottom, 0px));
+    padding: 0.8rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom, 0px));
     text-align: center;
   }
 
