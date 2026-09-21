@@ -9,6 +9,7 @@ const AboutMe: React.FC = () => {
 
   // Use tablet-specific text at smaller viewports to avoid redundancy
   const [isTablet, setIsTablet] = React.useState(false);
+  const lead = isTablet ? t.aboutLeadTablet : t.aboutLead;
 
   React.useEffect(() => {
     const checkViewport = () => {
@@ -21,9 +22,12 @@ const AboutMe: React.FC = () => {
   }, []);
 
   return (
-    <section className={styles.aboutMe} aria-labelledby="about-heading">
-      <h2 id="about-heading">{t.aboutHeading}</h2>
-      <p>{isTablet ? t.aboutTextTablet : t.aboutText}</p>
+    <section className={styles.aboutMe} aria-label={t.aboutHeading}>
+      <div className={styles.copy}>
+        <p>{lead}</p>
+        <p>{t.aboutDetails}</p>
+        <p>{t.aboutApproach}</p>
+      </div>
     </section>
   );
 };

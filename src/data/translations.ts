@@ -25,10 +25,14 @@ export const translations = {
     },
     home: {
       aboutHeading: 'About',
-      aboutText:
-        'Software Engineer focused on writing clean, high-performance code and building reliable digital products. I care about technical quality, product thinking, system efficiency, edge cases, and maintainability. Driven by continuous learning, agile workflows, and shipping well-tested software.',
-      aboutTextTablet:
-        'Focused on writing clean, high-performance code and building reliable digital products. I care about technical quality, product thinking, system efficiency, edge cases, and maintainability. Driven by continuous learning, agile workflows, and shipping well-tested software.',
+      aboutLead:
+        'Software Engineer focused on building reliable, maintainable digital products.',
+      aboutDetails:
+        'I care about software quality, with particular attention to performance, accessibility and edge cases from the start of development.',
+      aboutApproach:
+        'I integrate AI into my workflow to solve problems, automate tasks and work more efficiently, while always reviewing and validating the outcome.',
+      aboutLeadTablet:
+        'Focused on building reliable, maintainable digital products.',
       softwareEngineer: 'Software Engineer',
       coreStack: 'Core stack',
       workflowFoundations: 'Foundations & workflow',
@@ -128,10 +132,14 @@ export const translations = {
     },
     home: {
       aboutHeading: 'Sobre mí',
-      aboutText:
-        'Desarrollador de Software centrado en crear productos digitales sólidos, con código limpio y de alto rendimiento. Valoro la calidad técnica, la visión de producto, la eficiencia, los edge cases y la mantenibilidad. Me impulsa el aprendizaje continuo, los flujos de trabajo ágiles y entregar software bien testeado.',
-      aboutTextTablet:
-        'Centrado en crear productos digitales sólidos, con código limpio y de alto rendimiento. Valoro la calidad técnica, la visión de producto, la eficiencia, los edge cases y la mantenibilidad. Me impulsa el aprendizaje continuo, los flujos de trabajo ágiles y entregar software bien testeado.',
+      aboutLead:
+        'Desarrollador de Software enfocado en crear productos digitales fiables y mantenibles.',
+      aboutDetails:
+        'Me importa la calidad del software, con especial atención al rendimiento, la accesibilidad y los edge cases desde el inicio del desarrollo.',
+      aboutApproach:
+        'Integro la IA en mi forma de trabajar para resolver problemas, automatizar tareas y desarrollar de forma más eficiente, revisando y validando siempre el resultado.',
+      aboutLeadTablet:
+        'Enfocado en crear productos digitales fiables y mantenibles.',
       softwareEngineer: 'Desarrollador de Software',
       coreStack: 'Stack principal',
       workflowFoundations: 'Fundamentos y flujo de trabajo',
