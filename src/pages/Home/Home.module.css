@@ -1,12 +1,12 @@
 .home {
-  padding: 20px 0 40px 0;
+  padding: 16px 0 40px 0;
   background: transparent;
 }
 
 .homeContainer {
   /* Fluid width capped at a fixed max, with flexible side padding. */
   width: 100%;
-  max-width: 1080px;
+  max-width: var(--layout-content-width);
   padding: 0 16px;
   margin-inline: auto;
   box-sizing: border-box;
