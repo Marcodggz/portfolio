@@ -16,9 +16,8 @@ const Certifications: React.FC = () => {
           <p>{t.availabilityIntro}</p>
         </div>
         <div className={styles.actions}>
-          <Link className={styles.projectsLink} to="/projects">{t.viewProjects}</Link>
-          <span className={styles.actionDivider} aria-hidden="true" />
-          <Link className={styles.contactLink} to="/contact">{t.contactCta}</Link>
+          <Link className={styles.actionLink} to="/projects">{t.viewProjects}</Link>
+          <Link className={styles.actionLink} to="/contact">{t.contactCta}</Link>
         </div>
       </div>
       <dl className={styles.availabilityFacts}>

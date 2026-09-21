@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons/faGlobe";
 import { useLanguage } from "../../../context/useLanguage";
 import type { Language } from "../../../context/LanguageContextDefinition";
 import { translations } from "../../../data/translations";
@@ -18,6 +20,7 @@ const LanguageSwitcher: React.FC = () => {
       role="group"
       aria-label={t.languageSelector}
     >
+      <FontAwesomeIcon className={styles.languageIcon} icon={faGlobe} aria-hidden="true" />
       <button
         type="button"
         className={`${styles.langButton} ${language === "en" ? styles.active : ""}`}

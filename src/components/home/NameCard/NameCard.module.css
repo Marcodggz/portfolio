@@ -20,63 +20,6 @@
   overflow: hidden;
 }
 
-.mark {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 88px;
-  height: 88px;
-  aspect-ratio: 1;
-  flex: 0 0 auto;
-  border: 1px solid rgba(174, 215, 236, 0.45);
-  border-radius: 19px 7px 19px 7px;
-  background:
-    linear-gradient(135deg, rgba(77, 176, 238, 0.16), transparent 48%),
-    linear-gradient(145deg, rgba(35, 38, 41, 0.96), rgba(18, 22, 28, 0.98));
-  color: #ffffff;
-  box-shadow:
-    0 10px 28px rgba(0, 0, 0, 0.6),
-    0 3px 10px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    inset 0 -12px 24px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-}
-
-.mark::before {
-  content: "";
-  position: absolute;
-  inset: 7px;
-  border: 1px solid rgba(174, 215, 236, 0.16);
-  border-radius: 13px 4px 13px 4px;
-  pointer-events: none;
-}
-
-.mark::after {
-  content: "";
-  position: absolute;
-  top: -28%;
-  right: -22%;
-  width: 70%;
-  height: 70%;
-  border-radius: 50%;
-  background: rgba(77, 176, 238, 0.3);
-  filter: blur(22px);
-  opacity: 0.55;
-  pointer-events: none;
-}
-
-.markGlyph {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 64px;
-  height: 46px;
-  aspect-ratio: 73 / 52;
-  max-width: 100%;
-  transform-origin: center;
-}
-
 .markPath,
 .markAccent {
   fill: none;
@@ -96,7 +39,6 @@
   filter: drop-shadow(0 0 5px rgba(114, 197, 230, 0.72));
 }
 
-/* Desktop: identity wrapper contains only h1, role hidden */
 .identity {
   position: relative;
   z-index: 1;
@@ -118,31 +60,9 @@
   transform: translate(-50%, -50%) scale(1.35);
 }
 
-.projectsLink {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2rem;
-  margin-top: 0.75rem;
-  padding: 0.35rem 0.75rem;
-  border: 1px solid rgba(114, 197, 230, 0.35);
-  border-radius: 999px;
-  color: var(--color-nav-accent);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.015em;
-  text-decoration: none;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-
-.projectsLink:hover {
-  background: rgba(114, 197, 230, 0.12);
-  border-color: rgba(114, 197, 230, 0.62);
-  color: #d8f2ff;
-}
-
 .name {
-  font-size: clamp(1.85rem, 3vw, 2.05rem);
-  font-weight: 350;
+  font-size: clamp(1.95rem, 3vw, 2.15rem);
+  font-weight: 380;
   line-height: 1.2;
   letter-spacing: 0.02em;
   margin: 0;
@@ -150,7 +70,7 @@
 }
 
 .role {
-  display: none; /* Hidden on desktop */
+  display: none;
   margin: 0;
 }
 
@@ -176,21 +96,6 @@
     min-height: 0;
   }
 
-  .mark {
-    width: 64px;
-    height: 64px;
-    border-radius: 15px 6px 15px 6px;
-  }
-
-  .mark::before {
-    inset: 6px;
-    border-radius: 11px 3px 11px 3px;
-  }
-
-  .markGlyph {
-    transform: scale(0.68);
-  }
-
   /* Show the role text at tablet */
   .role {
     display: block;
@@ -198,10 +103,6 @@
     font-weight: 400;
     color: var(--color-text-secondary);
     margin-top: 4px;
-  }
-
-  .projectsLink {
-    margin-top: 0.55rem;
   }
 
   .nameCard[data-language="es"] .role {
@@ -220,33 +121,12 @@
     gap: 8px;
   }
 
-  .mark {
-    width: 58px;
-    height: 58px;
-    border-radius: 12px 4px 12px 4px;
-  }
-
-  .mark::before {
-    display: none;
-  }
-
-  .markGlyph {
-    transform: scale(0.58);
-  }
-
   .name {
     font-size: 1.85rem;
   }
 
   .role {
     font-size: 1.05rem;
-  }
-
-  .projectsLink {
-    min-height: 1.85rem;
-    margin-top: 0.4rem;
-    padding: 0.3rem 0.65rem;
-    font-size: 0.74rem;
   }
 
   .nameCard[data-language="es"] .role {
@@ -256,15 +136,6 @@
 
 /* ── Narrow mobile ≤ 375px ───────────────────────────────────────────────── */
 @media (max-width: 375px) {
-  .mark {
-    width: 54px;
-    height: 54px;
-  }
-
-  .markGlyph {
-    transform: scale(0.54);
-  }
-
   .name {
     font-size: 1.5rem;
     text-align: center;
