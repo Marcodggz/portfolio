@@ -10,21 +10,21 @@ import styles from "./AbstractImage.module.css";
  * realistic animated eyes that "wake up" and track the pointer as light approaches.
  *
  * Key Features:
- * - Physical ray-casting system for realistic omnidirectional light
+ * - Pointer-driven directional lighting
  * - Progressive eye animation: spheres gradually open/close eyes as light approaches/recedes
  * - Realistic eye design: white sclera, black pupils that track the pointer
  * - Magnetic repulsion with smooth easing
- * - Hardware-accelerated animations using CSS transforms and requestAnimationFrame
- * - Optimized performance with spatial partitioning and Float32Array
+ * - CSS transforms and requestAnimationFrame for animated values
+ * - Spatial partitioning and Float32Array for efficient updates
  * - Full accessibility support with prefers-reduced-motion
  * - Memory-efficient with proper cleanup and ref management
  *
  * Technical Implementation:
- * - Single rAF loop drives all animations with lerp interpolation for smoothness
+ * - A demand-driven rAF loop drives active animations with lerp interpolation
  * - Light intensity and position use separate target values for independent control
- * - Eye opening is calculated via Math.pow(proximity, 1.2) for natural awakening curve
+ * - Eye opening follows a proximity-based awakening curve
  * - Pupil tracking is proportional to eye-open state for realistic behavior
- * - CSS transitions handle eye opening/closing (0.4s) and pupil tracking (0.15s)
+ * - CSS transitions handle eye opening/closing and pupil tracking
  * - Respects system motion preferences for accessibility
  *
  * @component
@@ -41,7 +41,6 @@ type SphereStyle = React.CSSProperties & {
   "--sx"?: string;
   "--sy"?: string;
   "--glow"?: string;
-  "--shadow-alpha"?: string;
   "--scale"?: string;
   "--eye-open"?: string;
   "--pupil-x"?: string;
@@ -61,20 +60,21 @@ const CursorHint: React.FC<{
   );
 };
 
-// Production-optimized constants for performance and visual quality
+// Field and interaction constants.
 const CELL = 58; // Horizontal grid pitch (px) - optimized spacing for 48px spheres
 const ROW = 50; // Vertical row pitch (px) - maintains hex packing ratio
 const SIZE = 48; // Base sphere diameter (px) - sized for clear eye visibility
 const SIZE_JITTER = 2; // Size variation for organic appearance
 const POS_JITTER = 2; // Position variation for natural field distribution
 const INFLUENCE = 155; // Interaction radius (px) - balanced sensitivity for eye animation
-const MAX_PUSH = 28; // Maximum repulsion displacement (px) - REDUCED 20% for closer interaction
+const INFLUENCE_SQ = INFLUENCE * INFLUENCE;
+const MAX_PUSH = 28; // Maximum repulsion displacement (px)
 
-// Animation timing constants (0 = frozen, 1 = instant) - OPTIMIZED for snappier feel
-const POS_SMOOTH = 0.75; // Pointer tracking responsiveness (increased from 0.65)
-const FADE_SMOOTH = 0.28; // Light fade in/out speed (doubled from 0.14)
-const PUSH_SMOOTH = 0.38; // Sphere repulsion easing (increased from 0.24)
-const MAX_EYE_OPEN = 0.7; // Maximum eye opening (0-1) - prevents eyes from opening too wide
+// Animation timing constants (0 = frozen, 1 = instant).
+const POS_SMOOTH = 0.22; // Smooth visual response without slowing the OS cursor
+const FADE_SMOOTH = 0.28; // Light fade in/out speed
+const PUSH_SMOOTH = 0.38; // Sphere repulsion easing
+const MAX_EYE_OPEN = 0.7; // Maximum eye opening (0-1)
 
 // Deterministic 0–1 hash so the jitter is stable across re-renders.
 const hash = (n: number): number => {
@@ -106,6 +106,19 @@ const buildField = (w: number, h: number): Sphere[] => {
   return spheres;
 };
 
+// The pointer only affects a small part of the field. Grouping spheres in
+// cells avoids checking every sphere on every animation frame.
+const buildSpatialGrid = (spheres: Sphere[]): Map<string, number[]> => {
+  const grid = new Map<string, number[]>();
+  spheres.forEach((sphere, index) => {
+    const key = `${Math.floor(sphere.cx / INFLUENCE)}:${Math.floor(sphere.cy / INFLUENCE)}`;
+    const cell = grid.get(key);
+    if (cell) cell.push(index);
+    else grid.set(key, [index]);
+  });
+  return grid;
+};
+
 const AbstractImage: React.FC = React.memo(() => {
   const cardRef = useRef<HTMLDivElement>(null);
   const hintRef = useRef<HTMLSpanElement>(null);
@@ -113,6 +126,7 @@ const AbstractImage: React.FC = React.memo(() => {
   const [size, setSize] = useState({ w: 0, h: 0 });
 
   const spheres = useMemo(() => buildField(size.w, size.h), [size.w, size.h]);
+  const spatialGrid = useMemo(() => buildSpatialGrid(spheres), [spheres]);
   const spheresRef = useRef<Sphere[]>([]);
   const hasSpheres = spheres.length > 0;
 
@@ -122,7 +136,8 @@ const AbstractImage: React.FC = React.memo(() => {
 
   // Live animation state, kept in refs so the rAF loop never triggers renders.
   const sizeRef = useRef({ w: 0, h: 0 }); // latest card size (px)
-  const pointer = useRef({ x: 0, y: 0 }); // smoothed light position (px, card-local)
+  const rectRef = useRef<DOMRect | null>(null); // cached card position
+  const pointer = useRef({ x: 0, y: 0 }); // smoothed sphere interaction (px, card-local)
   const target = useRef({ x: 0, y: 0 }); // desired light position (px, card-local)
   const intensity = useRef(0); // smoothed light intensity (0–1)
   const targetIntensity = useRef(0); // desired light intensity (0–1)
@@ -139,6 +154,7 @@ const AbstractImage: React.FC = React.memo(() => {
     const observer = new ResizeObserver((entries) => {
       const r = entries[0].contentRect;
       sizeRef.current = { w: r.width, h: r.height };
+      rectRef.current = card.getBoundingClientRect();
       setSize((prev) =>
         Math.abs(prev.w - r.width) > 1 || Math.abs(prev.h - r.height) > 1
           ? { w: r.width, h: r.height }
@@ -149,7 +165,7 @@ const AbstractImage: React.FC = React.memo(() => {
     return () => observer.disconnect();
   }, []);
 
-  // Pointer flashlight + repulsion, driven by one continuous rAF loop.
+  // Pointer flashlight + repulsion, driven by a demand-driven rAF loop.
   useEffect(() => {
     const card = cardRef.current;
     if (!card) return;
@@ -172,13 +188,18 @@ const AbstractImage: React.FC = React.memo(() => {
         FADE_SMOOTH,
       );
 
+      // Keep the visible light locked to the pointer target. Only the sphere
+      // response is eased, so fast pointer movements never leave the light
+      // visibly behind.
+      const lightX = target.current.x;
+      const lightY = target.current.y;
       const px = pointer.current.x;
       const py = pointer.current.y;
       const lit = intensity.current;
 
       if (w > 0 && h > 0) {
-        card.style.setProperty("--px", `${(px / w) * 100}`);
-        card.style.setProperty("--py", `${(py / h) * 100}`);
+        card.style.setProperty("--px", `${(lightX / w) * 100}`);
+        card.style.setProperty("--py", `${(lightY / h) * 100}`);
       }
       card.style.setProperty("--intensity", lit.toFixed(3));
 
@@ -195,13 +216,22 @@ const AbstractImage: React.FC = React.memo(() => {
       }
       const currentOffsets = offsets.current;
 
-      for (let i = 0; i < currentSpheres.length; i++) {
+      const candidateIds: number[] = [];
+      const cellX = Math.floor(px / INFLUENCE);
+      const cellY = Math.floor(py / INFLUENCE);
+      for (let y = cellY - 1; y <= cellY + 1; y++) {
+        for (let x = cellX - 1; x <= cellX + 1; x++) {
+          spatialGrid.get(`${x}:${y}`)?.forEach((index) => candidateIds.push(index));
+        }
+      }
+
+      for (const i of candidateIds) {
         const dx = currentSpheres[i].cx - px;
         const dy = currentSpheres[i].cy - py;
         const distSq = dx * dx + dy * dy; // Avoid sqrt when possible
 
         // Quick rejection using squared distance
-        if (distSq >= INFLUENCE * INFLUENCE) continue;
+        if (distSq >= INFLUENCE_SQ) continue;
 
         const dist = Math.sqrt(distSq) || 1;
 
@@ -272,17 +302,18 @@ const AbstractImage: React.FC = React.memo(() => {
           el.style.setProperty("--sx", sx.toFixed(2));
           el.style.setProperty("--sy", sy.toFixed(2));
           el.style.setProperty("--glow", lightAmount.toFixed(3));
-          el.style.setProperty(
-            "--shadow-alpha",
-            (0.22 + lightAmount * 0.68).toFixed(3),
-          );
           el.style.setProperty("--scale", (1 + lightAmount * 0.042).toFixed(3));
           el.style.setProperty("--eye-open", eyeOpen.toFixed(3));
           el.style.setProperty("--pupil-x", pupilX.toFixed(1));
           el.style.setProperty("--pupil-y", pupilY.toFixed(1));
         }
 
-        next.add(i);
+        if (
+          Math.abs(currentOffsets[i * 2]) > 0.05 ||
+          Math.abs(currentOffsets[i * 2 + 1]) > 0.05
+        ) {
+          next.add(i);
+        }
       }
 
       // Ease spheres that just left the influence radius back toward rest.
@@ -305,7 +336,6 @@ const AbstractImage: React.FC = React.memo(() => {
           );
           // Reset all animation properties - eyes fully closed, no glow
           el.style.setProperty("--glow", "0");
-          el.style.setProperty("--shadow-alpha", "0.22");
           el.style.setProperty("--scale", "1");
           el.style.setProperty("--hx", "32");
           el.style.setProperty("--hy", "28");
@@ -333,7 +363,7 @@ const AbstractImage: React.FC = React.memo(() => {
         Math.abs(pointer.current.y - target.current.y) > 0.1;
       const fading = Math.abs(lit - targetIntensity.current) > 0.003;
 
-      if (targetIntensity.current > 0 || fading || moving || next.size > 0) {
+      if (fading || moving || next.size > 0) {
         frame.current = requestAnimationFrame(tick);
       } else {
         running.current = false;
@@ -348,10 +378,10 @@ const AbstractImage: React.FC = React.memo(() => {
       frame.current = requestAnimationFrame(tick);
     };
 
-    // Point the light at a client coordinate. `snap` jumps the smoothed
-    // position to the target so the light never slides in from the center.
+    // Point the light at a client coordinate. `snap` aligns the sphere
+    // interaction immediately on entry while the visible light stays direct.
     const aim = (clientX: number, clientY: number, snap: boolean) => {
-      const rect = card.getBoundingClientRect();
+      const rect = rectRef.current ?? card.getBoundingClientRect();
       target.current.x = clientX - rect.left;
       target.current.y = clientY - rect.top;
       if (snap) {
@@ -421,7 +451,7 @@ const AbstractImage: React.FC = React.memo(() => {
       cancelAnimationFrame(frame.current);
       running.current = false;
     };
-  }, [hasSpheres]);
+  }, [spheres, spatialGrid]);
 
   // Periodically blink one fully visible sphere to hint that the field is
   // interactive even before the pointer reaches it.
@@ -559,14 +589,20 @@ const AbstractImage: React.FC = React.memo(() => {
           sphere.style.setProperty("--eye-open", eyeOpen.toFixed(3));
 
           if (progress < 1) {
-            activeAnimations.set(candidate, requestAnimationFrame(animateSleepyEyes));
+            activeAnimations.set(
+              candidate,
+              requestAnimationFrame(animateSleepyEyes),
+            );
           } else {
             activeAnimations.delete(candidate);
             sphere.style.setProperty("--eye-open", "0");
           }
         };
 
-        activeAnimations.set(candidate, requestAnimationFrame(animateSleepyEyes));
+        activeAnimations.set(
+          candidate,
+          requestAnimationFrame(animateSleepyEyes),
+        );
       }
 
       // Stagger by 2.8s, then 3.8s. With 6s animations this keeps a quiet
@@ -634,7 +670,6 @@ const AbstractImage: React.FC = React.memo(() => {
                 "--sx": "1",
                 "--sy": "1",
                 "--glow": "0",
-                "--shadow-alpha": "0.22",
                 "--scale": "1",
                 "--eye-open": "0",
                 "--pupil-x": "0",
@@ -649,7 +684,6 @@ const AbstractImage: React.FC = React.memo(() => {
           </span>
         ))}
       </div>
-      <div className={styles.sheen} />
     </div>
   );
 });
