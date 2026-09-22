@@ -49,6 +49,8 @@ export const translations = {
       visionFirst: 'Envision it',
       visionSecond: 'Build it',
       cursorHint: 'Move your cursor',
+      exploreInteraction: 'Explore interaction',
+      hideInteraction: 'Hide interaction',
       viewProjects: 'View projects',
     },
     notFound: {
@@ -156,6 +158,8 @@ export const translations = {
       visionFirst: 'Imagínalo',
       visionSecond: 'Créalo',
       cursorHint: 'Mueve el cursor',
+      exploreInteraction: 'Explorar interacción',
+      hideInteraction: 'Ocultar interacción',
       viewProjects: 'Ver proyectos',
     },
     notFound: {

@@ -36,6 +36,7 @@
   border-radius: 16px;
   overflow: hidden;
   isolation: isolate;
+  touch-action: pan-y;
   border: 1px solid rgba(99, 97, 97, 0.16);
 
   /* Professional layered background with subtle depth */
@@ -310,4 +311,22 @@
 
 .pupilRight {
   left: 65%;
+}
+
+@media (max-width: 1024px) and (orientation: portrait), (max-width: 600px) {
+  .cursorHint {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .abstractImage {
+    min-height: 240px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
+  .abstractImage {
+    min-height: 300px;
+  }
 }

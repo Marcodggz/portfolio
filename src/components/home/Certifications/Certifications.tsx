@@ -10,15 +10,9 @@ const Certifications: React.FC = () => {
 
   return (
     <section className={styles.certifications} aria-label={t.availabilityHeading}>
-      <div className={styles.actionRow}>
-        <div className={styles.availabilityIntro}>
-          <span className={styles.statusDot} aria-hidden="true" />
-          <p>{t.availabilityIntro}</p>
-        </div>
-        <div className={styles.actions}>
-          <Link className={styles.actionLink} to="/projects">{t.viewProjects}</Link>
-          <Link className={styles.actionLink} to="/contact">{t.contactCta}</Link>
-        </div>
+      <div className={styles.availabilityIntro}>
+        <span className={styles.statusDot} aria-hidden="true" />
+        <p>{t.availabilityIntro}</p>
       </div>
       <dl className={styles.availabilityFacts}>
         {t.availabilityFacts.map((fact) => (
@@ -28,6 +22,10 @@ const Certifications: React.FC = () => {
           </div>
         ))}
       </dl>
+      <div className={styles.actions}>
+        <Link className={styles.actionLink} to="/projects">{t.viewProjects}</Link>
+        <Link className={styles.actionLink} to="/contact">{t.contactCta}</Link>
+      </div>
     </section>
   );
 };

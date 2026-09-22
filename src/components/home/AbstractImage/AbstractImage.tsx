@@ -175,6 +175,9 @@ const AbstractImage: React.FC = React.memo(() => {
     activeIds.current = new Set();
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const refreshRect = () => {
+      rectRef.current = card.getBoundingClientRect();
+    };
 
     const tick = () => {
       const { w, h } = sizeRef.current;
@@ -394,6 +397,13 @@ const AbstractImage: React.FC = React.memo(() => {
 
     const handleEnter = (event: PointerEvent) =>
       aim(event.clientX, event.clientY, true);
+    const handleDown = (event: PointerEvent) => {
+      if (event.pointerType === "touch") {
+        refreshRect();
+        card.setPointerCapture(event.pointerId);
+        aim(event.clientX, event.clientY, true);
+      }
+    };
     const handleMove = (event: PointerEvent) =>
       aim(event.clientX, event.clientY, false);
 
@@ -405,11 +415,20 @@ const AbstractImage: React.FC = React.memo(() => {
 
     // Touch ends fire `pointerup`; treat that as leaving so the light fades.
     const handleUp = (event: PointerEvent) => {
-      if (event.pointerType === "touch") fadeOut();
+      if (event.pointerType === "touch") {
+        if (card.hasPointerCapture(event.pointerId)) {
+          card.releasePointerCapture(event.pointerId);
+        }
+        fadeOut();
+      }
     };
 
     const enable = () => {
+      refreshRect();
+      window.addEventListener("scroll", refreshRect, { passive: true });
+      window.addEventListener("resize", refreshRect);
       card.addEventListener("pointerenter", handleEnter);
+      card.addEventListener("pointerdown", handleDown);
       card.addEventListener("pointermove", handleMove);
       card.addEventListener("pointerleave", fadeOut);
       card.addEventListener("pointercancel", fadeOut);
@@ -417,7 +436,10 @@ const AbstractImage: React.FC = React.memo(() => {
     };
 
     const disable = () => {
+      window.removeEventListener("scroll", refreshRect);
+      window.removeEventListener("resize", refreshRect);
       card.removeEventListener("pointerenter", handleEnter);
+      card.removeEventListener("pointerdown", handleDown);
       card.removeEventListener("pointermove", handleMove);
       card.removeEventListener("pointerleave", fadeOut);
       card.removeEventListener("pointercancel", fadeOut);

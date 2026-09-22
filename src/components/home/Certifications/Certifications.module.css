@@ -1,6 +1,11 @@
 .certifications {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas:
+    "intro actions"
+    "facts facts";
+  gap: 0.7rem 1rem;
   height: 249px;
   padding: 18px 22px;
   color: var(--color-text-primary);
@@ -10,15 +15,8 @@
   overflow: hidden;
 }
 
-.actionRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  min-height: 2rem;
-}
-
 .actions {
+  grid-area: actions;
   display: flex;
   align-items: center;
   gap: 0.55rem;
@@ -66,11 +64,11 @@
 }
 
 .availabilityFacts {
+  grid-area: facts;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  flex: 1;
   min-height: 0;
-  margin-top: 0.7rem;
+  margin-top: 0;
   margin-bottom: 0;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -80,7 +78,7 @@
     rgba(6, 23, 33, 0.25);
 }
 
-.availabilityIntro { display: flex; align-items: center; gap: 0.55rem; min-width: 0; }
+.availabilityIntro { grid-area: intro; display: flex; align-items: center; gap: 0.55rem; min-width: 0; }
 .availabilityIntro p { margin: 0; color: rgba(223, 247, 253, 0.9); font-size: clamp(0.8rem, 1vw, 0.9rem); font-weight: 500; letter-spacing: -0.01em; }
 .statusDot { flex: 0 0 auto; width: 0.36rem; aspect-ratio: 1; border-radius: 50%; background: rgba(136, 205, 231, 0.72); box-shadow: 0 0 0 0.18rem rgba(136, 205, 231, 0.08); }
 .availabilityFact { display: flex; flex-direction: column; justify-content: center; min-width: 0; padding: clamp(0.65rem, 1.2vw, 0.9rem) clamp(0.75rem, 1.5vw, 1.1rem); }
@@ -95,9 +93,42 @@
 }
 
 @media (max-width: 600px) {
-  .certifications { padding: 18px; }
-  .actionRow { align-items: flex-start; }
-  .availabilityFacts { min-height: 10rem; }
+  .certifications {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(10rem, 1fr) auto;
+    grid-template-areas:
+      "intro"
+      "facts"
+      "actions";
+    gap: 0.85rem;
+    padding: 18px;
+  }
+  .availabilityIntro {
+    grid-area: intro;
+    width: 100%;
+  }
+  .availabilityFacts {
+    grid-area: facts;
+    min-height: 10rem;
+  }
+  .actions {
+    grid-area: actions;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.55rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .availabilityIntro p {
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+  .actionLink {
+    min-height: 2rem;
+    padding: 0 0.55rem;
+  }
 }
 
 @media (max-width: 375px) {
