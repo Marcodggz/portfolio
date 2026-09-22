@@ -69,9 +69,11 @@ const POS_JITTER = 2; // Position variation for natural field distribution
 const INFLUENCE = 155; // Interaction radius (px) - balanced sensitivity for eye animation
 const INFLUENCE_SQ = INFLUENCE * INFLUENCE;
 const MAX_PUSH = 28; // Maximum repulsion displacement (px)
+const TOUCH_MAX_PUSH = 52; // Extra displacement to compensate for finger size
 
 // Animation timing constants (0 = frozen, 1 = instant).
 const POS_SMOOTH = 0.22; // Smooth visual response without slowing the OS cursor
+const TOUCH_POS_SMOOTH = 0.55; // Faster response for direct finger interaction
 const FADE_SMOOTH = 0.28; // Light fade in/out speed
 const PUSH_SMOOTH = 0.38; // Sphere repulsion easing
 const MAX_EYE_OPEN = 0.7; // Maximum eye opening (0-1)
@@ -138,6 +140,8 @@ const AbstractImage: React.FC = React.memo(() => {
   const sizeRef = useRef({ w: 0, h: 0 }); // latest card size (px)
   const rectRef = useRef<DOMRect | null>(null); // cached card position
   const pointer = useRef({ x: 0, y: 0 }); // smoothed sphere interaction (px, card-local)
+  const pointerSmooth = useRef(POS_SMOOTH);
+  const inputType = useRef<string>("mouse");
   const target = useRef({ x: 0, y: 0 }); // desired light position (px, card-local)
   const intensity = useRef(0); // smoothed light intensity (0–1)
   const targetIntensity = useRef(0); // desired light intensity (0–1)
@@ -183,8 +187,16 @@ const AbstractImage: React.FC = React.memo(() => {
       const { w, h } = sizeRef.current;
 
       // Ease the smoothed values toward their targets.
-      pointer.current.x = lerp(pointer.current.x, target.current.x, POS_SMOOTH);
-      pointer.current.y = lerp(pointer.current.y, target.current.y, POS_SMOOTH);
+      pointer.current.x = lerp(
+        pointer.current.x,
+        target.current.x,
+        pointerSmooth.current,
+      );
+      pointer.current.y = lerp(
+        pointer.current.y,
+        target.current.y,
+        pointerSmooth.current,
+      );
       intensity.current = lerp(
         intensity.current,
         targetIntensity.current,
@@ -199,6 +211,8 @@ const AbstractImage: React.FC = React.memo(() => {
       const px = pointer.current.x;
       const py = pointer.current.y;
       const lit = intensity.current;
+      const maxPush =
+        inputType.current === "touch" ? TOUCH_MAX_PUSH : MAX_PUSH;
 
       if (w > 0 && h > 0) {
         card.style.setProperty("--px", `${(lightX / w) * 100}`);
@@ -255,7 +269,7 @@ const AbstractImage: React.FC = React.memo(() => {
         const lightAmount = proxSq * Math.pow(proximity, 0.1) * lit;
 
         // Magnetic repulsion: push spheres away smoothly
-        const push = repelAmount * MAX_PUSH;
+        const push = repelAmount * maxPush;
         currentOffsets[i * 2] = lerp(
           currentOffsets[i * 2],
           nx * push,
@@ -383,8 +397,16 @@ const AbstractImage: React.FC = React.memo(() => {
 
     // Point the light at a client coordinate. `snap` aligns the sphere
     // interaction immediately on entry while the visible light stays direct.
-    const aim = (clientX: number, clientY: number, snap: boolean) => {
+    const aim = (
+      clientX: number,
+      clientY: number,
+      snap: boolean,
+      pointerType: string,
+    ) => {
       const rect = rectRef.current ?? card.getBoundingClientRect();
+      pointerSmooth.current =
+        pointerType === "touch" ? TOUCH_POS_SMOOTH : POS_SMOOTH;
+      inputType.current = pointerType;
       target.current.x = clientX - rect.left;
       target.current.y = clientY - rect.top;
       if (snap) {
@@ -396,16 +418,16 @@ const AbstractImage: React.FC = React.memo(() => {
     };
 
     const handleEnter = (event: PointerEvent) =>
-      aim(event.clientX, event.clientY, true);
+      aim(event.clientX, event.clientY, true, event.pointerType);
     const handleDown = (event: PointerEvent) => {
       if (event.pointerType === "touch") {
         refreshRect();
         card.setPointerCapture(event.pointerId);
-        aim(event.clientX, event.clientY, true);
+        aim(event.clientX, event.clientY, true, event.pointerType);
       }
     };
     const handleMove = (event: PointerEvent) =>
-      aim(event.clientX, event.clientY, false);
+      aim(event.clientX, event.clientY, false, event.pointerType);
 
     // Only dim the light — keep its last position so it never recenters.
     const fadeOut = () => {

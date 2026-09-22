@@ -36,7 +36,10 @@
   border-radius: 16px;
   overflow: hidden;
   isolation: isolate;
-  touch-action: pan-y;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
   border: 1px solid rgba(99, 97, 97, 0.16);
 
   /* Professional layered background with subtle depth */
