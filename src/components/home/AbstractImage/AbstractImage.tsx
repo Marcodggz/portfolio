@@ -64,6 +64,10 @@ const CursorHint: React.FC<{
 const CELL = 58; // Horizontal grid pitch (px) - optimized spacing for 48px spheres
 const ROW = 50; // Vertical row pitch (px) - maintains hex packing ratio
 const SIZE = 48; // Base sphere diameter (px) - sized for clear eye visibility
+// Mobile uses fewer, larger spheres for readability and a lighter paint cost.
+const MOBILE_CELL = 70;
+const MOBILE_ROW = 62;
+const MOBILE_SIZE = 55;
 const SIZE_JITTER = 2; // Size variation for organic appearance
 const POS_JITTER = 2; // Position variation for natural field distribution
 const INFLUENCE = 155; // Interaction radius (px) - balanced sensitivity for eye animation
@@ -91,16 +95,20 @@ const lerp = (a: number, b: number, t: number): number => a + (b - a) * t;
 const buildField = (w: number, h: number): Sphere[] => {
   const spheres: Sphere[] = [];
   if (w <= 0 || h <= 0) return spheres;
-  const cols = Math.ceil(w / CELL) + 1;
-  const rows = Math.ceil(h / ROW) + 1;
+  const isMobileField = w <= 600;
+  const cell = isMobileField ? MOBILE_CELL : CELL;
+  const row = isMobileField ? MOBILE_ROW : ROW;
+  const size = isMobileField ? MOBILE_SIZE : SIZE;
+  const cols = Math.ceil(w / cell) + 1;
+  const rows = Math.ceil(h / row) + 1;
   let i = 0;
   for (let r = 0; r < rows; r++) {
-    const rowOffset = (r % 2) * (CELL / 2); // stagger alternate rows
+    const rowOffset = (r % 2) * (cell / 2); // stagger alternate rows
     for (let c = 0; c < cols; c++) {
       spheres.push({
-        cx: c * CELL + rowOffset + (hash(i + 1) - 0.5) * 2 * POS_JITTER,
-        cy: r * ROW + (hash(i + 7) - 0.5) * 2 * POS_JITTER,
-        size: SIZE + (hash(i + 13) - 0.5) * 2 * SIZE_JITTER,
+        cx: c * cell + rowOffset + (hash(i + 1) - 0.5) * 2 * POS_JITTER,
+        cy: r * row + (hash(i + 7) - 0.5) * 2 * POS_JITTER,
+        size: size + (hash(i + 13) - 0.5) * 2 * SIZE_JITTER,
       });
       i++;
     }
@@ -177,6 +185,23 @@ const AbstractImage: React.FC = React.memo(() => {
     // Reset per-sphere offset state for the current field.
     offsets.current = new Float32Array(spheresRef.current.length * 2);
     activeIds.current = new Set();
+    const styleCache = new Map<number, Record<string, string>>();
+
+    const setCachedStyle = (
+      index: number,
+      element: HTMLSpanElement,
+      property: string,
+      value: string,
+    ) => {
+      let cache = styleCache.get(index);
+      if (!cache) {
+        cache = {};
+        styleCache.set(index, cache);
+      }
+      if (cache[property] === value) return;
+      element.style.setProperty(property, value);
+      cache[property] = value;
+    };
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const refreshRect = () => {
@@ -312,17 +337,17 @@ const AbstractImage: React.FC = React.memo(() => {
           const txNew = currentOffsets[i * 2].toFixed(2);
           const tyNew = currentOffsets[i * 2 + 1].toFixed(2);
 
-          el.style.setProperty("--tx", `${txNew}px`);
-          el.style.setProperty("--ty", `${tyNew}px`);
-          el.style.setProperty("--hx", hx.toFixed(1));
-          el.style.setProperty("--hy", hy.toFixed(1));
-          el.style.setProperty("--sx", sx.toFixed(2));
-          el.style.setProperty("--sy", sy.toFixed(2));
-          el.style.setProperty("--glow", lightAmount.toFixed(3));
-          el.style.setProperty("--scale", (1 + lightAmount * 0.042).toFixed(3));
+          setCachedStyle(i, el, "--tx", `${txNew}px`);
+          setCachedStyle(i, el, "--ty", `${tyNew}px`);
+          setCachedStyle(i, el, "--hx", hx.toFixed(1));
+          setCachedStyle(i, el, "--hy", hy.toFixed(1));
+          setCachedStyle(i, el, "--sx", sx.toFixed(2));
+          setCachedStyle(i, el, "--sy", sy.toFixed(2));
+          setCachedStyle(i, el, "--glow", lightAmount.toFixed(3));
+          setCachedStyle(i, el, "--scale", (1 + lightAmount * 0.042).toFixed(3));
           el.style.setProperty("--eye-open", eyeOpen.toFixed(3));
-          el.style.setProperty("--pupil-x", pupilX.toFixed(1));
-          el.style.setProperty("--pupil-y", pupilY.toFixed(1));
+          setCachedStyle(i, el, "--pupil-x", pupilX.toFixed(1));
+          setCachedStyle(i, el, "--pupil-y", pupilY.toFixed(1));
         }
 
         if (
@@ -346,22 +371,24 @@ const AbstractImage: React.FC = React.memo(() => {
 
         const el = sphereRefs.current[i];
         if (el) {
-          el.style.setProperty("--tx", `${currentOffsets[i * 2].toFixed(2)}px`);
-          el.style.setProperty(
+          setCachedStyle(i, el, "--tx", `${currentOffsets[i * 2].toFixed(2)}px`);
+          setCachedStyle(
+            i,
+            el,
             "--ty",
             `${currentOffsets[i * 2 + 1].toFixed(2)}px`,
           );
           // Reset all animation properties - eyes fully closed, no glow
-          el.style.setProperty("--glow", "0");
-          el.style.setProperty("--scale", "1");
-          el.style.setProperty("--hx", "32");
-          el.style.setProperty("--hy", "28");
-          el.style.setProperty("--sx", "1");
-          el.style.setProperty("--sy", "1");
+          setCachedStyle(i, el, "--glow", "0");
+          setCachedStyle(i, el, "--scale", "1");
+          setCachedStyle(i, el, "--hx", "32");
+          setCachedStyle(i, el, "--hy", "28");
+          setCachedStyle(i, el, "--sx", "1");
+          setCachedStyle(i, el, "--sy", "1");
           // Eyes completely closed when light is away
           el.style.setProperty("--eye-open", "0");
-          el.style.setProperty("--pupil-x", "0");
-          el.style.setProperty("--pupil-y", "0");
+          setCachedStyle(i, el, "--pupil-x", "0");
+          setCachedStyle(i, el, "--pupil-y", "0");
         }
 
         if (
