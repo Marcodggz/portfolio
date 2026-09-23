@@ -50,14 +50,6 @@
   grid-area: abstract;
 }
 
-.abstractToggle {
-  display: none;
-}
-
-.abstractPanel {
-  width: 100%;
-  height: 100%;
-}
 .certifications {
   grid-area: cert;
 }
@@ -111,6 +103,10 @@
     gap: 18px;
   }
 
+  .abstractImage {
+    display: none;
+  }
+
   /* Hide WebDev on tablet - role is shown in NameCard instead */
   .webDev {
     display: none;
@@ -126,33 +122,8 @@
   }
 }
 
-/* Keep the interactive visual out of tablet landscape, where vertical space
-   is limited. It remains available in portrait mode and on mobile. */
-@media (min-width: 601px) and (max-width: 1024px) and (orientation: landscape) {
-  .abstractImage {
-    display: none;
-  }
-}
-
-/* ── Tablet portrait ─────────────────────────────────────────────────────── */
-@media (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
-  .homeGrid {
-    grid-template-areas:
-      "name"
-      "about"
-      "abstract"
-      "skills"
-      "cert"
-      "vision";
-  }
-
-  .abstractImage {
-    display: block;
-  }
-}
-
 /* ── Mobile ≤ 600px ──────────────────────────────────────────────────────── */
-/*    Single-column layout: name+role → about → visual → tech → quote        */
+/*    Single-column layout: name+role → about → tech → quote                 */
 @media (max-width: 600px) {
   .home {
     padding: 16px 0 32px 0;
@@ -168,79 +139,10 @@
     grid-template-areas:
       "name"
       "about"
-      "abstract"
       "skills"
       "cert"
       "vision";
     gap: 16px;
   }
 
-  .abstractImage {
-    display: block;
-  }
-
-}
-
-@media (max-width: 1024px) and (orientation: portrait), (max-width: 600px) {
-  .abstractToggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    box-sizing: border-box;
-    min-height: 42px;
-    padding: 10px 16px;
-    border: 1px solid rgba(238, 243, 250, 0.2);
-    border-radius: 12px;
-    color: rgba(238, 243, 250, 0.78);
-    background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
-      rgba(10, 11, 13, 0.72);
-    font: inherit;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    text-align: center;
-    text-transform: uppercase;
-    transition:
-      color 0.2s ease,
-      background-color 0.2s ease,
-      border-color 0.2s ease,
-      transform 0.2s ease;
-  }
-
-  .abstractToggle::after {
-    content: "+";
-    margin-left: 10px;
-    color: rgba(180, 210, 245, 0.9);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1;
-  }
-
-  @media (hover: hover) {
-    .abstractToggle:hover {
-      color: rgba(238, 243, 250, 0.96);
-      border-color: rgba(180, 210, 245, 0.42);
-      background:
-        linear-gradient(135deg, rgba(180, 210, 245, 0.14), rgba(255, 255, 255, 0.05)),
-        rgba(10, 11, 13, 0.78);
-      transform: translateY(-1px);
-    }
-  }
-
-  .abstractToggle[aria-expanded="true"]::after {
-    content: "−";
-  }
-
-  .abstractToggle:focus-visible {
-    outline: 2px solid rgba(180, 210, 245, 0.9);
-    outline-offset: 3px;
-  }
-
-  .abstractPanel {
-    margin-top: 12px;
-    height: auto;
-  }
 }

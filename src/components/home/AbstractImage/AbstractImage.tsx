@@ -64,10 +64,6 @@ const CursorHint: React.FC<{
 const CELL = 58; // Horizontal grid pitch (px) - optimized spacing for 48px spheres
 const ROW = 50; // Vertical row pitch (px) - maintains hex packing ratio
 const SIZE = 48; // Base sphere diameter (px) - sized for clear eye visibility
-// Mobile uses fewer, larger spheres for readability and a lighter paint cost.
-const MOBILE_CELL = 70;
-const MOBILE_ROW = 62;
-const MOBILE_SIZE = 55;
 const SIZE_JITTER = 2; // Size variation for organic appearance
 const POS_JITTER = 2; // Position variation for natural field distribution
 const INFLUENCE = 155; // Interaction radius (px) - balanced sensitivity for eye animation
@@ -95,20 +91,16 @@ const lerp = (a: number, b: number, t: number): number => a + (b - a) * t;
 const buildField = (w: number, h: number): Sphere[] => {
   const spheres: Sphere[] = [];
   if (w <= 0 || h <= 0) return spheres;
-  const isMobileField = w <= 600;
-  const cell = isMobileField ? MOBILE_CELL : CELL;
-  const row = isMobileField ? MOBILE_ROW : ROW;
-  const size = isMobileField ? MOBILE_SIZE : SIZE;
-  const cols = Math.ceil(w / cell) + 1;
-  const rows = Math.ceil(h / row) + 1;
+  const cols = Math.ceil(w / CELL) + 1;
+  const rows = Math.ceil(h / ROW) + 1;
   let i = 0;
   for (let r = 0; r < rows; r++) {
-    const rowOffset = (r % 2) * (cell / 2); // stagger alternate rows
+    const rowOffset = (r % 2) * (CELL / 2); // stagger alternate rows
     for (let c = 0; c < cols; c++) {
       spheres.push({
-        cx: c * cell + rowOffset + (hash(i + 1) - 0.5) * 2 * POS_JITTER,
-        cy: r * row + (hash(i + 7) - 0.5) * 2 * POS_JITTER,
-        size: size + (hash(i + 13) - 0.5) * 2 * SIZE_JITTER,
+        cx: c * CELL + rowOffset + (hash(i + 1) - 0.5) * 2 * POS_JITTER,
+        cy: r * ROW + (hash(i + 7) - 0.5) * 2 * POS_JITTER,
+        size: SIZE + (hash(i + 13) - 0.5) * 2 * SIZE_JITTER,
       });
       i++;
     }

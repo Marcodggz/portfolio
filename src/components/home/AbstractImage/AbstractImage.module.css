@@ -315,21 +315,3 @@
 .pupilRight {
   left: 65%;
 }
-
-@media (max-width: 1024px) and (orientation: portrait), (max-width: 600px) {
-  .cursorHint {
-    display: none;
-  }
-}
-
-@media (max-width: 600px) {
-  .abstractImage {
-    min-height: 240px;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
-  .abstractImage {
-    min-height: 300px;
-  }
-}
