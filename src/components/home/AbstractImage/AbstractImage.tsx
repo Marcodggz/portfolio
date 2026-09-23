@@ -72,10 +72,10 @@ const MAX_PUSH = 28; // Maximum repulsion displacement (px)
 const TOUCH_MAX_PUSH = 52; // Extra displacement to compensate for finger size
 
 // Animation timing constants (0 = frozen, 1 = instant).
-const POS_SMOOTH = 0.22; // Smooth visual response without slowing the OS cursor
-const TOUCH_POS_SMOOTH = 0.55; // Faster response for direct finger interaction
+const POS_SMOOTH = 0.36; // Responsive sphere interaction without moving the light
+const TOUCH_POS_SMOOTH = 0.5; // Faster response for direct finger interaction
 const FADE_SMOOTH = 0.28; // Light fade in/out speed
-const PUSH_SMOOTH = 0.38; // Sphere repulsion easing
+const PUSH_SMOOTH = 0.42; // Responsive sphere repulsion easing
 const MAX_EYE_OPEN = 0.7; // Maximum eye opening (0-1)
 
 // Deterministic 0–1 hash so the jitter is stable across re-renders.
